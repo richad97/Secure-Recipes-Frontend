@@ -1,0 +1,9 @@
+.vid-container {
+  height: 88.8%;
+  width: 100%;
+}
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

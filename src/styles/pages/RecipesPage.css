@@ -1,0 +1,7 @@
+#recipes-main {
+  display: flex;
+  height: 88%;
+}
+section {
+  width: 50%;
+}

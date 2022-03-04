@@ -1,0 +1,113 @@
+#section-2 {
+  /* border: 1px solid black; */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  margin: 2rem;
+  background-color: whitesmoke;
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.2);
+}
+#section-2::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+#section-2 h1 {
+  font-size: 2.5rem;
+  padding: 1.5rem 2.3rem;
+  padding-bottom: 0.5rem;
+  /* color: white; */
+}
+#section-2 > header {
+  background-color: #2c3333;
+  width: 100%;
+  color: white;
+  border-bottom: 1px solid black;
+  padding-bottom: 1rem;
+}
+#section-2 p {
+  padding: 0.2rem 0;
+  /* color: white; */
+}
+#section-2 header div {
+  padding: 0rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+#sec2-body {
+  padding-top: 0.5rem;
+}
+#section-2 hr {
+  width: 90%;
+}
+#image-info-wrap {
+  padding: 1rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-around;
+}
+#image-info-wrap > #image-container {
+  height: 15rem;
+  width: 15rem;
+  /* border: 1px solid black; */
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
+}
+#image-info-wrap > #image-container > img {
+  height: 100%;
+  width: 100%;
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+}
+#image-info-wrap > #recipe-info {
+  width: 15rem;
+  height: 7.5rem;
+  font-size: 0.9rem;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+#image-info-wrap > #recipe-info > p {
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem 0.2rem;
+  margin-bottom: 1rem;
+  color: rgb(49, 49, 49);
+  /* margin: 1rem 0; */
+}
+#section-2 h3 {
+  font-size: 1.3rem;
+  /* padding: 2rem 2.5rem; */
+  /* padding-bottom: 0; */
+  /* color: white; */
+}
+#section-2 ol {
+  /* padding: 0 2.5rem; */
+  display: flex;
+  flex-direction: column;
+}
+#section-2 li {
+  font-size: 0.9rem;
+  /* padding: 0.5rem 1rem; */
+  /* color: white; */
+}
+#button-wrapper {
+  /* padding: 2rem; */
+  display: flex;
+  justify-content: end;
+  font-size: 0.9rem;
+}
+#button-wrapper button {
+  padding: 0.5rem 2rem;
+}
+.ii-container {
+  /* border: 1px solid rgba(0, 0, 0, 0.02); */
+  border-radius: 0.1rem;
+  box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+}
