@@ -1,6 +1,5 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../../RecipeContext";
 import "../../styles/components/recipes/RightSection.css";
 
 function RightSection(props) {
@@ -24,7 +23,6 @@ function RightSection(props) {
   useEffect(() => {
     var dt = new Date(created_at);
     setConvertedUTC(dt.toLocaleDateString());
-    console.log(ingredients);
   }, []);
 
   return (
@@ -53,7 +51,11 @@ function RightSection(props) {
           <ol>
             {ingredients
               ? ingredients.map((ingredient, i) => {
-                  return <li key={i}>{ingredient}</li>;
+                  return (
+                    <p className="comm1" key={i}>
+                      {ingredient}
+                    </p>
+                  );
                 })
               : null}
           </ol>
@@ -61,7 +63,7 @@ function RightSection(props) {
         <div className="ii-container">
           <h3>Instructions</h3>
           <hr />
-          <p>{instructions}</p>
+          <p className="comm1">{instructions}</p>
         </div>
         <div id="button-wrapper">
           <button

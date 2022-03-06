@@ -12,9 +12,7 @@ const CreateRecipeSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   description: Yup.string().max(150, "Too Long!"),
-  prep_time: Yup.number()
-    .positive("Prep time must be a positive number")
-    .integer(),
+  prep_time: Yup.number().positive("Time must be positive").integer(),
   category: Yup.string().max(50, "Too Long!"),
   source: Yup.string().max(50, "Too Long!"),
   instructions: Yup.string()

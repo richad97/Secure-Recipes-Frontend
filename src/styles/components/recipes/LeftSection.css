@@ -2,13 +2,14 @@
   /* border: 1px solid black; */
   overflow: hidden;
   margin: 2rem;
-  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 #section-1 label {
   width: 100%;
   /* border: 1px solid black; */
   display: flex;
-  background-color: #2c3333;
+  background-color: var(--recipe3ContBg);
 }
 #section-1 label svg {
   width: 10%;
@@ -26,7 +27,7 @@
 #recipe-container {
   height: 80%;
   /* border: 1px solid red; */
-  background-color: rgb(255, 255, 255);
+  background-color: var(--recipeContBg);
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -42,13 +43,16 @@
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   text-align: center;
   font-size: 1.1rem;
-  padding: 0.9rem 0;
   width: 100%;
+  padding: 0.8rem 0;
   cursor: pointer;
-  background-color: #2c3333;
+  background-color: var(--recipe3ContBg);
   color: white;
 }
 #section-1 > button:hover {
   background-color: #242a2a;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+.ls-add-btn {
+  font-size: 1.5rem;
 }

@@ -7,7 +7,7 @@ import { RecipeContext } from "../RecipeContext";
 
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
-  const { setDeleteMessage } = props;
+  const { setDeleteMessage, isDeleted } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -21,13 +21,12 @@ function Recipes(props) {
         const recievedData = resp.data;
 
         setSelectedRecipe({ ...recievedData[0] });
-
         setUserRecipes(recievedData);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [isDeleted]);
 
   return (
     <main id="recipes-main">

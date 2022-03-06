@@ -17,6 +17,7 @@ function App() {
   const [isAuth, setAuth] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [showDeleteMessage, setDeleteMessage] = useState();
+  const [isDeleted, setDeleted] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,7 +33,11 @@ function App() {
     <>
       <RecipeContext.Provider value={{ selectedRecipe, setSelectedRecipe }}>
         {showDeleteMessage ? (
-          <DeleteMessage setDeleteMessage={setDeleteMessage} />
+          <DeleteMessage
+            isDeleted={isDeleted}
+            setDeleted={setDeleted}
+            setDeleteMessage={setDeleteMessage}
+          />
         ) : null}
         <Routes>
           <Route
@@ -44,7 +49,10 @@ function App() {
               path="/recipes"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <RecipesPage setDeleteMessage={setDeleteMessage} />
+                  <RecipesPage
+                    isDeleted={isDeleted}
+                    setDeleteMessage={setDeleteMessage}
+                  />
                 </RequireAuth>
               }
             />

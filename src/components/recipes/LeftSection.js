@@ -55,7 +55,7 @@ function LeftSection(props) {
           navigate("/recipes/create");
         }}
       >
-        Add Recipe
+        <p className="ls-add-btn">Add Recipe </p>
       </button>
     </section>
   );

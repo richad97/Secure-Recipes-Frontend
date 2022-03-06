@@ -37,8 +37,7 @@ function DeleteMessage(props) {
                 )
                 .then((resp) => {
                   props.setDeleteMessage(false);
-                  // window.location.reload();
-                  console.log(resp);
+                  props.setDeleted(!props.isDeleted);
                 })
                 .catch((err) => {
                   console.log(err);

@@ -19,7 +19,7 @@ function RecipeComp(props) {
   return (
     <div className="recipe-comp" onClick={handleClick}>
       <h4>{recipe.title}</h4>
-      <p>{recipe.description}</p>
+      <p className="comm1">{recipe.description}</p>
       <hr></hr>
       <div>
         <p>{recipe.prep_time} Minutes</p>

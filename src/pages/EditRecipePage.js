@@ -13,9 +13,7 @@ const EditRecipeSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   description: Yup.string().max(150, "Too Long!"),
-  prep_time: Yup.number()
-    .positive("Prep time must be a positive number")
-    .integer(),
+  prep_time: Yup.number().positive("Time must be positive").integer(),
   category: Yup.string().max(50, "Too Long!"),
   source: Yup.string().max(50, "Too Long!"),
   instructions: Yup.string()
@@ -34,6 +32,7 @@ function EditRecipe() {
   const [url, setUrl] = useState("");
   const { id } = useParams();
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
+  const [serverError, setServerError] = useState("");
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -116,16 +115,15 @@ function EditRecipe() {
         onSubmit={(values) => {
           const token = localStorage.getItem("token");
           const newValues = { ...values, ingredients, token, pic_url: url };
-          console.log(newValues);
           if (token) {
             axios
               .put(`http://localhost:9000/api/recipes/edit/${id}`, newValues)
               .then((resp) => {
-                console.log(resp);
                 navigate("/recipes");
               })
               .catch((err) => {
-                console.log(err);
+                const errFromServer = err.response.data.message;
+                setServerError(errFromServer);
               });
           }
         }}
@@ -318,7 +316,9 @@ function EditRecipe() {
                 </div>
               </div>
             </div>
-
+            {serverError ? (
+              <p className="error-val">Server Error: {serverError}</p>
+            ) : null}
             <div style={{ display: "flex", justifyContent: "end" }}>
               <button
                 id="er-btn"

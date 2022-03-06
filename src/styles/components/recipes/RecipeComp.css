@@ -3,21 +3,19 @@
   margin: 1rem;
   padding: 2rem;
   cursor: pointer;
-  background-color: white;
-  border-radius: 0.2rem;
-  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1);
+  border-radius: var(--mainSubSecBR);
+  background-color: var(--recipe2ContBg);
 }
 .recipe-comp:hover {
-  background-color: rgb(243, 243, 243);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(250, 250, 250);
 }
 .recipe-comp h4 {
-  font-size: 1.3rem;
+  font-size: var(--h4Custom);
   font-weight: bold;
 }
 .recipe-comp hr {
-  /* border: 1px solid black; */
   margin: 1rem 0;
+  border-left: none;
 }
 .recipe-comp > p {
   padding-top: 1rem;
@@ -25,4 +23,7 @@
 .recipe-comp > div {
   display: flex;
   justify-content: space-between;
+}
+.recipe-comp > div {
+  font-size: var(--pCustom);
 }
