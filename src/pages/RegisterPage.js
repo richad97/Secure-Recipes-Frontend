@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/pages/RegisterPage.css";
 import "../styles/components/form.css";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
+import { useState } from "react";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -25,6 +26,9 @@ const RegisterSchema = Yup.object().shape({
 });
 
 function Register() {
+  const [serverError, setServerError] = useState("");
+  const navigate = useNavigate();
+
   return (
     <main id="register-main">
       <Formik
@@ -67,9 +71,11 @@ function Register() {
             .post("http://localhost:9000/auth/register", newValues)
             .then((resp) => {
               console.log(resp);
+              navigate("/confirmation");
             })
             .catch((err) => {
-              console.log(err);
+              let recievedErr = err.response.data.message;
+              setServerError(recievedErr);
             });
         }}
       >
@@ -170,6 +176,9 @@ function Register() {
                 placeholder="Password Confirmation"
               />
             </label>
+            {serverError ? (
+              <p className="error-val">Server Error: {serverError}</p>
+            ) : null}
             <Link
               style={{ marginTop: "0.5rem" }}
               className="form-a"

@@ -7,6 +7,7 @@ import { RecipeContext } from "../RecipeContext";
 
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
+  const [serverMessage, setServerMessage] = useState("");
   const { setDeleteMessage, isDeleted } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
@@ -20,8 +21,14 @@ function Recipes(props) {
       .then((resp) => {
         const recievedData = resp.data;
 
-        setSelectedRecipe({ ...recievedData[0] });
-        setUserRecipes(recievedData);
+        if (!recievedData.message) {
+          setSelectedRecipe({ ...recievedData[0] });
+          setUserRecipes(recievedData);
+        } else {
+          setServerMessage(recievedData.message);
+          setSelectedRecipe({});
+          setUserRecipes([]);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -30,17 +37,28 @@ function Recipes(props) {
 
   return (
     <main id="recipes-main">
-      <LeftSection
-        userRecipes={userRecipes}
-        setSelectedRecipe={setSelectedRecipe}
-      />
-      {!selectedRecipe ? (
-        <p>Loading</p>
+      {serverMessage ? (
+        <form
+          style={{ width: "25%", marginTop: "8rem", height: "2rem" }}
+          className="form"
+        >
+          <h2>Server Message: {serverMessage}</h2>
+        </form>
       ) : (
-        <RightSection
-          setDeleteMessage={setDeleteMessage}
-          selectedRecipe={selectedRecipe}
-        />
+        <>
+          <LeftSection
+            userRecipes={userRecipes}
+            setSelectedRecipe={setSelectedRecipe}
+          />
+          {!selectedRecipe ? (
+            <p>Loading</p>
+          ) : (
+            <RightSection
+              setDeleteMessage={setDeleteMessage}
+              selectedRecipe={selectedRecipe}
+            />
+          )}
+        </>
       )}
     </main>
   );

@@ -50,7 +50,11 @@ function Login(props) {
                   <p className="error-val">{errors.username}</p>
                 ) : null}
               </div>
-              <Field className="form-input" name="username" />
+              <Field
+                className="form-input"
+                name="username"
+                placeholder="Enter username here..."
+              />
             </label>
             <label className="form-label">
               <div>
@@ -59,13 +63,18 @@ function Login(props) {
                   <p className="error-val">{errors.password}</p>
                 ) : null}
               </div>
-              <Field className="form-input" name="password" type="password" />
+              <Field
+                className="form-input"
+                name="password"
+                type="password"
+                placeholder="Enter password here..."
+              />
             </label>
             {serverError ? (
               <p className="error-val">Server Error: {serverError}</p>
             ) : null}
             <Link
-              style={{ marginTop: "0.2rem" }}
+              style={{ marginTop: "1rem" }}
               className="form-a"
               to="/resetpassword"
             >

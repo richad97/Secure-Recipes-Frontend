@@ -13,6 +13,7 @@ function LeftSection(props) {
   const handleInput = (e) => {
     setQuery(e.target.value);
   };
+  console.log(typeof userRecipes);
 
   return (
     <section id="section-1">

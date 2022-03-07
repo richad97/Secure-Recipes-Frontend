@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import RecipesPage from "./pages/RecipesPage";
 import RegisterPage from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ConfirmEmailPage from "./pages/ConfirmEmailPage";
+import ConfirmEmailFinalPage from "./pages/ConfirmEmailFinalPage";
 import Layout from "./components/layout/Layout";
 import { Navigate, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
@@ -81,6 +83,11 @@ function App() {
             <Route
               path="/resetpassword/:token"
               element={<ResetPasswordFinal />}
+            />
+            <Route path="/confirmation" element={<ConfirmEmailPage />} />
+            <Route
+              path="/confirmation/:token"
+              element={<ConfirmEmailFinalPage />}
             />
             <Route
               path="*"
