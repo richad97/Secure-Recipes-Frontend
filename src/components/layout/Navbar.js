@@ -1,17 +1,29 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/layout/Nav.css";
+import { GiChefToque } from "react-icons/gi";
 
 function Navbar(props) {
   const { isAuth, setAuth } = props;
   return (
     <nav>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-          {isAuth ? <Link to="/recipes">Recipes</Link> : null}
-        </li>
-        <li>
+        <div className="auth-links-left">
+          <li>
+            <Link to="/">
+              <span className="nav-logo">
+                <GiChefToque />
+              </span>
+            </Link>
+          </li>
+          <li className="links-not-logo">
+            {isAuth ? <Link to="/recipes">Recipes</Link> : null}
+          </li>
+          <li className="links-not-logo">
+            {isAuth ? <Link to="/recipes">Friends</Link> : null}
+          </li>
+        </div>
+        <li className="auth-links-right">
           {isAuth ? (
             <Link
               onClick={() => {

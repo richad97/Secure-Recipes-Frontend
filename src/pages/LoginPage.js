@@ -42,54 +42,55 @@ function Login(props) {
       >
         {({ errors, touched }) => (
           <Form className="form">
-            <h2 className="form-h2">Login</h2>
-            <label className="form-label">
-              <div>
-                <p className="form-p">Username:</p>
-                {errors.username && touched.username ? (
-                  <p className="error-val">{errors.username}</p>
-                ) : null}
-              </div>
-              <Field
-                className="form-input"
-                name="username"
-                placeholder="Enter username here..."
-              />
-            </label>
-            <label className="form-label">
-              <div>
-                <p className="form-p">Password:</p>
-                {errors.password && touched.password ? (
-                  <p className="error-val">{errors.password}</p>
-                ) : null}
-              </div>
-              <Field
-                className="form-input"
-                name="password"
-                type="password"
-                placeholder="Enter password here..."
-              />
-            </label>
-            {serverError ? (
-              <p className="error-val">Server Error: {serverError}</p>
-            ) : null}
-            <Link
-              style={{ marginTop: "1rem" }}
-              className="form-a"
-              to="/resetpassword"
-            >
-              Forgot Password?
-            </Link>
-            <Link className="form-a" to="/register">
-              Not a User?
-            </Link>
+            <h2 className="form-h2 auth-forms-h2">Login</h2>
+
+            <hr className="auth-forms-hr" />
+
+            <div className="auth-forms-middle-cont">
+              <label className="form-label">
+                <div>
+                  <p className="form-p">Username:</p>
+                  {errors.username && touched.username ? (
+                    <p className="error-val">{errors.username}</p>
+                  ) : null}
+                </div>
+                <Field
+                  className="form-input auth-forms-inputs"
+                  name="username"
+                  placeholder="Enter username here..."
+                />
+              </label>
+              <label className="form-label">
+                <div>
+                  <p className="form-p">Password:</p>
+                  {errors.password && touched.password ? (
+                    <p className="error-val">{errors.password}</p>
+                  ) : null}
+                </div>
+                <Field
+                  className="form-input auth-forms-inputs"
+                  name="password"
+                  type="password"
+                  placeholder="Enter password here..."
+                />
+              </label>
+              {serverError ? (
+                <p className="error-val">Server Error: {serverError}</p>
+              ) : null}
+            </div>
             <button
               id="log-btn"
-              className="form-button btn-global"
+              className="form-button btn-global auth-forms-btn"
               type="submit"
             >
               Login
             </button>
+            <Link className="form-a auth-form-links" to="/resetpassword">
+              Forgot Password?
+            </Link>
+            <Link className="form-a auth-form-links" to="/register">
+              Not a User?
+            </Link>
           </Form>
         )}
       </Formik>
