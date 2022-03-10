@@ -21,7 +21,7 @@
   background-color: var(--recipe3ContBg);
   width: 100%;
   color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--recipes-trim);
   padding-bottom: 1rem;
 }
 #section-2 p {
@@ -39,8 +39,10 @@
   padding-top: 0.5rem;
 }
 #section-2 hr {
-  width: 90%;
-  border-left: none;
+  width: 100%;
+  border: none;
+  border-top: 1px solid rgb(149, 147, 160);
+  margin: 0.8rem 0;
 }
 #image-info-wrap {
   padding: 1rem;
@@ -76,7 +78,7 @@
   background-color: var(--recipe2ContBg);
   padding: 0.5rem 0.2rem;
   margin-bottom: 1rem;
-  color: rgb(49, 49, 49);
+  color: white;
   /* margin: 1rem 0; */
 }
 #section-2 h3 {
@@ -109,6 +111,7 @@
   width: 90%;
   margin: 2rem auto;
   padding: 1rem;
+  color: white;
 }
 .comm1 {
   font-size: var(--pCustom);

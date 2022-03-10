@@ -16,7 +16,7 @@ function LeftSection(props) {
 
   return (
     <section id="section-1">
-      <label>
+      <label id="search-bar-container">
         <BiSearch />
         <input
           id="search-bar"

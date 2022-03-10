@@ -6,12 +6,12 @@
   --navBg: rgb(22, 23, 25);
   --navFontSize: 0.9rem;
   --navLogoColor: rgb(194, 185, 116);
-  --recipeContBg: rgb(245, 245, 245);
-  --recipe2ContBg: rgb(255, 255, 255);
-  --recipe3ContBg: rgb(34, 34, 41);
-  --rightSecH1: 2.5rem;
+  --recipeContBg: rgb(28, 28, 30);
+  --recipe2ContBg: rgb(38, 38, 42);
+  --recipe3ContBg: rgb(25, 25, 27);
+  --rightSecH1: 2rem;
   --h4Custom: 1.4rem;
-  --pCustom: 0.9rem;
+  --pCustom: 0.85rem;
   --hrCustomColor: gray;
   --formBackgroundColor: rgb(29, 29, 32);
   --formH2: white;
@@ -19,6 +19,7 @@
   --formLabelFontSize: 0.8rem;
   --formBorderRadius: 0.2rem;
   --ec-li-width: 90%;
+  --recipes-trim: rgb(52, 51, 56);
 }
 * {
   /* font-family: "Hubballi", cursive; */
@@ -181,10 +182,10 @@ table {
   position: absolute;
   top: 50%;
   left: 50%;
-  color: black;
+  color: rgb(219, 217, 228);
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--recipe3ContBg);
   padding: 2rem 3rem;
   border-radius: 0.2rem;
 }
@@ -194,10 +195,11 @@ body {
 .btn-global {
   margin: 1rem;
   padding: 0.5rem 1rem;
-  background-color: rgb(86, 104, 167);
+  background-color: rgb(179, 175, 112);
   border-radius: 0.1rem;
   border: none;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  font-weight: bold;
   color: white;
   cursor: pointer;
 }
@@ -211,4 +213,16 @@ section {
   text-align: center;
   margin-top: 0.5rem;
   padding: 0rem 0;
+}
+table {
+  color: white;
+}
+
+th {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgb(41, 41, 46);
+  text-align: center;
+}
+td {
+  text-align: center;
 }

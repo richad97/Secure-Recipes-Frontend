@@ -169,13 +169,12 @@
   margin-right: 2rem;
 }
 .recipe-image {
-  height: 12rem;
-  width: 12rem;
+  height: 11rem;
+  width: 11rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  margin: 1rem;
+  margin: 2rem auto;
   object-fit: contain;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(0, 0, 0, 0.068);
+  background-color: rgba(50, 49, 56, 1);
 }
 .recipe-image-replacement {
   height: 11rem;

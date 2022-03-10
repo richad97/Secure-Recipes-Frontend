@@ -134,15 +134,13 @@ function CreateRecipe() {
 
             <div className="ec-main-cont">
               <div className="ec-main-col ec-main-col1">
-                <div>
-                  {url ? (
-                    <img src={url} className="recipe-image" />
-                  ) : (
-                    <div className="recipe-image-replacement">
-                      <p>Photo Unavailable</p>
-                    </div>
-                  )}
-                </div>
+                {url ? (
+                  <img src={url} className="recipe-image" />
+                ) : (
+                  <div className="recipe-image-replacement">
+                    <p>Photo Unavailable</p>
+                  </div>
+                )}
                 <div className="ec-upload-cont">
                   <p className="form-p">Upload Photo:</p>
                   <button

@@ -40,7 +40,7 @@
 #section-1 > button {
   /* border: 1px solid black; */
   border: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--recipes-trim);
   text-align: center;
   font-size: 1.1rem;
   width: 100%;
@@ -50,9 +50,17 @@
   color: white;
 }
 #section-1 > button:hover {
-  background-color: #242a2a;
-  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: rgb(41, 41, 44);
+  border-top: 1px solid rgb(51, 50, 54);
 }
 .ls-add-btn {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+#search-bar {
+  background-color: rgb(55, 55, 62);
+  color: white;
+  border: none;
+}
+#search-bar-container {
+  border-bottom: 1px solid var(--recipes-trim);
 }
