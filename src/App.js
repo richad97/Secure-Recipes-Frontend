@@ -3,6 +3,7 @@ import EditRecipePage from "./pages/EditRecipePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RecipesPage from "./pages/RecipesPage";
+import FriendsPage from "./pages/FriendsPage";
 import RegisterPage from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
@@ -71,6 +72,14 @@ function App() {
               element={
                 <RequireAuth redirectTo={"/login"}>
                   <EditRecipePage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/friends"
+              element={
+                <RequireAuth redirectTo={"/login"}>
+                  <FriendsPage />
                 </RequireAuth>
               }
             />

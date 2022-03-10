@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/pages/RegisterPage.css";
+import "../styles/pages/LoginPage.css";
 import "../styles/components/form.css";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
@@ -81,114 +82,107 @@ function Register() {
       >
         {({ errors, touched }) => (
           <Form className="form">
-            <h2 className="form-h2">Register</h2>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
+            <h2 className="form-h2 auth-forms-h2">Register</h2>
+
+            <hr className="auth-forms-hr" />
+
+            <div className="auth-forms-middle-cont">
+              <div>
+                <label className="form-label">
+                  <div>
+                    <p className="form-p">First Name:</p>
+                    {errors.first_name && touched.first_name ? (
+                      <p className="error-val">{errors.first_name}</p>
+                    ) : null}
+                  </div>
+                  <Field
+                    className="form-input auth-forms-inputs"
+                    name="first_name"
+                    placeholder="John"
+                  />
+                </label>
+                <label className="form-label">
+                  <div>
+                    <p className="form-p">Last Name:</p>
+                    {errors.last_name && touched.last_name ? (
+                      <p className="error-val">{errors.last_name}</p>
+                    ) : null}
+                  </div>
+                  <Field
+                    className="form-input auth-forms-inputs"
+                    name="last_name"
+                    placeholder="Doe"
+                  />
+                </label>
+              </div>
               <label className="form-label">
                 <div>
-                  <p className="form-p">First Name:</p>
-                  {errors.first_name && touched.first_name ? (
-                    <p className="error-val">{errors.first_name}</p>
+                  <p className="form-p">Username:</p>
+                  {errors.username && touched.username ? (
+                    <p className="error-val">{errors.username}</p>
                   ) : null}
                 </div>
                 <Field
-                  className="form-input"
-                  name="first_name"
-                  placeholder="John"
-                  style={{
-                    width: "95%",
-                  }}
+                  className="form-input auth-forms-inputs"
+                  name="username"
+                  placeholder="johndoe123"
                 />
               </label>
               <label className="form-label">
                 <div>
-                  <p className="form-p">Last Name:</p>
-                  {errors.last_name && touched.last_name ? (
-                    <p className="error-val">{errors.last_name}</p>
+                  <p className="form-p">E-Mail:</p>
+                  {errors.email && touched.email ? (
+                    <p className="error-val">{errors.email}</p>
                   ) : null}
                 </div>
                 <Field
-                  className="form-input"
-                  name="last_name"
-                  placeholder="Doe"
-                  style={{
-                    width: "95%",
-                  }}
+                  className="form-input auth-forms-inputs"
+                  name="email"
+                  placeholder="johndoe@gmail.com"
+                />
+              </label>
+              <label className="form-label">
+                <div>
+                  <p className="form-p">Password:</p>
+                  {errors.password && touched.password ? (
+                    <p className="error-val">{errors.password}</p>
+                  ) : null}
+                </div>
+                <Field
+                  className="form-input auth-forms-inputs"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+              </label>
+              <label className="form-label">
+                <div>
+                  <p className="form-p">Confirm Password:</p>
+                  {errors.passwordConfirmation &&
+                  touched.passwordConfirmation ? (
+                    <p className="error-val">{errors.passwordConfirmation}</p>
+                  ) : null}
+                </div>
+                <Field
+                  className="form-input auth-forms-inputs"
+                  name="passwordConfirmation"
+                  type="password"
+                  placeholder="Password Confirmation"
                 />
               </label>
             </div>
-            <label className="form-label">
-              <div>
-                <p className="form-p">Username:</p>
-                {errors.username && touched.username ? (
-                  <p className="error-val">{errors.username}</p>
-                ) : null}
-              </div>
-              <Field
-                className="form-input"
-                name="username"
-                placeholder="johndoe123"
-              />
-            </label>
-            <label className="form-label">
-              <div>
-                <p className="form-p">E-Mail:</p>
-                {errors.email && touched.email ? (
-                  <p className="error-val">{errors.email}</p>
-                ) : null}
-              </div>
-              <Field
-                className="form-input"
-                name="email"
-                placeholder="johndoe@gmail.com"
-              />
-            </label>
-            <label className="form-label">
-              <div>
-                <p className="form-p">Password:</p>
-                {errors.password && touched.password ? (
-                  <p className="error-val">{errors.password}</p>
-                ) : null}
-              </div>
-              <Field
-                className="form-input"
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-            </label>
-            <label className="form-label">
-              <div>
-                <p className="form-p">Confirm Password:</p>
-                {errors.passwordConfirmation && touched.passwordConfirmation ? (
-                  <p className="error-val">{errors.passwordConfirmation}</p>
-                ) : null}
-              </div>
-              <Field
-                className="form-input"
-                name="passwordConfirmation"
-                type="password"
-                placeholder="Password Confirmation"
-              />
-            </label>
             {serverError ? (
               <p className="error-val">Server Error: {serverError}</p>
             ) : null}
-            <Link
-              style={{ marginTop: "0.5rem" }}
-              className="form-a"
-              to="/login"
+            <button
+              className="form-button btn-global auth-forms-btn"
+              type="submit"
             >
-              Already a User?
-            </Link>
-            <button className="form-button btn-global" type="submit">
               Register
             </button>
+            <Link className="form-a" to="/login">
+              Already a User?
+            </Link>
           </Form>
         )}
       </Formik>
