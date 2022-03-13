@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/pages/LoginPage.css";
+import "../styles/components/authForms.css";
+import "../styles/components/form.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";

@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RecipesPage from "./pages/RecipesPage";
 import FriendsPage from "./pages/FriendsPage";
+import AddFriendPage from "./pages/AddFriendPage";
 import RegisterPage from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
@@ -80,6 +81,14 @@ function App() {
               element={
                 <RequireAuth redirectTo={"/login"}>
                   <FriendsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/addfriend"
+              element={
+                <RequireAuth redirectTo={"/login"}>
+                  <AddFriendPage />
                 </RequireAuth>
               }
             />

@@ -1,8 +1,33 @@
 import "../styles/components/form.css";
 import "../styles/pages/CreateRecipePage.css";
 import { GiChefToque } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function FriendsPage() {
+  const navigate = useNavigate();
+  const [friends, setFriends] = useState([]);
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    axios
+      .post("http://localhost:9000/api/users/friends", {
+        token,
+      })
+      .then((resp) => {
+        const data = resp.data;
+
+        setFriends([...data]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  useEffect(() => {
+    console.log(friends);
+  }, [friends]);
+
   return (
     <main id="crecipe-main">
       <div className="form">
@@ -15,39 +40,35 @@ function FriendsPage() {
         <table>
           <thead>
             <tr>
-              <th># of Recipes</th>
-              <th>Name</th>
-              <th>Valid</th>
+              <th>ID</th>
+              <th>Username</th>
               <th>View</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>3</td>
-              <td>Jane Doe</td>
-              <td>Valid</td>
-              <td>
-                <button className="">View Recipes</button>
-              </td>
-              <td>
-                <button className="">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jane Doe</td>
-              <td>Valid</td>
-              <td>
-                <button className="">View Recipes</button>
-              </td>
-              <td>
-                <button className="">Delete</button>
-              </td>
-            </tr>
+            {friends.map((friend) => {
+              return (
+                <tr key={friend.id}>
+                  <td>{friend.id}</td>
+                  <td>{friend.username}</td>
+                  <td>
+                    <button className="">View Recipes</button>
+                  </td>
+                  <td>
+                    <button className="">Delete</button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
-        <button className="form-button btn-global ec-submit-btn">
+        <button
+          onClick={() => {
+            navigate("/addfriend");
+          }}
+          className="form-button btn-global ec-submit-btn"
+        >
           Add Friend
         </button>
       </div>

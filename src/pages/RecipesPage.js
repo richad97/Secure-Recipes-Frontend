@@ -1,6 +1,7 @@
 import "../styles/pages/RecipesPage.css";
 import LeftSection from "../components/recipes/LeftSection";
 import RightSection from "../components/recipes/RightSection";
+import LoadingComp from "../components/LoadingComp";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { RecipeContext } from "../RecipeContext";
@@ -51,7 +52,7 @@ function Recipes(props) {
             setSelectedRecipe={setSelectedRecipe}
           />
           {!selectedRecipe ? (
-            <p>Loading</p>
+            <LoadingComp />
           ) : (
             <RightSection
               setDeleteMessage={setDeleteMessage}
