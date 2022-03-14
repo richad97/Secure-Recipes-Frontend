@@ -25,7 +25,7 @@ function FriendsPage() {
       });
   }, []);
   useEffect(() => {
-    console.log(friends);
+    // console.log(friends);
   }, [friends]);
 
   return (
@@ -48,12 +48,20 @@ function FriendsPage() {
           </thead>
           <tbody>
             {friends.map((friend) => {
+              console.log(friend);
               return (
                 <tr key={friend.id}>
                   <td>{friend.id}</td>
                   <td>{friend.username}</td>
                   <td>
-                    <button className="">View Recipes</button>
+                    <button
+                      className=""
+                      onClick={() => {
+                        navigate(`/recipes/${friend.username}`);
+                      }}
+                    >
+                      View Recipes
+                    </button>
                   </td>
                   <td>
                     <button className="">Delete</button>

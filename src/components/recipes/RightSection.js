@@ -65,24 +65,26 @@ function RightSection(props) {
           <hr />
           <p className="comm1">{instructions}</p>
         </div>
-        <div id="button-wrapper">
-          <button
-            className="btn-global"
-            onClick={() => {
-              navigate(`/recipes/edit/${recipe_id}`);
-            }}
-          >
-            Edit
-          </button>
-          <button
-            className="btn-global"
-            onClick={() => {
-              props.setDeleteMessage(true);
-            }}
-          >
-            Delete
-          </button>
-        </div>
+        {props.viewOnly ? null : (
+          <div id="button-wrapper">
+            <button
+              className="btn-global"
+              onClick={() => {
+                navigate(`/recipes/edit/${recipe_id}`);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              className="btn-global"
+              onClick={() => {
+                props.setDeleteMessage(true);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
