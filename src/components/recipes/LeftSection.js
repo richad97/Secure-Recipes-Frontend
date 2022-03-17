@@ -11,8 +11,11 @@ function LeftSection(props) {
   const {
     userRecipes,
     setSelectedRecipe,
-    showLeftSection,
-    setShowLeftSection,
+    onPhone,
+    setOnPhone,
+    setDisplayRight,
+    displayLeft,
+    setDisplayLeft,
   } = props;
 
   const handleInput = (e) => {
@@ -20,7 +23,7 @@ function LeftSection(props) {
   };
 
   return (
-    <section id={showLeftSection ? "section-1" : "display-none"}>
+    <section id={displayLeft ? "section-1" : "display-none"}>
       <label id="search-bar-container">
         <BiSearch />
         <input
@@ -47,7 +50,10 @@ function LeftSection(props) {
             .map((recipe, i) => {
               return (
                 <RecipeComp
-                  setShowLeftSection={setShowLeftSection}
+                  setDisplayRight={setDisplayRight}
+                  setDisplayLeft={setDisplayLeft}
+                  onPhone={onPhone}
+                  setOnPhone={setOnPhone}
                   setSelectedRecipe={setSelectedRecipe}
                   recipe={recipe}
                   key={i}

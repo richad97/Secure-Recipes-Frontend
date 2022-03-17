@@ -12,9 +12,16 @@ function Recipes(props) {
   const { setDeleteMessage, isDeleted } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
-  const [showLeftSection, setShowLeftSection] = useState(true);
+  const [displayLeft, setDisplayLeft] = useState(true);
+  const [displayRight, setDisplayRight] = useState(true);
+  const [onPhone, setOnPhone] = useState(false);
 
   useEffect(() => {
+    if (window.innerWidth <= 790) {
+      setOnPhone(true);
+      setDisplayRight(false);
+    }
+
     const token = localStorage.getItem("token");
 
     axios
@@ -52,17 +59,24 @@ function Recipes(props) {
           <LeftSection
             userRecipes={userRecipes}
             setSelectedRecipe={setSelectedRecipe}
-            showLeftSection={showLeftSection}
-            setShowLeftSection={setShowLeftSection}
+            onPhone={onPhone}
+            setOnPhone={setOnPhone}
+            setDisplayRight={setDisplayRight}
+            displayLeft={displayLeft}
+            setDisplayLeft={setDisplayLeft}
           />
           {!selectedRecipe ? (
             <LoadingComp />
           ) : (
             <RightSection
+              displayLeft={displayLeft}
+              setDisplayLeft={setDisplayLeft}
+              displayRight={displayRight}
+              setDisplayRight={setDisplayRight}
               setDeleteMessage={setDeleteMessage}
               selectedRecipe={selectedRecipe}
-              showLeftSection={showLeftSection}
-              setShowLeftSection={setShowLeftSection}
+              onPhone={onPhone}
+              setOnPhone={setOnPhone}
             />
           )}
         </>

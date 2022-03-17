@@ -13,8 +13,8 @@
 }
 #section-2 h1 {
   font-size: var(--rightSecH1);
-  padding: 1.5rem 0;
-  padding-bottom: 0.5rem;
+  /* padding: 1.5rem 0;
+  padding-bottom: 0.5rem; */
 }
 #section-2 > header {
   background-color: var(--recipe3ContBg);

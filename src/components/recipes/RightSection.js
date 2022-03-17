@@ -23,10 +23,12 @@ function RightSection(props) {
   const {
     setDeleteMessage,
     selectedRecipe,
-    showLeftSection,
-    setShowLeftSection,
     onPhone,
-    SetOnPhone,
+    setOnPhone,
+    displayRight,
+    setDisplayRight,
+    displayLeft,
+    setDisplayLeft,
   } = props;
 
   useEffect(() => {
@@ -35,20 +37,35 @@ function RightSection(props) {
   }, []);
 
   return (
-    <section id={!showLeftSection ? "section-2" : "display-none"}>
-      <header>
-        <div style={{}}>
+    // <section id={onPhone ? "display-none" : "section-2"}>
+    <section
+      id={(() => {
+        if (onPhone) {
+          if (displayRight) {
+            return "section-2";
+          } else {
+            return "display-none";
+          }
+        } else {
+          return "section-2";
+        }
+      })()}
+    >
+      <header style={{ width: "100%", margin: "0 auto" }}>
+        <div style={{ padding: "1.5rem 2rem ", paddingBottom: "0.5rem" }}>
           <h1>{title}</h1>
-          <button
-            className=""
-            onClick={() => {
-              setShowLeftSection(true);
-            }}
-          >
-            Go Back
-          </button>
+          {onPhone ? (
+            <button
+              onClick={() => {
+                setDisplayLeft(true);
+                setDisplayRight(false);
+              }}
+            >
+              Go Back
+            </button>
+          ) : null}
         </div>
-        <div>
+        <div style={{ padding: "0 2rem" }}>
           <p>{prep_time} Minutes</p>
           <p>{convertedUTC}</p>
         </div>
