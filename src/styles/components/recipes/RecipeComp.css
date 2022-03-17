@@ -8,7 +8,7 @@
   background-color: var(--recipe2ContBg);
 }
 .recipe-comp:hover {
-  background-color: rgb(50, 50, 54);
+  background-color: rgba(36, 36, 39, 0.632);
 }
 .recipe-comp h4 {
   font-size: var(--h4Custom);

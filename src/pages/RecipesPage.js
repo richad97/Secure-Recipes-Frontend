@@ -12,6 +12,8 @@ function Recipes(props) {
   const { setDeleteMessage, isDeleted } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
+  const [showLeftSection, setShowLeftSection] = useState(true);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -50,6 +52,8 @@ function Recipes(props) {
           <LeftSection
             userRecipes={userRecipes}
             setSelectedRecipe={setSelectedRecipe}
+            showLeftSection={showLeftSection}
+            setShowLeftSection={setShowLeftSection}
           />
           {!selectedRecipe ? (
             <LoadingComp />
@@ -57,6 +61,8 @@ function Recipes(props) {
             <RightSection
               setDeleteMessage={setDeleteMessage}
               selectedRecipe={selectedRecipe}
+              showLeftSection={showLeftSection}
+              setShowLeftSection={setShowLeftSection}
             />
           )}
         </>

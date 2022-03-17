@@ -1,0 +1,26 @@
+.friends-btn-cont {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 1rem;
+}
+.friends-btn-cont p {
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.friends-btn-cont p span {
+  padding-left: 1rem;
+}
+table {
+  margin: 0 auto;
+  color: white;
+  width: 80%;
+}
+th {
+  padding: 2rem 0;
+  text-align: center;
+}
+td {
+  text-align: center;
+}

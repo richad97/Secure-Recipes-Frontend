@@ -16,12 +16,14 @@ import { useState, useEffect, useContext } from "react";
 import RequireAuth from "./components/RequireAuth";
 import { RecipeContext } from "./RecipeContext";
 import DeleteMessage from "./components/DeleteMessage";
+import DeleteFriendMessage from "./components/DeleteFriendMessage";
 import ResetPasswordFinal from "./pages/ResetPasswordFinalPage";
 
 function App() {
   const [isAuth, setAuth] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [showDeleteMessage, setDeleteMessage] = useState();
+  const [friendDeleteMessage, setFriendDeleteMessage] = useState();
   const [isDeleted, setDeleted] = useState(false);
 
   useEffect(() => {
@@ -42,6 +44,11 @@ function App() {
             isDeleted={isDeleted}
             setDeleted={setDeleted}
             setDeleteMessage={setDeleteMessage}
+          />
+        ) : null}
+        {friendDeleteMessage ? (
+          <DeleteFriendMessage
+            setFriendDeleteMessage={setFriendDeleteMessage}
           />
         ) : null}
         <Routes>
@@ -81,7 +88,9 @@ function App() {
               path="/friends"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <FriendsPage />
+                  <FriendsPage
+                    setFriendDeleteMessage={setFriendDeleteMessage}
+                  />
                 </RequireAuth>
               }
             />

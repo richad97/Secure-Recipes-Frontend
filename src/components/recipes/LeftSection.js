@@ -8,14 +8,19 @@ function LeftSection(props) {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const { userRecipes, setSelectedRecipe } = props;
+  const {
+    userRecipes,
+    setSelectedRecipe,
+    showLeftSection,
+    setShowLeftSection,
+  } = props;
 
   const handleInput = (e) => {
     setQuery(e.target.value);
   };
 
   return (
-    <section id="section-1">
+    <section id={showLeftSection ? "section-1" : "display-none"}>
       <label id="search-bar-container">
         <BiSearch />
         <input
@@ -42,6 +47,7 @@ function LeftSection(props) {
             .map((recipe, i) => {
               return (
                 <RecipeComp
+                  setShowLeftSection={setShowLeftSection}
                   setSelectedRecipe={setSelectedRecipe}
                   recipe={recipe}
                   key={i}

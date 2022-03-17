@@ -1,15 +1,13 @@
 import { RecipeContext } from "../RecipeContext";
 import { useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 function DeleteMessage(props) {
   const Context = useContext(RecipeContext);
-  const navigate = useNavigate();
 
   return (
-    <div id="overlay">
-      <div id="message">
+    <div className="overlay">
+      <div className="message">
         <h3 style={{ padding: "0.2rem 0" }}>Notification</h3>
         <hr />
         <p style={{ padding: "0.5rem 0" }}>

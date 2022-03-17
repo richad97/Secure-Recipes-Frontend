@@ -1,13 +1,14 @@
 import "../styles/components/form.css";
-import "../styles/pages/CreateRecipePage.css";
+import "../styles/pages/FriendsPage.css";
 import { GiChefToque } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function FriendsPage() {
+function FriendsPage(props) {
   const navigate = useNavigate();
   const [friends, setFriends] = useState([]);
+  const [shareToken, setShareToken] = useState("");
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -16,9 +17,11 @@ function FriendsPage() {
         token,
       })
       .then((resp) => {
-        const data = resp.data;
+        const friendsList = resp.data.usersFriends;
+        const shareToken = resp.data.shareToken;
 
-        setFriends([...data]);
+        setFriends([...friendsList]);
+        setShareToken(shareToken);
       })
       .catch((err) => {
         console.log(err);
@@ -48,14 +51,13 @@ function FriendsPage() {
           </thead>
           <tbody>
             {friends.map((friend) => {
-              console.log(friend);
               return (
                 <tr key={friend.id}>
                   <td>{friend.id}</td>
                   <td>{friend.username}</td>
                   <td>
                     <button
-                      className=""
+                      className="btn-sm"
                       onClick={() => {
                         navigate(`/recipes/${friend.username}`);
                       }}
@@ -64,21 +66,33 @@ function FriendsPage() {
                     </button>
                   </td>
                   <td>
-                    <button className="">Delete</button>
+                    <button
+                      onClick={() => {
+                        props.setFriendDeleteMessage(true);
+                      }}
+                      className="btn-sm"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-        <button
-          onClick={() => {
-            navigate("/addfriend");
-          }}
-          className="form-button btn-global ec-submit-btn"
-        >
-          Add Friend
-        </button>
+        <div className="friends-btn-cont">
+          <p>
+            Share Token: <span>{shareToken}</span>
+          </p>
+          <button
+            onClick={() => {
+              navigate("/addfriend");
+            }}
+            className="btn-global friends-btn-cont"
+          >
+            Add Friend
+          </button>
+        </div>
       </div>
     </main>
   );

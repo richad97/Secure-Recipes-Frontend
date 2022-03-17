@@ -53,6 +53,7 @@ function FriendsRecipes() {
           <LeftSection
             userRecipes={userRecipes}
             setSelectedRecipe={setSelectedRecipe}
+            viewOnly={viewOnly}
           />
           {!selectedRecipe ? (
             <LoadingComp />

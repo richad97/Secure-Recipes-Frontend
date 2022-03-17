@@ -20,15 +20,34 @@ function RightSection(props) {
     username,
   } = props.selectedRecipe;
 
+  const {
+    setDeleteMessage,
+    selectedRecipe,
+    showLeftSection,
+    setShowLeftSection,
+    onPhone,
+    SetOnPhone,
+  } = props;
+
   useEffect(() => {
     var dt = new Date(created_at);
     setConvertedUTC(dt.toLocaleDateString());
   }, []);
 
   return (
-    <section id="section-2">
+    <section id={!showLeftSection ? "section-2" : "display-none"}>
       <header>
-        <h1>{title}</h1>
+        <div style={{}}>
+          <h1>{title}</h1>
+          <button
+            className=""
+            onClick={() => {
+              setShowLeftSection(true);
+            }}
+          >
+            Go Back
+          </button>
+        </div>
         <div>
           <p>{prep_time} Minutes</p>
           <p>{convertedUTC}</p>

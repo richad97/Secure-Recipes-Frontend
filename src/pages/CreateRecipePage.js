@@ -145,6 +145,7 @@ function CreateRecipe() {
                   <p className="form-p">Upload Photo:</p>
                   <button
                     type="button"
+                    className="btn-sm"
                     onClick={() => {
                       showUploadWidget();
                     }}

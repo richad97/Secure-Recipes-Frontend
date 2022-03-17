@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 function RecipeComp(props) {
   const [convertedUTC, setConvertedUTC] = useState(null);
 
-  const { recipe, setSelectedRecipe } = props;
+  const { recipe, setSelectedRecipe, setShowLeftSection } = props;
 
   const handleClick = () => {
     // console.log(recipe);
     setSelectedRecipe(recipe);
+    setShowLeftSection(false);
   };
 
   useEffect(() => {

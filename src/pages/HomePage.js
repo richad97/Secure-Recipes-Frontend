@@ -1,14 +1,17 @@
-// import video from "../home.mp4";
 import "../styles/pages/HomePage.css";
+import svg1 from "../assets/7.svg";
 
 function Home() {
   return (
-    <div className="vid-container">
-      <video autoPlay muted loop>
-        <source src="" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <section className="home-section">
+      <img alt="svg" src={svg1} />
+
+      <h1>Secure Your Recipes Today</h1>
+      <div>
+        <button>Login</button>
+        <button>Sign Up</button>
+      </div>
+    </section>
   );
 }
 

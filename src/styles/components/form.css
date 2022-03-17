@@ -45,7 +45,7 @@
 }
 .form-a {
   padding: 0.2rem 0;
-  font-size: var(--formLabelFontSize);
+  font-size: 0.7rem;
   text-align: center;
 }
 .form-hr {
@@ -75,6 +75,10 @@
   overflow: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.ing-each-cont * {
+  display: flex;
+  margin: 0.2rem 0;
 }
 #ec-instructions-textarea {
   height: 5.05rem;

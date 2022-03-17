@@ -24,7 +24,6 @@
 * {
   /* font-family: "Hubballi", cursive; */
   font-family: "Montserrat", sans-serif;
-  font-size: 12px;
 }
 html,
 body,
@@ -166,7 +165,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-#overlay {
+.overlay {
   position: fixed;
   display: block;
   width: 100%;
@@ -178,7 +177,7 @@ table {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1021;
 }
-#message {
+.message {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -194,13 +193,20 @@ body {
 }
 .btn-global {
   margin: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: rgb(179, 175, 112);
-  border-radius: 0.1rem;
-  border: none;
+  padding: 0.5rem 0.1rem;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 2rem;
+  border: 3px solid rgb(179, 175, 112);
   font-size: 0.75rem;
   font-weight: bold;
   color: white;
+  cursor: pointer;
+}
+.btn-global:hover {
+  border: 3px solid rgb(240, 234, 149);
+  background-color: rgba(255, 255, 255, 0.108);
+}
+.btn-sm:hover {
   cursor: pointer;
 }
 section {
@@ -214,17 +220,6 @@ section {
   margin-top: 0.5rem;
   padding: 0rem 0;
 }
-table {
-  color: white;
-}
-th {
-  padding: 2rem 0;
-  border-bottom: 1px solid rgb(41, 41, 46);
-  text-align: center;
-}
-td {
-  text-align: center;
-}
 .loader {
   border: 4px solid #24242700; /* Light grey */
   border-top: 4px solid #ffffff; /* Blue */
@@ -232,6 +227,9 @@ td {
   width: 30px;
   height: 30px;
   animation: spin 2s linear infinite;
+}
+#display-none {
+  display: none;
 }
 @keyframes spin {
   0% {
