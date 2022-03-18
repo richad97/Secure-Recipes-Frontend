@@ -4,7 +4,8 @@ import "../styles/components/form.css";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import LoadingComp from "../components/LoadingComp";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string()

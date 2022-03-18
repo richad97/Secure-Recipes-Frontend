@@ -24,7 +24,7 @@ function Navbar(props) {
               {isAuth ? <Link to="/recipes">My Recipes</Link> : null}
             </li>
             <li className="links-not-logo">
-              {isAuth ? <Link to="/friends">Friends</Link> : null}
+              {isAuth ? <Link to="/friends">My Friends</Link> : null}
             </li>
           </div>
           <li className="auth-links-right">
