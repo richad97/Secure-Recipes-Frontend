@@ -26,7 +26,13 @@ function App() {
   const [friendDeleteMessage, setFriendDeleteMessage] = useState();
   const [isDeleted, setDeleted] = useState(false);
 
+  const [onPhone, setOnPhone] = useState(false);
+
   useEffect(() => {
+    if (window.innerWidth <= 790) {
+      setOnPhone(true);
+    }
+
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -64,6 +70,8 @@ function App() {
                   <RecipesPage
                     isDeleted={isDeleted}
                     setDeleteMessage={setDeleteMessage}
+                    onPhone={onPhone}
+                    setOnPhone={setOnPhone}
                   />
                 </RequireAuth>
               }
@@ -72,7 +80,7 @@ function App() {
               path="/recipes/create"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <CreateRecipePage />
+                  <CreateRecipePage onPhone={onPhone} setOnPhone={setOnPhone} />
                 </RequireAuth>
               }
             />

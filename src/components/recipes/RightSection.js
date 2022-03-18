@@ -61,7 +61,7 @@ function RightSection(props) {
                 setDisplayRight(false);
               }}
             >
-              Go Back
+              Back
             </button>
           ) : null}
         </div>

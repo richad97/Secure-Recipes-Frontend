@@ -11,16 +11,16 @@
   background-color: var(--recipe3ContBg);
 }
 #section-1 label svg {
-  width: 10%;
+  width: 5%;
   height: 1.5rem;
   margin: auto 1rem;
   display: inline-block;
   fill: white;
 }
 #section-1 label input {
-  width: 90%;
+  width: 95%;
   height: 1.5rem;
-  margin: 1.3rem 3rem;
+  margin: auto 1rem;
   margin-left: 0;
 }
 #recipe-container {

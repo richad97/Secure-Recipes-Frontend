@@ -35,12 +35,13 @@ const initialValues = {
   pic_url: "",
 };
 
-function CreateRecipe() {
+function CreateRecipe(props) {
   const formRef = useRef();
   const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [url, setUrl] = useState("");
+  const { onPhone, setOnPhone } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -130,6 +131,16 @@ function CreateRecipe() {
                 <GiChefToque />
               </span>
               <h2 className="form-h2 ec-h2">Create Recipe</h2>
+              {onPhone ? (
+                <button
+                  style={{ padding: "0 1rem", margin: "1rem 0" }}
+                  onClick={() => {
+                    navigate("/recipes");
+                  }}
+                >
+                  Back
+                </button>
+              ) : null}
             </header>
 
             <div className="ec-main-cont">

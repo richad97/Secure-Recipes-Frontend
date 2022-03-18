@@ -164,7 +164,6 @@
   /* margin-bottom: 1rem; */
   margin: 2rem 0;
   width: 10rem;
-  height: 2rem;
 }
 .ec-submit-btn-cont {
   display: flex;
@@ -198,4 +197,55 @@
   padding: 3.5rem 0;
   font-size: 1.2rem;
   line-height: 2rem;
+}
+
+@media only screen and (max-width: 790px) {
+  .form {
+    margin: 0.5rem auto;
+    width: 85%;
+  }
+  .ec-main-cont {
+    flex-direction: column;
+    margin: 0;
+  }
+  .ec-header {
+  }
+  .ec-main-cont {
+    height: 100%;
+    margin-top: 1rem;
+  }
+  .ec-submit-btn-cont {
+  }
+  .ec-submit-btn {
+    margin: 0.5rem 0;
+    width: 10rem;
+  }
+  .ec-upload-cont {
+    margin: 1rem 0;
+  }
+  .recipe-image-replacement {
+    margin: 0;
+    height: auto;
+    width: auto;
+  }
+  .ec-submit-btn-cont {
+    margin-right: 0;
+    margin: 1rem 0;
+  }
+  .ec-form-label-cont {
+    width: 100%;
+  }
+  .ec-form-input {
+    width: 100%;
+  }
+  .ec-whole-ing-cont {
+    width: 101%;
+  }
+  .form-button {
+    /* width: 50%; */
+  }
+  .recipe-image {
+    width: auto;
+    margin: 0;
+  }
 }

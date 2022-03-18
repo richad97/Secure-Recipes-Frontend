@@ -9,12 +9,11 @@ import { RecipeContext } from "../RecipeContext";
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
   const [serverMessage, setServerMessage] = useState("");
-  const { setDeleteMessage, isDeleted } = props;
+  const { setDeleteMessage, isDeleted, onPhone, setOnPhone } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
   const [displayLeft, setDisplayLeft] = useState(true);
   const [displayRight, setDisplayRight] = useState(true);
-  const [onPhone, setOnPhone] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth <= 790) {
