@@ -9,11 +9,17 @@ import { RecipeContext } from "../RecipeContext";
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
   const [serverMessage, setServerMessage] = useState("");
-  const { setDeleteMessage, isDeleted, onPhone, setOnPhone } = props;
+  const {
+    setDeleteMessage,
+    isDeleted,
+    onPhone,
+    setOnPhone,
+    displayLeft,
+    setDisplayLeft,
+    displayRight,
+    setDisplayRight,
+  } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
-
-  const [displayLeft, setDisplayLeft] = useState(true);
-  const [displayRight, setDisplayRight] = useState(true);
 
   useEffect(() => {
     if (window.innerWidth <= 790) {
@@ -48,10 +54,15 @@ function Recipes(props) {
     <main id="recipes-main">
       {serverMessage ? (
         <form
-          style={{ width: "25%", marginTop: "8rem", height: "2rem" }}
+          style={{ width: "30%", height: "15%", marginTop: "5rem" }}
           className="form"
         >
-          <h2>Server Message: {serverMessage}</h2>
+          <h2
+            className="form-h2 auth-forms-h2"
+            style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
+          >
+            Server Message: {serverMessage}
+          </h2>
         </form>
       ) : (
         <>

@@ -5,7 +5,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useState } from "react";
-import { type } from "@testing-library/user-event/dist/type";
 
 const AddFriendSchema = Yup.object().shape({
   token: Yup.string().required("Required"),
@@ -17,7 +16,7 @@ function AddFriendPage(props) {
   const [serverSuccess, setServerSuccess] = useState("");
 
   return (
-    <main id="addfriend-main">
+    <main id="addfriend-main" className="auth-forms">
       <Formik
         initialValues={{
           token: "",

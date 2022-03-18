@@ -25,7 +25,7 @@ const EditRecipeSchema = Yup.object().shape({
   pic_url: Yup.string(),
 });
 
-function EditRecipe() {
+function EditRecipe(props) {
   const formRef = useRef();
   const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
@@ -34,6 +34,14 @@ function EditRecipe() {
   const { id } = useParams();
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
   const [serverError, setServerError] = useState("");
+  const {
+    displayLeft,
+    setDisplayLeft,
+    displayRight,
+    setDisplayRight,
+    onPhone,
+    setOnPhone,
+  } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -121,6 +129,8 @@ function EditRecipe() {
               .put(`http://localhost:9000/api/recipes/edit/${id}`, newValues)
               .then((resp) => {
                 navigate("/recipes");
+                setDisplayLeft(true);
+                setDisplayRight(false);
               })
               .catch((err) => {
                 const errFromServer = err.response.data.message;
@@ -137,6 +147,18 @@ function EditRecipe() {
                 <GiChefToque />
               </span>
               <h2 className="form-h2 ec-h2">Edit Recipe</h2>
+              {onPhone ? (
+                <button
+                  style={{ padding: "0 1rem", margin: "1rem 0" }}
+                  onClick={() => {
+                    navigate("/recipes");
+                    setDisplayLeft(true);
+                    setDisplayRight(false);
+                  }}
+                >
+                  Back
+                </button>
+              ) : null}
             </header>
 
             <div className="ec-main-cont">
@@ -257,16 +279,6 @@ function EditRecipe() {
                       <p className="form-p">Ingredients:</p>
                     </div>
                     <div className="ec-ing-label-cont">
-                      <Field
-                        id="ec-ing-input"
-                        className="form-input ec-form-input"
-                        name="ingredients"
-                        placeholder="Banana, Milk, etc..."
-                        onKeyUp={(e) => {
-                          let value = e.target.value;
-                          setIngredient(value);
-                        }}
-                      />
                       <button
                         type="button"
                         onClick={() => {
@@ -278,6 +290,16 @@ function EditRecipe() {
                       >
                         +
                       </button>
+                      <Field
+                        id="ec-ing-input"
+                        className="form-input ec-form-input"
+                        name="ingredients"
+                        placeholder="Banana, Milk, etc..."
+                        onKeyUp={(e) => {
+                          let value = e.target.value;
+                          setIngredient(value);
+                        }}
+                      />
                     </div>
                   </label>
 

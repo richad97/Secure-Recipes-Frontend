@@ -5,7 +5,7 @@ import { GiChefToque } from "react-icons/gi";
 import { FaGripLines } from "react-icons/fa";
 
 function Navbar(props) {
-  const { isAuth, setAuth } = props;
+  const { isAuth, setAuth, setDisplayLeft, setDisplayRight } = props;
   const [hamClicked, setHamClicked] = useState(false);
 
   return (
@@ -71,14 +71,41 @@ function Navbar(props) {
               {isAuth ? (
                 <>
                   <li>
-                    {isAuth ? <Link to="/recipes">My Recipes</Link> : null}
+                    {isAuth ? (
+                      <Link
+                        to="/recipes"
+                        onClick={() => {
+                          setHamClicked(!hamClicked);
+                          setDisplayLeft(true);
+                          setDisplayRight(false);
+                        }}
+                      >
+                        My Recipes
+                      </Link>
+                    ) : null}
                   </li>
-                  <li>{isAuth ? <Link to="/friends">Friends</Link> : null}</li>
+                  <li>
+                    {isAuth ? (
+                      <Link
+                        onClick={() => {
+                          setHamClicked(!hamClicked);
+                          setDisplayLeft(true);
+                          setDisplayRight(false);
+                        }}
+                        to="/friends"
+                      >
+                        My Friends
+                      </Link>
+                    ) : null}
+                  </li>
                   <li>
                     <Link
                       onClick={() => {
                         localStorage.removeItem("token");
                         setAuth(false);
+                        setHamClicked(!hamClicked);
+                        setDisplayLeft(true);
+                        setDisplayRight(false);
                       }}
                       to="/"
                     >
@@ -89,11 +116,25 @@ function Navbar(props) {
               ) : (
                 <>
                   <li>
-                    <Link to="/login">Login</Link>
+                    <Link
+                      to="/login"
+                      onClick={() => {
+                        setHamClicked(!hamClicked);
+                      }}
+                    >
+                      Login
+                    </Link>
                     <></>
                   </li>
                   <li>
-                    <Link to="/register">Register</Link>
+                    <Link
+                      to="/register"
+                      onClick={() => {
+                        setHamClicked(!hamClicked);
+                      }}
+                    >
+                      Register
+                    </Link>
                   </li>
                 </>
               )}

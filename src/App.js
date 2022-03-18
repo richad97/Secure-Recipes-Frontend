@@ -27,6 +27,8 @@ function App() {
   const [isDeleted, setDeleted] = useState(false);
 
   const [onPhone, setOnPhone] = useState(false);
+  const [displayLeft, setDisplayLeft] = useState(true);
+  const [displayRight, setDisplayRight] = useState(true);
 
   useEffect(() => {
     if (window.innerWidth <= 790) {
@@ -50,6 +52,10 @@ function App() {
             isDeleted={isDeleted}
             setDeleted={setDeleted}
             setDeleteMessage={setDeleteMessage}
+            displayLeft={displayLeft}
+            setDisplayLeft={setDisplayLeft}
+            displayRight={displayRight}
+            setDisplayRight={setDisplayRight}
           />
         ) : null}
         {friendDeleteMessage ? (
@@ -60,7 +66,14 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Layout isAuth={isAuth} setAuth={setAuth} />}
+            element={
+              <Layout
+                isAuth={isAuth}
+                setAuth={setAuth}
+                setDisplayLeft={setDisplayLeft}
+                setDisplayRight={setDisplayRight}
+              />
+            }
           >
             <Route index element={<HomePage />} />
             <Route
@@ -72,6 +85,10 @@ function App() {
                     setDeleteMessage={setDeleteMessage}
                     onPhone={onPhone}
                     setOnPhone={setOnPhone}
+                    displayLeft={displayLeft}
+                    setDisplayLeft={setDisplayLeft}
+                    displayRight={displayRight}
+                    setDisplayRight={setDisplayRight}
                   />
                 </RequireAuth>
               }
@@ -88,7 +105,14 @@ function App() {
               path="/recipes/edit/:id"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <EditRecipePage />
+                  <EditRecipePage
+                    displayLeft={displayLeft}
+                    setDisplayLeft={setDisplayLeft}
+                    displayRight={displayRight}
+                    setDisplayRight={setDisplayRight}
+                    onPhone={onPhone}
+                    setOnPhone={setOnPhone}
+                  />
                 </RequireAuth>
               }
             />

@@ -4,6 +4,15 @@ import axios from "axios";
 
 function DeleteMessage(props) {
   const Context = useContext(RecipeContext);
+  const {
+    setDeleted,
+    setDeleteMessage,
+    isDeleted,
+    displayLeft,
+    setDisplayLeft,
+    displayRight,
+    setDisplayRight,
+  } = props;
 
   return (
     <div className="overlay">
@@ -18,7 +27,7 @@ function DeleteMessage(props) {
           <button
             className="btn-global"
             onClick={() => {
-              props.setDeleteMessage(false);
+              setDeleteMessage(false);
             }}
           >
             Close
@@ -34,8 +43,10 @@ function DeleteMessage(props) {
                   { data: { token } }
                 )
                 .then((resp) => {
-                  props.setDeleteMessage(false);
-                  props.setDeleted(!props.isDeleted);
+                  setDeleteMessage(false);
+                  setDeleted(!isDeleted);
+                  setDisplayLeft(true);
+                  setDisplayRight(false);
                 })
                 .catch((err) => {
                   console.log(err);

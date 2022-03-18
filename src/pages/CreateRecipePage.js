@@ -262,16 +262,6 @@ function CreateRecipe(props) {
                       <p className="form-p">Ingredients:</p>
                     </div>
                     <div className="ec-ing-label-cont">
-                      <Field
-                        id="ec-ing-input"
-                        className="form-input ec-form-input"
-                        name="ingredients"
-                        placeholder="Banana, Milk, etc..."
-                        onKeyUp={(e) => {
-                          let value = e.target.value;
-                          setIngredient(value);
-                        }}
-                      />
                       <button
                         type="button"
                         onClick={() => {
@@ -283,6 +273,16 @@ function CreateRecipe(props) {
                       >
                         +
                       </button>
+                      <Field
+                        id="ec-ing-input"
+                        className="form-input ec-form-input"
+                        name="ingredients"
+                        placeholder="Banana, Milk, etc..."
+                        onKeyUp={(e) => {
+                          let value = e.target.value;
+                          setIngredient(value);
+                        }}
+                      />
                     </div>
                   </label>
 

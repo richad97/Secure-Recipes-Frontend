@@ -17,7 +17,7 @@ function Login(props) {
   const Navigate = useNavigate();
 
   return (
-    <main id="login-main">
+    <main id="login-main" className="auth-forms">
       <Formik
         initialValues={{
           username: "",

@@ -29,9 +29,26 @@ function ConfirmEmailFinal() {
   }, []);
 
   return (
-    <form style={{ width: "25%", marginTop: "8rem" }} className="form">
-      {serverMessage ? <h2>{serverMessage}</h2> : null}
-      {serverError ? <h2>{serverError}</h2> : null}
+    <form
+      style={{ width: "30%", height: "10%", marginTop: "5rem" }}
+      className="form"
+    >
+      {serverMessage ? (
+        <h2
+          className="form-h2 auth-forms-h2"
+          style={{ fontSize: "1.25rem", margin: "0 auto" }}
+        >
+          {serverMessage}
+        </h2>
+      ) : null}
+      {serverError ? (
+        <h2
+          className="form-h2 auth-forms-h2"
+          style={{ fontSize: "1.25rem", margin: "0 auto" }}
+        >
+          {serverError}
+        </h2>
+      ) : null}
     </form>
   );
 }
