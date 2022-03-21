@@ -1,6 +1,10 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function DeleteFriendMessage(props) {
+  const { setFriendDeleteMessage, friendID } = props;
+  const navigate = useNavigate();
+
   return (
     <div className="overlay">
       <div className="message">
@@ -14,12 +18,29 @@ function DeleteFriendMessage(props) {
           <button
             className="btn-global"
             onClick={() => {
-              props.setFriendDeleteMessage(false);
+              setFriendDeleteMessage(false);
             }}
           >
             Close
           </button>
-          <button className="btn-global" onClick={() => {}}>
+          <button
+            className="btn-global"
+            onClick={() => {
+              const token = localStorage.getItem("token");
+
+              axios
+                .delete(
+                  `http://localhost:9000/api/users/friends/delete/${friendID}`,
+                  { data: { token } }
+                )
+                .then((resp) => {
+                  setFriendDeleteMessage(false);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }}
+          >
             Confirm
           </button>
         </div>

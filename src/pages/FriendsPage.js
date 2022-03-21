@@ -22,7 +22,6 @@ function FriendsPage(props) {
         const friendsList = resp.data.usersFriends;
         const shareToken = resp.data.shareToken;
         const recievedData = resp.data;
-        console.log(resp);
 
         if (!recievedData.message) {
           setFriends([...friendsList]);
@@ -35,10 +34,6 @@ function FriendsPage(props) {
         console.log(err);
       });
   }, []);
-
-  useEffect(() => {
-    // console.log(shareToken);
-  }, [friends]);
 
   return (
     <main id="crecipe-main">
@@ -67,7 +62,7 @@ function FriendsPage(props) {
               <tr>
                 <th>ID</th>
                 <th>Username</th>
-                <th>View</th>
+                <th>View Recipes</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -84,13 +79,14 @@ function FriendsPage(props) {
                           navigate(`/recipes/${friend.username}`);
                         }}
                       >
-                        View Recipes
+                        Recipes
                       </button>
                     </td>
                     <td>
                       <button
                         onClick={() => {
                           props.setFriendDeleteMessage(true);
+                          props.setFriendID(friend.id);
                         }}
                         className="btn-sm"
                       >

@@ -30,6 +30,8 @@ function App() {
   const [displayLeft, setDisplayLeft] = useState(true);
   const [displayRight, setDisplayRight] = useState(true);
 
+  const [friendID, setFriendID] = useState(null);
+
   useEffect(() => {
     if (window.innerWidth <= 790) {
       setOnPhone(true);
@@ -61,6 +63,7 @@ function App() {
         {friendDeleteMessage ? (
           <DeleteFriendMessage
             setFriendDeleteMessage={setFriendDeleteMessage}
+            friendID={friendID}
           />
         ) : null}
         <Routes>
@@ -75,7 +78,7 @@ function App() {
               />
             }
           >
-            <Route index element={<HomePage />} />
+            <Route index element={<HomePage isAuth={isAuth} />} />
             <Route
               path="/recipes"
               element={
@@ -122,6 +125,7 @@ function App() {
                 <RequireAuth redirectTo={"/login"}>
                   <FriendsPage
                     setFriendDeleteMessage={setFriendDeleteMessage}
+                    setFriendID={setFriendID}
                   />
                 </RequireAuth>
               }
@@ -138,7 +142,14 @@ function App() {
               path="/recipes/:friendUsername"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <FriendsRecipes />
+                  <FriendsRecipes
+                    onPhone={onPhone}
+                    setOnPhone={setOnPhone}
+                    displayLeft={displayLeft}
+                    setDisplayLeft={setDisplayLeft}
+                    displayRight={displayRight}
+                    setDisplayRight={setDisplayRight}
+                  />
                 </RequireAuth>
               }
             />

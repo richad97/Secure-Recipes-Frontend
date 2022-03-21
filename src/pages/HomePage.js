@@ -2,7 +2,7 @@ import "../styles/pages/HomePage.css";
 import svg1 from "../assets/7.svg";
 import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Home(props) {
   const navigate = useNavigate();
   return (
     <section className="home-section">
@@ -10,20 +10,32 @@ function Home() {
 
       <h1>Secure Your Recipes Today</h1>
       <div>
-        <button
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          Login
-        </button>
-        <button
-          onClick={() => {
-            navigate("/register");
-          }}
-        >
-          Sign Up
-        </button>
+        {props.isAuth ? (
+          <button
+            onClick={() => {
+              navigate("/recipes");
+            }}
+          >
+            View Recipes
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+            <button
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Sign Up
+            </button>
+          </>
+        )}
       </div>
     </section>
   );

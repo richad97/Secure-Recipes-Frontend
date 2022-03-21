@@ -75,7 +75,7 @@
   height: 6.65rem;
   border-radius: 0.1rem;
   /* width: 40%; */
-  padding: 0rem 1rem;
+  padding: 0rem 0.5rem;
   overflow: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -159,17 +159,33 @@
   /* margin-right: 1.5rem; */
 }
 #ec-ing-input {
-  /* width: 80%; */
+  width: 90%;
+}
+.ec-ing-each-input {
+  width: 95%;
+  margin-left: 0.5rem;
 }
 .ec-ing-label-cont {
   /* width: 92%; */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .ec-submit-btn {
   /* margin-bottom: 1rem; */
   margin: 2rem 0;
   width: 10rem;
+}
+.ec-ing-btn1 {
+  height: 20%;
+  width: auto;
+  padding: 0 0.2rem;
+  margin: 0.24rem auto;
+}
+.ec-ing-btn2 {
+  height: 20%;
+  width: auto;
+  padding: 0 0.2rem;
+  margin: 0.5rem auto;
 }
 .ec-submit-btn-cont {
   display: flex;

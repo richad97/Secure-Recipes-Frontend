@@ -75,7 +75,11 @@ function RightSection(props) {
           <div id="sec2-body">
             <div id="image-info-wrap">
               <div id="image-container">
-                {pic_url ? <img src={pic_url} /> : null}
+                {pic_url ? (
+                  <img src={pic_url} />
+                ) : (
+                  <p className="sec2-nophoto">No Photo Available</p>
+                )}
               </div>
               <div id="recipe-info">
                 <p>Category: {category}</p>

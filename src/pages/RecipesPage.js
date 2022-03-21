@@ -84,9 +84,9 @@ function Recipes(props) {
               displayRight={displayRight}
               setDisplayRight={setDisplayRight}
               setDeleteMessage={setDeleteMessage}
-              selectedRecipe={selectedRecipe}
               onPhone={onPhone}
               setOnPhone={setOnPhone}
+              selectedRecipe={selectedRecipe}
             />
           )}
         </>

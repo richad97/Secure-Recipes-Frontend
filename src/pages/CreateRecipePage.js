@@ -40,6 +40,7 @@ function CreateRecipe(props) {
   const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const [widgetLoading, setWidgetLoading] = useState(false);
   const [url, setUrl] = useState("");
   const { onPhone, setOnPhone } = props;
 
@@ -90,6 +91,7 @@ function CreateRecipe(props) {
       },
       (err, info) => {
         if (!err) {
+          setWidgetLoading(false);
           if (info.event === "success") {
             const urlLink = info.info.url;
 
@@ -154,15 +156,27 @@ function CreateRecipe(props) {
                 )}
                 <div className="ec-upload-cont">
                   <p className="form-p">Upload Photo:</p>
-                  <button
-                    type="button"
-                    className="btn-sm"
-                    onClick={() => {
-                      showUploadWidget();
-                    }}
-                  >
-                    Upload
-                  </button>
+
+                  {widgetLoading ? (
+                    <div
+                      className="loader"
+                      style={{
+                        width: "15px",
+                        height: "15px",
+                        marginRight: "1.5rem",
+                      }}
+                    ></div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setWidgetLoading(true);
+                        showUploadWidget();
+                      }}
+                    >
+                      Upload
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -264,6 +278,7 @@ function CreateRecipe(props) {
                     <div className="ec-ing-label-cont">
                       <button
                         type="button"
+                        className="ec-ing-btn1"
                         onClick={() => {
                           let check = ingredients.indexOf(ingredient);
                           if (ingredient && check === -1) {
@@ -292,6 +307,7 @@ function CreateRecipe(props) {
                         <div key={i}>
                           <button
                             type="button"
+                            className="ec-ing-btn2"
                             onClick={() => {
                               let copy = [...ingredients];
                               copy.splice(i, 1);
@@ -302,7 +318,7 @@ function CreateRecipe(props) {
                             -
                           </button>
                           <Field
-                            className="form-input ec-form-input"
+                            className="form-input ec-form-input ec-ing-each-input"
                             name={`ingredients-disabled`}
                             placeholder={ing}
                             disabled

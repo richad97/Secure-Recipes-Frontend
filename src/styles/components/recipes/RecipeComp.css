@@ -6,6 +6,7 @@
   color: whitesmoke;
   border-radius: var(--mainSubSecBR);
   background-color: var(--recipe2ContBg);
+  transition: 0.1s ease-in;
 }
 .recipe-comp:hover {
   background-color: rgba(36, 36, 39, 0.632);

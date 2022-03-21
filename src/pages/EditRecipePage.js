@@ -31,6 +31,7 @@ function EditRecipe(props) {
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [url, setUrl] = useState("");
+  const [widgetLoading, setWidgetLoading] = useState(false);
   const { id } = useParams();
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
   const [serverError, setServerError] = useState("");
@@ -90,6 +91,7 @@ function EditRecipe(props) {
       },
       (err, info) => {
         if (!err) {
+          setWidgetLoading(false);
           if (info.event === "success") {
             const urlLink = info.info.url;
 
@@ -172,14 +174,26 @@ function EditRecipe(props) {
                 )}
                 <div className="ec-upload-cont">
                   <p className="form-p">Upload Photo:</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      showUploadWidget();
-                    }}
-                  >
-                    Upload
-                  </button>
+                  {widgetLoading ? (
+                    <div
+                      className="loader"
+                      style={{
+                        width: "15px",
+                        height: "15px",
+                        marginRight: "1.5rem",
+                      }}
+                    ></div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setWidgetLoading(true);
+                        showUploadWidget();
+                      }}
+                    >
+                      Upload
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -281,6 +295,7 @@ function EditRecipe(props) {
                     <div className="ec-ing-label-cont">
                       <button
                         type="button"
+                        className="ec-ing-btn1"
                         onClick={() => {
                           let check = ingredients.indexOf(ingredient);
                           if (ingredient && check === -1) {
@@ -309,6 +324,7 @@ function EditRecipe(props) {
                         <div key={i}>
                           <button
                             type="button"
+                            className="ec-ing-btn2"
                             onClick={() => {
                               let copy = [...ingredients];
                               copy.splice(i, 1);
@@ -319,7 +335,7 @@ function EditRecipe(props) {
                             -
                           </button>
                           <Field
-                            className="form-input ec-form-input"
+                            className="form-input ec-form-input ec-ing-each-input"
                             name={`ingredients-disabled`}
                             placeholder={ing}
                             disabled

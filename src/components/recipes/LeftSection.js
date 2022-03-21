@@ -9,6 +9,7 @@ function LeftSection(props) {
   const [isLoading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const {
+    viewOnly,
     userRecipes,
     setSelectedRecipe,
     onPhone,
@@ -62,13 +63,18 @@ function LeftSection(props) {
             })
         )}
       </div>
-      <button
-        onClick={() => {
-          navigate("/recipes/create");
-        }}
-      >
-        <p className="ls-add-btn">Add Recipe </p>
-      </button>
+
+      {viewOnly ? (
+        <div className="ls-no-btn"></div>
+      ) : (
+        <button
+          onClick={() => {
+            navigate("/recipes/create");
+          }}
+        >
+          <p className="ls-add-btn">Add Recipe </p>
+        </button>
+      )}
     </section>
   );
 }

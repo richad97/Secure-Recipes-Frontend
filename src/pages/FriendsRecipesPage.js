@@ -4,18 +4,29 @@ import RightSection from "../components/recipes/RightSection";
 import LoadingComp from "../components/LoadingComp";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { RecipeContext } from "../RecipeContext";
 import { useParams } from "react-router-dom";
 
-function FriendsRecipes() {
+function FriendsRecipes(props) {
   const [viewOnly] = useState(true);
   const [userRecipes, setUserRecipes] = useState([]);
   const [serverMessage, setServerMessage] = useState("");
+  const {
+    onPhone,
+    setOnPhone,
+    displayLeft,
+    setDisplayLeft,
+    displayRight,
+    setDisplayRight,
+  } = props;
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-
   const { friendUsername } = useParams();
 
   useEffect(() => {
+    if (window.innerWidth <= 790) {
+      setOnPhone(true);
+      setDisplayRight(false);
+    }
+
     const token = localStorage.getItem("token");
 
     axios
@@ -43,10 +54,15 @@ function FriendsRecipes() {
     <main id="recipes-main">
       {serverMessage ? (
         <form
-          style={{ width: "25%", marginTop: "8rem", height: "2rem" }}
+          style={{ width: "30%", height: "15%", marginTop: "5rem" }}
           className="form"
         >
-          <h2>Server Message: {serverMessage}</h2>
+          <h2
+            className="form-h2 auth-forms-h2"
+            style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
+          >
+            Server Message: {serverMessage}
+          </h2>
         </form>
       ) : (
         <>
@@ -54,11 +70,25 @@ function FriendsRecipes() {
             userRecipes={userRecipes}
             setSelectedRecipe={setSelectedRecipe}
             viewOnly={viewOnly}
+            onPhone={onPhone}
+            setOnPhone={setOnPhone}
+            setDisplayRight={setDisplayRight}
+            displayLeft={displayLeft}
+            setDisplayLeft={setDisplayLeft}
           />
           {!selectedRecipe ? (
             <LoadingComp />
           ) : (
-            <RightSection selectedRecipe={selectedRecipe} viewOnly={viewOnly} />
+            <RightSection
+              displayLeft={displayLeft}
+              setDisplayLeft={setDisplayLeft}
+              displayRight={displayRight}
+              setDisplayRight={setDisplayRight}
+              onPhone={onPhone}
+              setOnPhone={setOnPhone}
+              selectedRecipe={selectedRecipe}
+              viewOnly={viewOnly}
+            />
           )}
         </>
       )}

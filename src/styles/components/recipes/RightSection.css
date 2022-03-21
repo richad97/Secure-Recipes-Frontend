@@ -106,6 +106,14 @@
 .comm1 {
   font-size: var(--pCustom);
 }
+.sec2-nophoto {
+  position: relative;
+  top: 35%;
+  text-align: center;
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  color: rgb(80, 82, 88);
+}
 
 @media only screen and (max-width: 790px) {
   #section-2 {
