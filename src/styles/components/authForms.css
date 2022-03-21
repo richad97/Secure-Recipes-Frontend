@@ -1,6 +1,7 @@
 #login-main form,
 #addfriend-main form,
-#register-main form {
+#register-main form,
+#resetpassword-main form {
   margin: 2rem auto;
   height: 30rem;
   width: 26%;
@@ -21,9 +22,18 @@
   margin-top: 0.5rem;
 }
 .auth-forms-inputs {
-  width: 98%;
-  margin: 0.2rem 0;
+  width: 100%;
+  height: 1.5rem;
+  margin: 0.3rem 0;
 }
 .auth-forms-btn {
   margin-bottom: 0.5rem;
+}
+@media only screen and (max-width: 790px) {
+  #login-main form,
+  #addfriend-main form,
+  #register-main form,
+  #resetpassword-main form {
+    width: 90%;
+  }
 }

@@ -8,14 +8,23 @@ function LeftSection(props) {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const { userRecipes, setSelectedRecipe } = props;
+  const {
+    viewOnly,
+    userRecipes,
+    setSelectedRecipe,
+    onPhone,
+    setOnPhone,
+    setDisplayRight,
+    displayLeft,
+    setDisplayLeft,
+  } = props;
 
   const handleInput = (e) => {
     setQuery(e.target.value);
   };
 
   return (
-    <section id="section-1">
+    <section id={displayLeft ? "section-1" : "display-none"}>
       <label id="search-bar-container">
         <BiSearch />
         <input
@@ -42,6 +51,10 @@ function LeftSection(props) {
             .map((recipe, i) => {
               return (
                 <RecipeComp
+                  setDisplayRight={setDisplayRight}
+                  setDisplayLeft={setDisplayLeft}
+                  onPhone={onPhone}
+                  setOnPhone={setOnPhone}
                   setSelectedRecipe={setSelectedRecipe}
                   recipe={recipe}
                   key={i}
@@ -50,13 +63,18 @@ function LeftSection(props) {
             })
         )}
       </div>
-      <button
-        onClick={() => {
-          navigate("/recipes/create");
-        }}
-      >
-        <p className="ls-add-btn">Add Recipe </p>
-      </button>
+
+      {viewOnly ? (
+        <div className="ls-no-btn"></div>
+      ) : (
+        <button
+          onClick={() => {
+            navigate("/recipes/create");
+          }}
+        >
+          <p className="ls-add-btn">Add Recipe </p>
+        </button>
+      )}
     </section>
   );
 }

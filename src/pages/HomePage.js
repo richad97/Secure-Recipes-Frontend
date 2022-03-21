@@ -1,14 +1,43 @@
-// import video from "../home.mp4";
 import "../styles/pages/HomePage.css";
+import svg1 from "../assets/7.svg";
+import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Home(props) {
+  const navigate = useNavigate();
   return (
-    <div className="vid-container">
-      <video autoPlay muted loop>
-        <source src="" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <section className="home-section">
+      <img alt="svg" src={svg1} />
+
+      <h1>Secure Your Recipes Today</h1>
+      <div>
+        {props.isAuth ? (
+          <button
+            onClick={() => {
+              navigate("/recipes");
+            }}
+          >
+            View Recipes
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+            <button
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Sign Up
+            </button>
+          </>
+        )}
+      </div>
+    </section>
   );
 }
 

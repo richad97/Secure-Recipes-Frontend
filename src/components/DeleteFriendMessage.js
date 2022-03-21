@@ -1,18 +1,9 @@
-import { RecipeContext } from "../RecipeContext";
-import { useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function DeleteMessage(props) {
-  const Context = useContext(RecipeContext);
-  const {
-    setDeleted,
-    setDeleteMessage,
-    isDeleted,
-    displayLeft,
-    setDisplayLeft,
-    displayRight,
-    setDisplayRight,
-  } = props;
+function DeleteFriendMessage(props) {
+  const { setFriendDeleteMessage, friendID } = props;
+  const navigate = useNavigate();
 
   return (
     <div className="overlay">
@@ -20,14 +11,14 @@ function DeleteMessage(props) {
         <h3 style={{ padding: "0.2rem 0" }}>Notification</h3>
         <hr />
         <p style={{ padding: "0.5rem 0" }}>
-          Are you sure you want to delete this recipe?
+          Are you sure you want to delete this person from your friends list?
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
             className="btn-global"
             onClick={() => {
-              setDeleteMessage(false);
+              setFriendDeleteMessage(false);
             }}
           >
             Close
@@ -35,18 +26,15 @@ function DeleteMessage(props) {
           <button
             className="btn-global"
             onClick={() => {
-              const recipeID = Context.selectedRecipe.recipe_id;
               const token = localStorage.getItem("token");
+
               axios
                 .delete(
-                  `http://localhost:9000/api/recipes/delete/${recipeID}`,
+                  `http://localhost:9000/api/users/friends/delete/${friendID}`,
                   { data: { token } }
                 )
                 .then((resp) => {
-                  setDeleteMessage(false);
-                  setDeleted(!isDeleted);
-                  setDisplayLeft(true);
-                  setDisplayRight(false);
+                  setFriendDeleteMessage(false);
                 })
                 .catch((err) => {
                   console.log(err);
@@ -60,4 +48,5 @@ function DeleteMessage(props) {
     </div>
   );
 }
-export default DeleteMessage;
+
+export default DeleteFriendMessage;

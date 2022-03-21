@@ -25,15 +25,24 @@ const EditRecipeSchema = Yup.object().shape({
   pic_url: Yup.string(),
 });
 
-function EditRecipe() {
+function EditRecipe(props) {
   const formRef = useRef();
   const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [url, setUrl] = useState("");
+  const [widgetLoading, setWidgetLoading] = useState(false);
   const { id } = useParams();
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
   const [serverError, setServerError] = useState("");
+  const {
+    displayLeft,
+    setDisplayLeft,
+    displayRight,
+    setDisplayRight,
+    onPhone,
+    setOnPhone,
+  } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -82,6 +91,7 @@ function EditRecipe() {
       },
       (err, info) => {
         if (!err) {
+          setWidgetLoading(false);
           if (info.event === "success") {
             const urlLink = info.info.url;
 
@@ -121,6 +131,8 @@ function EditRecipe() {
               .put(`http://localhost:9000/api/recipes/edit/${id}`, newValues)
               .then((resp) => {
                 navigate("/recipes");
+                setDisplayLeft(true);
+                setDisplayRight(false);
               })
               .catch((err) => {
                 const errFromServer = err.response.data.message;
@@ -137,6 +149,18 @@ function EditRecipe() {
                 <GiChefToque />
               </span>
               <h2 className="form-h2 ec-h2">Edit Recipe</h2>
+              {onPhone ? (
+                <button
+                  style={{ padding: "0 1rem", margin: "1rem 0" }}
+                  onClick={() => {
+                    navigate("/recipes");
+                    setDisplayLeft(true);
+                    setDisplayRight(false);
+                  }}
+                >
+                  Back
+                </button>
+              ) : null}
             </header>
 
             <div className="ec-main-cont">
@@ -150,14 +174,26 @@ function EditRecipe() {
                 )}
                 <div className="ec-upload-cont">
                   <p className="form-p">Upload Photo:</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      showUploadWidget();
-                    }}
-                  >
-                    Upload
-                  </button>
+                  {widgetLoading ? (
+                    <div
+                      className="loader"
+                      style={{
+                        width: "15px",
+                        height: "15px",
+                        marginRight: "1.5rem",
+                      }}
+                    ></div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setWidgetLoading(true);
+                        showUploadWidget();
+                      }}
+                    >
+                      Upload
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -257,6 +293,18 @@ function EditRecipe() {
                       <p className="form-p">Ingredients:</p>
                     </div>
                     <div className="ec-ing-label-cont">
+                      <button
+                        type="button"
+                        className="ec-ing-btn1"
+                        onClick={() => {
+                          let check = ingredients.indexOf(ingredient);
+                          if (ingredient && check === -1) {
+                            setIngredients([...ingredients, ingredient]);
+                          }
+                        }}
+                      >
+                        +
+                      </button>
                       <Field
                         id="ec-ing-input"
                         className="form-input ec-form-input"
@@ -267,17 +315,6 @@ function EditRecipe() {
                           setIngredient(value);
                         }}
                       />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          let check = ingredients.indexOf(ingredient);
-                          if (ingredient && check === -1) {
-                            setIngredients([...ingredients, ingredient]);
-                          }
-                        }}
-                      >
-                        +
-                      </button>
                     </div>
                   </label>
 
@@ -287,6 +324,7 @@ function EditRecipe() {
                         <div key={i}>
                           <button
                             type="button"
+                            className="ec-ing-btn2"
                             onClick={() => {
                               let copy = [...ingredients];
                               copy.splice(i, 1);
@@ -297,7 +335,7 @@ function EditRecipe() {
                             -
                           </button>
                           <Field
-                            className="form-input ec-form-input"
+                            className="form-input ec-form-input ec-ing-each-input"
                             name={`ingredients-disabled`}
                             placeholder={ing}
                             disabled

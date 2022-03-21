@@ -35,12 +35,14 @@ const initialValues = {
   pic_url: "",
 };
 
-function CreateRecipe() {
+function CreateRecipe(props) {
   const formRef = useRef();
   const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const [widgetLoading, setWidgetLoading] = useState(false);
   const [url, setUrl] = useState("");
+  const { onPhone, setOnPhone } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -89,6 +91,7 @@ function CreateRecipe() {
       },
       (err, info) => {
         if (!err) {
+          setWidgetLoading(false);
           if (info.event === "success") {
             const urlLink = info.info.url;
 
@@ -130,6 +133,16 @@ function CreateRecipe() {
                 <GiChefToque />
               </span>
               <h2 className="form-h2 ec-h2">Create Recipe</h2>
+              {onPhone ? (
+                <button
+                  style={{ padding: "0 1rem", margin: "1rem 0" }}
+                  onClick={() => {
+                    navigate("/recipes");
+                  }}
+                >
+                  Back
+                </button>
+              ) : null}
             </header>
 
             <div className="ec-main-cont">
@@ -143,14 +156,27 @@ function CreateRecipe() {
                 )}
                 <div className="ec-upload-cont">
                   <p className="form-p">Upload Photo:</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      showUploadWidget();
-                    }}
-                  >
-                    Upload
-                  </button>
+
+                  {widgetLoading ? (
+                    <div
+                      className="loader"
+                      style={{
+                        width: "15px",
+                        height: "15px",
+                        marginRight: "1.5rem",
+                      }}
+                    ></div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setWidgetLoading(true);
+                        showUploadWidget();
+                      }}
+                    >
+                      Upload
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -250,6 +276,18 @@ function CreateRecipe() {
                       <p className="form-p">Ingredients:</p>
                     </div>
                     <div className="ec-ing-label-cont">
+                      <button
+                        type="button"
+                        className="ec-ing-btn1"
+                        onClick={() => {
+                          let check = ingredients.indexOf(ingredient);
+                          if (ingredient && check === -1) {
+                            setIngredients([...ingredients, ingredient]);
+                          }
+                        }}
+                      >
+                        +
+                      </button>
                       <Field
                         id="ec-ing-input"
                         className="form-input ec-form-input"
@@ -260,17 +298,6 @@ function CreateRecipe() {
                           setIngredient(value);
                         }}
                       />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          let check = ingredients.indexOf(ingredient);
-                          if (ingredient && check === -1) {
-                            setIngredients([...ingredients, ingredient]);
-                          }
-                        }}
-                      >
-                        +
-                      </button>
                     </div>
                   </label>
 
@@ -280,6 +307,7 @@ function CreateRecipe() {
                         <div key={i}>
                           <button
                             type="button"
+                            className="ec-ing-btn2"
                             onClick={() => {
                               let copy = [...ingredients];
                               copy.splice(i, 1);
@@ -290,7 +318,7 @@ function CreateRecipe() {
                             -
                           </button>
                           <Field
-                            className="form-input ec-form-input"
+                            className="form-input ec-form-input ec-ing-each-input"
                             name={`ingredients-disabled`}
                             placeholder={ing}
                             disabled

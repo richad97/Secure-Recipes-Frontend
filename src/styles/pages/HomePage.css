@@ -1,9 +1,61 @@
-.vid-container {
-  height: 88.8%;
-  width: 100%;
+@keyframes float {
+  0% {
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
+    transform: translatey(0px);
+  }
+  50% {
+    filter: drop-shadow(0 25px 15px rgba(0, 0, 0, 0.1));
+    transform: translatey(-20px);
+  }
+  100% {
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
+    transform: translatey(0px);
+  }
 }
-video {
+.home-section {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 90%;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  bottom: 5%;
+  z-index: 0;
+}
+.home-section img {
+  height: 50%;
+  width: 50%;
+  margin: 0 auto;
+  filter: drop-shadow(1rem 1rem 1rem rgba(0, 0, 0, 0.35));
+  transform: translatey(0px);
+  animation: float 6s ease-in-out infinite;
+}
+.home-section h1 {
+  font-size: 2.8rem;
+  color: white;
+  text-align: center;
+  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3);
+}
+.home-section div {
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.home-section div > button {
+  margin: 0 1rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  border: none;
+  cursor: pointer;
+}
+@media only screen and (max-width: 830px) {
+  .home-section h1 {
+    font-size: 5vw;
+  }
+  .home-section img {
+  }
 }

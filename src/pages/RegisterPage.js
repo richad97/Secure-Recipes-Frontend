@@ -4,7 +4,8 @@ import "../styles/components/form.css";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import LoadingComp from "../components/LoadingComp";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -30,7 +31,7 @@ function Register() {
   const navigate = useNavigate();
 
   return (
-    <main id="register-main">
+    <main id="register-main" className="auth-forms">
       <Formik
         initialValues={{
           first_name: "",
@@ -86,8 +87,8 @@ function Register() {
             <hr className="auth-forms-hr" />
 
             <div className="auth-forms-middle-cont">
-              <div>
-                <label className="form-label">
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <label className="form-label" style={{ width: "48%" }}>
                   <div>
                     <p className="form-p">First Name:</p>
                     {errors.first_name && touched.first_name ? (
@@ -100,7 +101,7 @@ function Register() {
                     placeholder="John"
                   />
                 </label>
-                <label className="form-label">
+                <label className="form-label" style={{ width: "48%" }}>
                   <div>
                     <p className="form-p">Last Name:</p>
                     {errors.last_name && touched.last_name ? (

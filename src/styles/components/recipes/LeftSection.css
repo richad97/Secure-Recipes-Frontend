@@ -1,5 +1,5 @@
 #section-1 {
-  /* border: 1px solid black; */
+  width: 50%;
   overflow: hidden;
   margin: 2rem;
   display: flex;
@@ -7,38 +7,35 @@
 }
 #section-1 label {
   width: 100%;
-  /* border: 1px solid black; */
   display: flex;
   background-color: var(--recipe3ContBg);
 }
 #section-1 label svg {
-  width: 10%;
+  width: 5%;
   height: 1.5rem;
   margin: auto 1rem;
   display: inline-block;
   fill: white;
 }
 #section-1 label input {
-  width: 90%;
+  width: 95%;
   height: 1.5rem;
-  margin: 1.3rem 3rem;
+  margin: auto 1rem;
   margin-left: 0;
 }
 #recipe-container {
   height: 80%;
-  /* border: 1px solid red; */
   background-color: var(--recipeContBg);
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 #recipe-container::-webkit-scrollbar {
-  /* WebKit */
+  background-color: rgb(57, 57, 62);
   width: 0;
   height: 0;
 }
 #section-1 > button {
-  /* border: 1px solid black; */
   border: none;
   border-top: 1px solid var(--recipes-trim);
   text-align: center;
@@ -48,13 +45,28 @@
   cursor: pointer;
   background-color: var(--recipe3ContBg);
   color: white;
+  height: 10%;
+  transition: 0.1s ease-in;
 }
 #section-1 > button:hover {
-  background-color: rgb(41, 41, 44);
-  border-top: 1px solid rgb(51, 50, 54);
+  background-color: rgb(28, 28, 30);
+}
+.ls-no-btn {
+  border: none;
+  border-top: 1px solid var(--recipes-trim);
+  text-align: center;
+  font-size: 1.1rem;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--recipe3ContBg);
+  color: white;
+  height: 10%;
 }
 .ls-add-btn {
   font-size: 1.2rem;
+}
+.p2 {
+  color: rgba(255, 255, 255, 0);
 }
 #search-bar {
   background-color: rgb(55, 55, 62);
@@ -63,4 +75,22 @@
 }
 #search-bar-container {
   border-bottom: 1px solid var(--recipes-trim);
+  height: 10%;
+}
+
+@media only screen and (max-width: 790px) {
+  #section-1 {
+    width: 90%;
+    height: 100%;
+    margin: 2rem auto;
+  }
+  #search-bar-container {
+    height: 10%;
+  }
+  #recipe-container {
+    height: 80%;
+  }
+  #section-1 > button {
+    height: 10%;
+  }
 }

@@ -1,21 +1,20 @@
 #section-2 {
-  /* border: 1px solid black; */
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   margin: 2rem;
   background-color: var(--recipeContBg);
+  width: 50%;
 }
 #section-2::-webkit-scrollbar {
-  /* WebKit */
+  background-color: rgb(57, 57, 62);
   width: 0;
   height: 0;
 }
 #section-2 h1 {
   font-size: var(--rightSecH1);
-  padding: 1.5rem 2.3rem;
-  padding-bottom: 0.5rem;
-  /* color: white; */
+  /* padding: 1.5rem 0;
+  padding-bottom: 0.5rem; */
 }
 #section-2 > header {
   background-color: var(--recipe3ContBg);
@@ -28,7 +27,6 @@
   padding: 0.2rem 0;
   font-size: var(--pCustom);
   border-radius: var(--mainSubSecBR);
-  /* color: white; */
 }
 #section-2 header div {
   padding: 0rem 2.5rem;
@@ -53,7 +51,6 @@
 #image-info-wrap > #image-container {
   height: 14rem;
   width: 14rem;
-  /* border: 1px solid black; */
   background-color: var(--recipe2ContBg);
   border-radius: var(--mainSubSecBR);
   box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.25);
@@ -68,7 +65,6 @@
   width: 15rem;
   height: 7.5rem;
   font-size: 0.9rem;
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -79,23 +75,18 @@
   padding: 0.5rem 0.2rem;
   margin-bottom: 1rem;
   color: white;
-  /* margin: 1rem 0; */
 }
 #section-2 h3 {
   font-size: var(--h4Custom);
 }
 #section-2 ol {
-  /* padding: 0 2.5rem; */
   display: flex;
   flex-direction: column;
 }
 #section-2 li {
   font-size: 0.9rem;
-  /* padding: 0.5rem 1rem; */
-  /* color: white; */
 }
 #button-wrapper {
-  /* padding: 2rem; */
   display: flex;
   justify-content: end;
   font-size: 0.9rem;
@@ -104,7 +95,6 @@
   padding: 0.5rem 2rem;
 }
 .ii-container {
-  /* border: 1px solid rgba(0, 0, 0, 0.02); */
   border-radius: var(--mainSubSecBR);
   box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.1);
   background-color: var(--recipe2ContBg);
@@ -115,4 +105,20 @@
 }
 .comm1 {
   font-size: var(--pCustom);
+}
+.sec2-nophoto {
+  position: relative;
+  top: 35%;
+  text-align: center;
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  color: rgb(80, 82, 88);
+}
+
+@media only screen and (max-width: 790px) {
+  #section-2 {
+    width: 90%;
+    height: 100%;
+    margin: 2rem auto;
+  }
 }
