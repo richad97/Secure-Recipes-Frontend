@@ -171,7 +171,7 @@ function App() {
             />
             <Route
               path="*"
-              element={<Navigate to={isAuth ? "/recipes" : "/login"} />}
+              element={<Navigate to={isAuth ? "/recipes" : "/"} />}
             />
           </Route>
         </Routes>
