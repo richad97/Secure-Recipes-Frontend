@@ -66,24 +66,24 @@ function EditRecipe(props) {
         defaultSource: "local",
         styles: {
           palette: {
-            window: "#464040",
-            sourceBg: "#292222",
-            windowBorder: "#c7a49f",
-            tabIcon: "#cc6600",
-            inactiveTabIcon: "#E8D5BB",
-            menuIcons: "#ebe5db",
-            link: "#ffb107",
-            action: "#ffcc00",
-            inProgress: "#99cccc",
-            complete: "#78b3b4",
-            error: "#ff6666",
-            textDark: "#4C2F1A",
-            textLight: "#D8CFCF",
+            window: "#232325",
+            sourceBg: "#2F2F31",
+            windowBorder: "#56606B",
+            tabIcon: "#FFFFFF",
+            inactiveTabIcon: "#8A8A92",
+            menuIcons: "#655A5A",
+            link: "#808DC1",
+            action: "#339933",
+            inProgress: "#0433ff",
+            complete: "#339933",
+            error: "#cc0000",
+            textDark: "#000000",
+            textLight: "#fcfffd",
           },
           fonts: {
             default: null,
-            "'Merriweather', serif": {
-              url: "https://fonts.googleapis.com/css?family=Merriweather",
+            "'Poppins', sans-serif": {
+              url: "https://fonts.googleapis.com/css?family=Poppins",
               active: true,
             },
           },
@@ -125,7 +125,17 @@ function EditRecipe(props) {
         validationSchema={EditRecipeSchema}
         onSubmit={(values) => {
           const token = localStorage.getItem("token");
-          const newValues = { ...values, ingredients, token, pic_url: url };
+          const newValues = {
+            category: values.category.trim(),
+            description: values.description.trim(),
+            ingredients,
+            instructions: values.instructions.trim(),
+            pic_url: url.trim(),
+            prep_time: values.prep_time,
+            source: values.source.trim(),
+            title: values.title.trim(),
+            token,
+          };
           if (token) {
             axios
               .put(`http://localhost:9000/api/recipes/edit/${id}`, newValues)
@@ -186,6 +196,7 @@ function EditRecipe(props) {
                   ) : (
                     <button
                       type="button"
+                      className="ec-up-btn"
                       onClick={() => {
                         setWidgetLoading(true);
                         showUploadWidget();
@@ -271,22 +282,6 @@ function EditRecipe(props) {
               </div>
 
               <div className="ec-main-col ec-main-col3">
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Instructions:</p>
-                    {errors.instructions && touched.instructions ? (
-                      <div className="error-val">{errors.instructions}</div>
-                    ) : null}
-                  </div>
-                  <Field
-                    id="ec-instructions-textarea"
-                    className="form-input ec-form-input"
-                    name="instructions"
-                    placeholder="Prep, Blend, etc..."
-                    as="textarea"
-                  />
-                </label>
-
                 <div className="ec-whole-ing-cont">
                   <label className="form-label">
                     <div className="ec-form-label-cont">
@@ -297,9 +292,9 @@ function EditRecipe(props) {
                         type="button"
                         className="ec-ing-btn1"
                         onClick={() => {
-                          let check = ingredients.indexOf(ingredient);
+                          let check = ingredients.indexOf(ingredient.trim());
                           if (ingredient && check === -1) {
-                            setIngredients([...ingredients, ingredient]);
+                            setIngredients([...ingredients, ingredient.trim()]);
                           }
                         }}
                       >
@@ -312,7 +307,7 @@ function EditRecipe(props) {
                         placeholder="Banana, Milk, etc..."
                         onKeyUp={(e) => {
                           let value = e.target.value;
-                          setIngredient(value);
+                          setIngredient(value.trim());
                         }}
                       />
                     </div>
@@ -345,6 +340,22 @@ function EditRecipe(props) {
                     })}
                   </div>
                 </div>
+
+                <label className="form-label">
+                  <div className="ec-form-label-cont">
+                    <p className="form-p">Instructions:</p>
+                    {errors.instructions && touched.instructions ? (
+                      <div className="error-val">{errors.instructions}</div>
+                    ) : null}
+                  </div>
+                  <Field
+                    id="ec-instructions-textarea"
+                    className="form-input ec-form-input"
+                    name="instructions"
+                    placeholder="Prep, Blend, etc..."
+                    as="textarea"
+                  />
+                </label>
               </div>
             </div>
 

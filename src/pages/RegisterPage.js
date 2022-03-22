@@ -4,8 +4,7 @@ import "../styles/components/form.css";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import LoadingComp from "../components/LoadingComp";
+import { useState } from "react";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -13,11 +12,12 @@ const RegisterSchema = Yup.object().shape({
     .required("Required"),
   last_name: Yup.string().max(50, "Last name exceeds character limit"),
   username: Yup.string()
+    .min(3, "Must be minimum of 3 characters")
     .max(50, "Username exceeds character limit")
     .required("Required"),
   email: Yup.string().email("Invalid e-mail format").required("Required"),
   password: Yup.string()
-    .min(6, "Must be minimum of 6 characters.")
+    .min(6, "Must be minimum of 6 characters")
     .max(50, "Password is too long")
     .required("Password is required"),
   passwordConfirmation: Yup.string().oneOf(
@@ -28,6 +28,7 @@ const RegisterSchema = Yup.object().shape({
 
 function Register() {
   const [serverError, setServerError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -43,6 +44,7 @@ function Register() {
         }}
         validationSchema={RegisterSchema}
         onSubmit={(values) => {
+          setIsLoading(true);
           const {
             first_name,
             last_name,
@@ -71,10 +73,11 @@ function Register() {
           axios
             .post("http://localhost:9000/auth/register", newValues)
             .then((resp) => {
-              console.log(resp);
+              setIsLoading(false);
               navigate("/confirmation");
             })
             .catch((err) => {
+              setIsLoading(false);
               let recievedErr = err.response.data.message;
               setServerError(recievedErr);
             });
@@ -174,12 +177,24 @@ function Register() {
             {serverError ? (
               <p className="error-val">Server Error: {serverError}</p>
             ) : null}
-            <button
-              className="form-button btn-global auth-forms-btn"
-              type="submit"
-            >
-              Register
-            </button>
+            {isLoading ? (
+              <div
+                className="loader"
+                style={{
+                  height: "12px",
+                  width: "12px",
+                  margin: "0 auto",
+                  marginBottom: "1rem",
+                }}
+              ></div>
+            ) : (
+              <button
+                className="form-button btn-global auth-forms-btn"
+                type="submit"
+              >
+                Register
+              </button>
+            )}
             <Link className="form-a" to="/login">
               Already a User?
             </Link>

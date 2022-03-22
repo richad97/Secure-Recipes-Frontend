@@ -7,7 +7,7 @@ import "../styles/components/form.css";
 import "../styles/pages/ResetPasswordPage.css";
 const ResetPasswordFinalSchema = Yup.object().shape({
   password: Yup.string()
-    // .min(6, "Must be minimum of 6 characters.")
+    .min(6, "Must be minimum of 6 characters.")
     .max(50, "Password is too long")
     .required("Password is required"),
   confirmPassword: Yup.string().oneOf(
@@ -18,6 +18,7 @@ const ResetPasswordFinalSchema = Yup.object().shape({
 function ResetPasswordFinal() {
   const { token } = useParams();
   const [serverError, setServerError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   return (
     <main id="resetpassword-main" className="auth-forms">
@@ -31,10 +32,9 @@ function ResetPasswordFinal() {
               newPassword: values.password.trim(),
             })
             .then((resp) => {
-              console.log(resp);
+              setSuccess(true);
             })
             .catch((err) => {
-              console.log(err);
               const recievedError = err.response.data.error;
               setServerError(recievedError);
             });
@@ -42,45 +42,61 @@ function ResetPasswordFinal() {
       >
         {({ errors, touched }) => (
           <Form className="form">
-            <h2 className="form-h2 auth-forms-h2">New Password</h2>
-            <hr className="auth-forms-hr"></hr>
-            <div className="auth-forms-middle-cont">
-              <label className="form-label">
-                <div>
-                  <p className="form-p">New Password:</p>
-                  {errors.password && touched.password ? (
-                    <p className="error-val">{errors.password}</p>
+            {success ? (
+              <>
+                <h2 className="form-h2 auth-forms-h2">Success</h2>
+                <hr className="auth-forms-hr"></hr>
+                <p className="form-p" style={{ paddingLeft: "1rem" }}>
+                  Please login to continue.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="form-h2 auth-forms-h2">New Password</h2>
+                <hr className="auth-forms-hr"></hr>
+                <div className="auth-forms-middle-cont">
+                  <label className="form-label">
+                    <div>
+                      <p className="form-p">New Password:</p>
+                      {errors.password && touched.password ? (
+                        <p className="error-val">{errors.password}</p>
+                      ) : null}
+                    </div>
+                    <Field
+                      className="form-input"
+                      name="password"
+                      type="password"
+                    />
+                  </label>
+                  <label className="form-label">
+                    <div>
+                      <p className="form-p">Confirm New Password:</p>
+                      {errors.confirmPassword && touched.confirmPassword ? (
+                        <p className="error-val">{errors.confirmPassword}</p>
+                      ) : null}
+                    </div>
+                    <Field
+                      className="form-input"
+                      name="confirmPassword"
+                      type="password"
+                    />
+                  </label>
+                  {serverError ? (
+                    <p className="error-val">Server Error: {serverError}</p>
                   ) : null}
                 </div>
-                <Field className="form-input" name="password" type="password" />
-              </label>
-              <label className="form-label">
-                <div>
-                  <p className="form-p">Confirm New Password:</p>
-                  {errors.confirmPassword && touched.confirmPassword ? (
-                    <p className="error-val">{errors.confirmPassword}</p>
-                  ) : null}
-                </div>
-                <Field
-                  className="form-input"
-                  name="confirmPassword"
-                  type="password"
-                />
-              </label>
-              {serverError ? (
-                <p className="error-val">Server Error: {serverError}</p>
-              ) : null}
-            </div>
 
-            <div className="reset-pass-btn-cont">
-              <button
-                className="btn-global"
-                style={{ width: "20%" }}
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
+                <div className="reset-pass-btn-cont">
+                  <button
+                    className="btn-global"
+                    style={{ width: "20%" }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </>
+            )}
           </Form>
         )}
       </Formik>

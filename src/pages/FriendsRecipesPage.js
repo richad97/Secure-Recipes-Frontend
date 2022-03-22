@@ -2,7 +2,7 @@ import "../styles/pages/RecipesPage.css";
 import LeftSection from "../components/recipes/LeftSection";
 import RightSection from "../components/recipes/RightSection";
 import LoadingComp from "../components/LoadingComp";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -30,7 +30,7 @@ function FriendsRecipes(props) {
     const token = localStorage.getItem("token");
 
     axios
-      .post(`http://localhost:9000/api/users/recipes/${friendUsername}`, {
+      .post(`http://localhost:9000/api/friends/recipes/${friendUsername}`, {
         token,
       })
       .then((resp) => {

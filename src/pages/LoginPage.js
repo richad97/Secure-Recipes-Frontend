@@ -25,8 +25,13 @@ function Login(props) {
         }}
         validationSchema={LoginPageSchema}
         onSubmit={(values) => {
+          const { username, password } = values;
+          const newValues = {
+            username: username.trim(),
+            password: password.trim(),
+          };
           axios
-            .post("http://localhost:9000/auth/login", values)
+            .post("http://localhost:9000/auth/login", newValues)
             .then((resp) => {
               const token = resp.data.token;
 

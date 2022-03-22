@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import "../styles/components/form.css";
 import "../styles/pages/ResetPasswordPage.css";
@@ -12,6 +11,7 @@ const ResetPasswordSchema = Yup.object().shape({
 
 function ResetPassword() {
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState("");
 
   return (
@@ -20,16 +20,18 @@ function ResetPassword() {
         initialValues={{ email: "" }}
         validationSchema={ResetPasswordSchema}
         onSubmit={(values) => {
+          setIsLoading(true);
           const { email } = values;
           axios
             .get(
               `http://localhost:9000/api/users/resetpassword/${email.trim()}`
             )
             .then((resp) => {
+              setIsLoading(false);
               setSubmitted(true);
             })
             .catch((err) => {
-              console.dir(err);
+              setIsLoading(false);
               let recievedError = err.response.data.message;
               setServerError(recievedError);
             });
@@ -74,9 +76,20 @@ function ResetPassword() {
                   <p className="error-val">{serverError}</p>
                 ) : null}
                 <div className="reset-pass-btn-cont">
-                  <button className="btn-global" type="submit">
-                    Submit
-                  </button>
+                  {isLoading ? (
+                    <div
+                      className="loader"
+                      style={{
+                        marginTop: "2rem",
+                        width: "12px",
+                        height: "12px",
+                      }}
+                    ></div>
+                  ) : (
+                    <button className="btn-global" type="submit">
+                      Submit
+                    </button>
+                  )}
                 </div>
               </div>
             )}

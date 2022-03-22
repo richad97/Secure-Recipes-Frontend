@@ -2,7 +2,8 @@ import "../styles/components/form.css";
 import "../styles/pages/FriendsPage.css";
 import { GiChefToque } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { RecipeContext } from "../RecipeContext";
 import axios from "axios";
 
 function FriendsPage(props) {
@@ -10,18 +11,20 @@ function FriendsPage(props) {
   const [friends, setFriends] = useState([]);
   const [shareToken, setShareToken] = useState("");
   const [serverMessage, setServerMessage] = useState("");
+  const { change, setChange } = useContext(RecipeContext);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
 
     axios
-      .post("http://localhost:9000/api/users/friends", {
+      .post("http://localhost:9000/api/friends", {
         token,
       })
       .then((resp) => {
         const friendsList = resp.data.usersFriends;
         const shareToken = resp.data.shareToken;
         const recievedData = resp.data;
+        console.log("u");
 
         if (!recievedData.message) {
           setFriends([...friendsList]);
@@ -33,7 +36,7 @@ function FriendsPage(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [change]);
 
   return (
     <main id="crecipe-main">

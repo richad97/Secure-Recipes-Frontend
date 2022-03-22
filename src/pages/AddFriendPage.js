@@ -11,7 +11,6 @@ const AddFriendSchema = Yup.object().shape({
 });
 
 function AddFriendPage(props) {
-  const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
   const [serverSuccess, setServerSuccess] = useState("");
 
@@ -24,9 +23,9 @@ function AddFriendPage(props) {
         validationSchema={AddFriendSchema}
         onSubmit={(values) => {
           const token = localStorage.getItem("token");
-          const shareToken = values.token;
+          const shareToken = values.token.trim();
           axios
-            .post("http://localhost:9000/api/users/addfriend", {
+            .post("http://localhost:9000/api/friends/addfriend", {
               token,
               shareToken: shareToken,
             })

@@ -72,7 +72,7 @@
   background-color: rgb(53, 52, 59);
   /* border-radius: 0.2rem; */
   margin-top: 0.5rem;
-  height: 6.65rem;
+  height: 6.75rem;
   border-radius: 0.1rem;
   /* width: 40%; */
   padding: 0rem 0.5rem;
@@ -85,7 +85,7 @@
   margin: 0.2rem 0;
 }
 #ec-instructions-textarea {
-  height: 6.65rem;
+  height: 6.75rem;
   border-radius: 0.1rem;
   resize: none;
 }
@@ -160,6 +160,7 @@
 }
 #ec-ing-input {
   width: 90%;
+  border-radius: 0;
 }
 .ec-ing-each-input {
   width: 95%;
@@ -175,11 +176,15 @@
   margin: 2rem 0;
   width: 10rem;
 }
+.ec-up-btn {
+  cursor: pointer;
+  font-size: 0.8rem;
+}
 .ec-ing-btn1 {
   height: 20%;
   width: auto;
   padding: 0 0.2rem;
-  margin: 0.24rem auto;
+  margin: 0.4rem 0.9rem;
 }
 .ec-ing-btn2 {
   height: 20%;
@@ -194,16 +199,16 @@
   margin-right: 2rem;
 }
 .recipe-image {
-  height: 11rem;
-  width: 11rem;
+  height: 13rem;
+  width: 13rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
   object-fit: contain;
   background-color: rgba(50, 49, 56, 1);
 }
 .recipe-image-replacement {
-  height: 11rem;
-  width: 11rem;
+  height: 12rem;
+  width: 12rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
   object-fit: contain;

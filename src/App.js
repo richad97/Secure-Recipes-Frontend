@@ -25,12 +25,11 @@ function App() {
   const [showDeleteMessage, setDeleteMessage] = useState();
   const [friendDeleteMessage, setFriendDeleteMessage] = useState();
   const [isDeleted, setDeleted] = useState(false);
-
   const [onPhone, setOnPhone] = useState(false);
   const [displayLeft, setDisplayLeft] = useState(true);
   const [displayRight, setDisplayRight] = useState(true);
-
   const [friendID, setFriendID] = useState(null);
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth <= 790) {
@@ -48,7 +47,9 @@ function App() {
 
   return (
     <>
-      <RecipeContext.Provider value={{ selectedRecipe, setSelectedRecipe }}>
+      <RecipeContext.Provider
+        value={{ selectedRecipe, setSelectedRecipe, change, setChange }}
+      >
         {showDeleteMessage ? (
           <DeleteMessage
             isDeleted={isDeleted}
