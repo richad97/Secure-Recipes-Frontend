@@ -1,5 +1,6 @@
 {
   "name": "secret-recipes-frontend",
+  "homepage": "https://richad97.github.io/Secure-Recipes-Frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +21,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
