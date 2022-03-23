@@ -81,7 +81,7 @@ function Register() {
             })
             .catch((err) => {
               setIsLoading(false);
-              let recievedErr = err.response.data.message;
+              let recievedErr = err.response.data.error;
               setServerError(recievedErr);
             });
         }}
