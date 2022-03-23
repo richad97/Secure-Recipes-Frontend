@@ -124,7 +124,10 @@ function CreateRecipe(props) {
           };
           if (token) {
             axios
-              .post("http://localhost:9000/api/recipes/create", newValues)
+              .post(
+                "https://secure-recipes-backend.herokuapp.com/api/recipes/create",
+                newValues
+              )
               .then((resp) => {
                 navigate("/recipes");
               })

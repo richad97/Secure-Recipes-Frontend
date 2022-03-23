@@ -9,9 +9,12 @@ function ConfirmEmailFinal() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:9000/api/users/confirmation", {
-        emailToken: token,
-      })
+      .post(
+        "https://secure-recipes-backend.herokuapp.com/api/users/confirmation",
+        {
+          emailToken: token,
+        }
+      )
       .then((resp) => {
         const recievedMessage = resp.data.message;
 

@@ -30,9 +30,12 @@ function FriendsRecipes(props) {
     const token = localStorage.getItem("token");
 
     axios
-      .post(`http://localhost:9000/api/friends/recipes/${friendUsername}`, {
-        token,
-      })
+      .post(
+        `https://secure-recipes-backend.herokuapp.com/api/friends/recipes/${friendUsername}`,
+        {
+          token,
+        }
+      )
       .then((resp) => {
         const recievedData = resp.data;
 

@@ -24,10 +24,13 @@ function AddFriendPage(props) {
           const token = localStorage.getItem("token");
           const shareToken = values.token.trim();
           axios
-            .post("http://localhost:9000/api/friends/addfriend", {
-              token,
-              shareToken: shareToken,
-            })
+            .post(
+              "https://secure-recipes-backend.herokuapp.com/api/friends/addfriend",
+              {
+                token,
+                shareToken: shareToken,
+              }
+            )
             .then((resp) => {
               const recievedMessage = resp.data;
 

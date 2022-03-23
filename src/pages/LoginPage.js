@@ -31,7 +31,10 @@ function Login(props) {
             password: password.trim(),
           };
           axios
-            .post("http://localhost:9000/auth/login", newValues)
+            .post(
+              "https://secure-recipes-backend.herokuapp.com/auth/login",
+              newValues
+            )
             .then((resp) => {
               const token = resp.data.token;
 

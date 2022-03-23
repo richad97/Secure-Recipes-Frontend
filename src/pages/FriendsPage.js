@@ -17,7 +17,7 @@ function FriendsPage(props) {
     let token = localStorage.getItem("token");
 
     axios
-      .post("http://localhost:9000/api/friends", {
+      .post("https://secure-recipes-backend.herokuapp.com/api/friends", {
         token,
       })
       .then((resp) => {

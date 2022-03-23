@@ -27,10 +27,13 @@ function ResetPasswordFinal() {
         validationSchema={ResetPasswordFinalSchema}
         onSubmit={(values) => {
           axios
-            .post("http://localhost:9000/api/users/resetpassword", {
-              emailToken: token,
-              newPassword: values.password.trim(),
-            })
+            .post(
+              "https://secure-recipes-backend.herokuapp.com/api/users/resetpassword",
+              {
+                emailToken: token,
+                newPassword: values.password.trim(),
+              }
+            )
             .then((resp) => {
               setSuccess(true);
             })

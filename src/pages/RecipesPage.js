@@ -30,7 +30,7 @@ function Recipes(props) {
     const token = localStorage.getItem("token");
 
     axios
-      .post("http://localhost:9000/api/recipes", {
+      .post("https://secure-recipes-backend.herokuapp.com/api/recipes", {
         token,
       })
       .then((resp) => {

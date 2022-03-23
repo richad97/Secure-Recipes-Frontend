@@ -71,7 +71,10 @@ function Register() {
             password: password.trim(),
           };
           axios
-            .post("http://localhost:9000/auth/register", newValues)
+            .post(
+              "https://secure-recipes-backend.herokuapp.com/auth/register",
+              newValues
+            )
             .then((resp) => {
               setIsLoading(false);
               navigate("/confirmation");

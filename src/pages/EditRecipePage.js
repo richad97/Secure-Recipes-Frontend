@@ -138,7 +138,10 @@ function EditRecipe(props) {
           };
           if (token) {
             axios
-              .put(`http://localhost:9000/api/recipes/edit/${id}`, newValues)
+              .put(
+                `https://secure-recipes-backend.herokuapp.com/api/recipes/edit/${id}`,
+                newValues
+              )
               .then((resp) => {
                 navigate("/recipes");
                 setDisplayLeft(true);

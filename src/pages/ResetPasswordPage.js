@@ -24,7 +24,7 @@ function ResetPassword() {
           const { email } = values;
           axios
             .get(
-              `http://localhost:9000/api/users/resetpassword/${email.trim()}`
+              `https://secure-recipes-backend.herokuapp.com/api/users/resetpassword/${email.trim()}`
             )
             .then((resp) => {
               setIsLoading(false);
