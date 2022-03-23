@@ -39,7 +39,7 @@ function DeleteMessage(props) {
               const token = localStorage.getItem("token");
               axios
                 .delete(
-                  `http://localhost:9000/api/recipes/delete/${recipeID}`,
+                  `https://secure-recipes-backend.herokuapp.com/api/recipes/delete/${recipeID}`,
                   { data: { token } }
                 )
                 .then((resp) => {

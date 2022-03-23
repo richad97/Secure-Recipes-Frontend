@@ -33,7 +33,7 @@ function DeleteFriendMessage(props) {
 
               axios
                 .delete(
-                  `http://localhost:9000/api/friends/delete/${friendID}`,
+                  `https://secure-recipes-backend.herokuapp.com/api/friends/delete/${friendID}`,
                   { data: { token } }
                 )
                 .then((resp) => {
