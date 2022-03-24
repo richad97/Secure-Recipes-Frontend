@@ -1,6 +1,6 @@
 {
   "name": "secret-recipes-frontend",
-  "homepage": "https://richad97.github.io/Secure-Recipes-Frontend",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
