@@ -77,6 +77,8 @@ function Register() {
               navigate("/confirmation");
             })
             .catch((err) => {
+              console.log(err);
+              console.dir(err);
               setIsLoading(false);
               let recievedErr = err.response.data.message;
               setServerError(recievedErr);
