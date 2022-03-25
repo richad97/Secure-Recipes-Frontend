@@ -29,6 +29,9 @@
 .auth-forms-btn {
   margin-bottom: 0.5rem;
 }
+.auth-form-links {
+  color: white;
+}
 @media only screen and (max-width: 790px) {
   #login-main form,
   #addfriend-main form,

@@ -80,7 +80,7 @@ function Register() {
               navigate("/confirmation");
             })
             .catch((err) => {
-              console.log(err);
+              console.dir(err);
               setIsLoading(false);
               let recievedErr = err.response.data.error;
               setServerError(recievedErr);
@@ -199,7 +199,7 @@ function Register() {
                 Register
               </button>
             )}
-            <Link className="form-a" to="/login">
+            <Link className="form-a auth-form-links" to="/login">
               Already a User?
             </Link>
           </Form>
