@@ -9,7 +9,7 @@ function Home(props) {
       <img alt="svg" src={svg1} />
 
       <h1>Secure Your Recipes Today</h1>
-      <div>
+      <div style={{ width: "100%" }}>
         {props.isAuth ? (
           <button
             onClick={() => {

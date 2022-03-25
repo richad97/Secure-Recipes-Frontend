@@ -42,9 +42,9 @@ function Login(props) {
               Navigate("/recipes");
             })
             .catch((err) => {
+              console.dir(err);
               setIsLoading(false);
               const errMessage = err.response.data.error;
-              console.log(errMessage);
               setServerError(errMessage);
             });
         }}

@@ -32,7 +32,7 @@ function ResetPassword() {
             })
             .catch((err) => {
               setIsLoading(false);
-              let recievedError = err.response.data.message;
+              let recievedError = err.response.data.error;
               setServerError(recievedError);
             });
         }}
@@ -73,7 +73,7 @@ function ResetPassword() {
                   </label>
                 </div>
                 {serverError ? (
-                  <p className="error-val">{serverError}</p>
+                  <p className="error-val">Server Error: {serverError}</p>
                 ) : null}
                 <div className="reset-pass-btn-cont">
                   {isLoading ? (

@@ -36,17 +36,15 @@ function Recipes(props) {
       .then((resp) => {
         const recievedData = resp.data;
 
-        if (!recievedData.message) {
-          setSelectedRecipe({ ...recievedData[0] });
-          setUserRecipes(recievedData);
-        } else {
-          setServerMessage(recievedData.message);
-          setSelectedRecipe({});
-          setUserRecipes([]);
-        }
+        setSelectedRecipe({ ...recievedData[0] });
+        setUserRecipes(recievedData);
       })
       .catch((err) => {
-        console.log(err);
+        console.dir(err);
+        let recievedErr = err.response.data.error;
+        setServerMessage(recievedErr);
+        setSelectedRecipe({});
+        setUserRecipes([]);
       });
   }, [isDeleted]);
 

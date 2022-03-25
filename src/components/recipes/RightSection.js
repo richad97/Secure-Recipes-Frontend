@@ -37,7 +37,6 @@ function RightSection(props) {
   }, []);
 
   return (
-    // <section id={onPhone ? "display-none" : "section-2"}>
     <section
       id={(() => {
         if (onPhone) {

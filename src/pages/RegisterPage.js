@@ -79,7 +79,7 @@ function Register() {
             .catch((err) => {
               console.log(err);
               setIsLoading(false);
-              let recievedErr = err.response.data.message;
+              let recievedErr = err.response.data.error;
               setServerError(recievedErr);
             });
         }}

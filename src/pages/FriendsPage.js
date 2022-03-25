@@ -24,17 +24,14 @@ function FriendsPage(props) {
         const friendsList = resp.data.usersFriends;
         const shareToken = resp.data.shareToken;
         const recievedData = resp.data;
-        console.log("u");
 
-        if (!recievedData.message) {
-          setFriends([...friendsList]);
-          setShareToken(shareToken);
-        } else {
-          setServerMessage(recievedData.message);
-        }
+        setFriends([...friendsList]);
+        setShareToken(shareToken);
       })
       .catch((err) => {
-        console.log(err);
+        const recievedData = err.response.data.error;
+        console.log(recievedData);
+        setServerMessage(recievedData);
       });
   }, [change]);
 
