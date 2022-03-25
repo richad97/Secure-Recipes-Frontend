@@ -13,6 +13,7 @@ const LoginPageSchema = Yup.object().shape({
 
 function Login(props) {
   const [serverError, setServerError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { isAuth, setAuth } = props;
   const Navigate = useNavigate();
 
@@ -25,6 +26,7 @@ function Login(props) {
         }}
         validationSchema={LoginPageSchema}
         onSubmit={(values) => {
+          setIsLoading(true);
           const { username, password } = values;
           const newValues = {
             username: username.trim(),
@@ -36,15 +38,16 @@ function Login(props) {
               newValues
             )
             .then((resp) => {
+              setIsLoading(false);
               const token = resp.data.token;
-
               localStorage.setItem("token", token);
               setAuth(true);
               Navigate("/recipes");
             })
             .catch((err) => {
+              console.dir(err);
+              setIsLoading(false);
               const errMessage = err.response.data.error;
-              console.log(errMessage);
               setServerError(errMessage);
             });
         }}
@@ -87,13 +90,26 @@ function Login(props) {
                 <p className="error-val">Server Error: {serverError}</p>
               ) : null}
             </div>
-            <button
-              id="log-btn"
-              className="form-button btn-global auth-forms-btn"
-              type="submit"
-            >
-              Login
-            </button>
+
+            {isLoading ? (
+              <div
+                className="loader"
+                style={{
+                  height: "12px",
+                  width: "12px",
+                  margin: "0 auto",
+                  marginBottom: "1rem",
+                }}
+              ></div>
+            ) : (
+              <button
+                id="log-btn"
+                className="form-button btn-global auth-forms-btn"
+                type="submit"
+              >
+                Login
+              </button>
+            )}
             <Link className="form-a auth-form-links" to="/resetpassword">
               Forgot Password?
             </Link>

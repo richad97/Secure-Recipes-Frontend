@@ -20,6 +20,7 @@ function FriendsRecipes(props) {
   } = props;
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const { friendUsername } = useParams();
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth <= 790) {
@@ -29,6 +30,7 @@ function FriendsRecipes(props) {
 
     const token = localStorage.getItem("token");
 
+    setLoading(true);
     axios
       .post(
         `https://secure-recipes-backend.herokuapp.com/api/friends/recipes/${friendUsername}`,
@@ -37,6 +39,7 @@ function FriendsRecipes(props) {
         }
       )
       .then((resp) => {
+        setLoading(false);
         const recievedData = resp.data;
 
         if (!recievedData.message) {
@@ -49,6 +52,7 @@ function FriendsRecipes(props) {
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.dir(err);
       });
   }, []);
