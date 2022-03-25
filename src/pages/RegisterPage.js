@@ -12,7 +12,7 @@ const RegisterSchema = Yup.object().shape({
     .required("Required"),
   last_name: Yup.string().max(50, "Last name exceeds character limit"),
   username: Yup.string()
-    .min(3, "Must be minimum of 3 characters")
+    .min(6, "Must be minimum of 6 characters")
     .max(50, "Username exceeds character limit")
     .required("Required"),
   email: Yup.string().email("Invalid e-mail format").required("Required"),
@@ -78,7 +78,6 @@ function Register() {
             })
             .catch((err) => {
               console.log(err);
-              console.dir(err);
               setIsLoading(false);
               let recievedErr = err.response.data.message;
               setServerError(recievedErr);
