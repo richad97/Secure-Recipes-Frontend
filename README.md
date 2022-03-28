@@ -2,7 +2,7 @@
 ## Host - https://meek-klepon-9ced87.netlify.app/
 Client for Secure Recipes Web Application
 ## Description
-CRUD application that allows users to securely store their recipes within an account. 
+CRUD application that allows users to securely store and share their recipes within an account. 
 ## Summary
 &nbsp; &nbsp; Although this app is pretty basic in itself, it's main purpose is to showcase the skills that I currently have as a web developer. I've implemented a backend system that communicates to the client everytime there's a server error. If you register a new account, the app sends you an e-mail for confirmation to prevent spam accounts. Also if you want to reset a password to an account, an e-mail will get sent to the account with a JWT. The frontend is connected to a cloudinary widget that allows users to upload photos from anywhere on the net, then scales the images. I am using heroku to host my backend so the first response of the day will always be slow. For that, I've added loading spinners wherever neccessary to let the user know that there action is being taken care of. Forms come with frontend validation while the backend currently only checks if the value is there or not. <br/>
 &nbsp; &nbsp; The app isn't perfect. There's some bugs I know about and probably alot more I don't. The app is responsive to a point but it can be better. This was the price of not having a second library like Bootstrap to handle this for me. The file structure on both ends definately isn't industry standard. For example my backend file structure doesn't include a utils or config folder. I also divided every folder by model for some reason, and included routers and middlewares in that folder. <br/>
