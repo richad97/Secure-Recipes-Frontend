@@ -43,7 +43,7 @@ function ResetPassword() {
               <>
                 <h2 className="form-h2 auth-forms-h2">Reset Password</h2>
                 <hr className="auth-forms-hr" />
-                <p className="form-p" style={{ textAlign: "center" }}>
+                <p className="form-p">
                   Please use link sent through e-mail to proceed.
                 </p>
               </>
@@ -51,10 +51,7 @@ function ResetPassword() {
               <div>
                 <h2 className="form-h2 auth-forms-h2">Reset Password</h2>
                 <hr className="auth-forms-hr" />
-                <p
-                  className="form-p"
-                  style={{ textAlign: "center", whiteSpace: "nowrap" }}
-                >
+                <p className="form-p">
                   Please enter e-mail used for the account.
                 </p>
                 <div className="auth-forms-middle-cont">
@@ -77,14 +74,7 @@ function ResetPassword() {
                 ) : null}
                 <div className="reset-pass-btn-cont">
                   {isLoading ? (
-                    <div
-                      className="loader"
-                      style={{
-                        marginTop: "2rem",
-                        width: "12px",
-                        height: "12px",
-                      }}
-                    ></div>
+                    <div className="loader"></div>
                   ) : (
                     <button className="btn-global" type="submit">
                       Submit
