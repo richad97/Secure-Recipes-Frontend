@@ -1,0 +1,35 @@
+#register-form {
+  display: flex;
+  flex-direction: row;
+}
+#register-form .left-section {
+  width: 50%;
+}
+#register-form .right-section {
+  width: 50%;
+  border-left: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#register-form .left-section .lr-wrap .lr-input-wrap {
+  height: 23rem;
+  overflow-x: hidden;
+}
+#register-form .left-section .lr-wrap .lr-input-wrap .r-flname-wrap {
+  display: flex;
+  width: 100%;
+}
+#register-form .left-section .lr-wrap .lr-input-wrap .r-flname-wrap label {
+  width: 100%;
+}
+#register-form .lr-wrap .link-wrap a {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 1rem;
+}
+#register-form .lr-wrap .lr-btn-wrap {
+  position: relative;
+  top: 2rem;
+}

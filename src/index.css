@@ -2,6 +2,8 @@
   --main-nav-bg: rgb(255, 255, 255);
   --main-body-bg: rgb(255, 255, 255);
   --home-card-border: 1px solid rgba(0, 0, 0, 0.145);
+  --home-section-border-radius: 0 0 4rem 4rem;
+  --home-section-box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
   --home-card-icon1: ;
   --home-card-icon2: ;
   --home-card-icon3: ;
@@ -10,4 +12,7 @@ body {
   margin: 0;
   background-color: var(--main-body-bg);
   font-family: "Noto Sans", sans-serif;
+}
+.label-error {
+  color: red;
 }

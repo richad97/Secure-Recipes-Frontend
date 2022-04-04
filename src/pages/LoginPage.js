@@ -1,10 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/components/authForms.css";
-import "../styles/components/form.css";
-import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import svg1 from "../assets/3.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
 import { useState } from "react";
+import "../styles/pages/LoginPage.css";
+import "../styles/components/authForms.css";
+import "../styles/components/form.css";
 
 const LoginPageSchema = Yup.object().shape({
   username: Yup.string().required("Required"),
@@ -18,7 +20,7 @@ function Login(props) {
   const Navigate = useNavigate();
 
   return (
-    <main id="login-main" className="auth-forms">
+    <main id="login-main">
       <Formik
         initialValues={{
           username: "",
@@ -53,69 +55,71 @@ function Login(props) {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="form">
-            <h2 className="form-h2 auth-forms-h2">Login</h2>
+          <Form id="login-form" className="lr-forms">
+            <section className="left-section">
+              <img height="300" width="300" alt="svg" src={svg1} />
+            </section>
 
-            <hr className="auth-forms-hr" />
+            <section className="right-section">
+              <h2>Login</h2>
 
-            <div className="auth-forms-middle-cont">
-              <label className="form-label">
-                <div>
-                  <p className="form-p">Username:</p>
-                  {errors.username && touched.username ? (
-                    <p className="error-val">{errors.username}</p>
+              <hr />
+
+              <div className="lr-wrap">
+                <div className="lr-input-wrap">
+                  <label>
+                    <div className="lr-label-wrap">
+                      <p className="label-title">Username:</p>
+                      {errors.username && touched.username ? (
+                        <p className="label-error">{errors.username}</p>
+                      ) : null}
+                    </div>
+                    <Field
+                      name="username"
+                      type="text"
+                      placeholder="Enter username here..."
+                    />
+                  </label>
+
+                  <label>
+                    <div className="lr-label-wrap">
+                      <p className="label-title">Password:</p>
+                      {errors.password && touched.password ? (
+                        <p className="label-error">{errors.password}</p>
+                      ) : null}
+                    </div>
+                    <Field
+                      name="password"
+                      type="password"
+                      placeholder="Enter password here..."
+                    />
+                  </label>
+
+                  {serverError ? (
+                    <p className="">Server Error: {serverError}</p>
                   ) : null}
                 </div>
-                <Field
-                  className="form-input auth-forms-inputs"
-                  name="username"
-                  placeholder="Enter username here..."
-                />
-              </label>
-              <label className="form-label">
-                <div>
-                  <p className="form-p">Password:</p>
-                  {errors.password && touched.password ? (
-                    <p className="error-val">{errors.password}</p>
-                  ) : null}
-                </div>
-                <Field
-                  className="form-input auth-forms-inputs"
-                  name="password"
-                  type="password"
-                  placeholder="Enter password here..."
-                />
-              </label>
-              {serverError ? (
-                <p className="error-val">Server Error: {serverError}</p>
-              ) : null}
-            </div>
 
-            {isLoading ? (
-              <div
-                className="loader"
-                style={{
-                  height: "12px",
-                  width: "12px",
-                  margin: "0 auto",
-                  marginBottom: "1rem",
-                }}
-              ></div>
-            ) : (
-              <button
-                id="log-btn"
-                className="form-button btn-global auth-forms-btn"
-                type="submit"
-              >
-                Login
-              </button>
-            )}
-            <Link className="form-a auth-form-links" to="/resetpassword">
-              Forgot Password?
-            </Link>
-            <Link className="form-a auth-form-links" to="/register">
-              Not a User?
-            </Link>
+                <div className="lr-xtr-links">
+                  <Link className="" to="/resetpassword">
+                    Forgot Password?
+                  </Link>
+                  <Link className="" to="/register">
+                    Not a User?
+                  </Link>
+                </div>
+
+                <div className="lr-btn-wrap">
+                  {isLoading ? (
+                    <div className="loader"></div>
+                  ) : (
+                    <button id="log-btn" className="" type="submit">
+                      Login
+                    </button>
+                  )}
+                </div>
+              </div>
+            </section>
           </Form>
         )}
       </Formik>

@@ -1,0 +1,18 @@
+#login-form {
+  display: flex;
+  flex-direction: row;
+}
+#login-form .left-section {
+  width: 50%;
+  border-right: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#login-form .right-section {
+  width: 50%;
+}
+#login-form .lr-wrap .lr-btn-wrap {
+  position: relative;
+  top: 12rem;
+}
