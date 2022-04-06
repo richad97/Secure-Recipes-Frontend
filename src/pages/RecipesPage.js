@@ -1,10 +1,10 @@
-import "../styles/pages/RecipesPage.css";
+import axios from "axios";
 import LeftSection from "../components/recipes/LeftSection";
 import RightSection from "../components/recipes/RightSection";
 import LoadingComp from "../components/LoadingComp";
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { RecipeContext } from "../RecipeContext";
+import "../styles/pages/RecipesPage.css";
 
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
@@ -51,16 +51,8 @@ function Recipes(props) {
   return (
     <main id="recipes-main">
       {serverMessage ? (
-        <form
-          style={{ width: "30%", height: "15%", marginTop: "5rem" }}
-          className="form"
-        >
-          <h2
-            className="form-h2 auth-forms-h2"
-            style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
-          >
-            Server Message: {serverMessage}
-          </h2>
+        <form>
+          <h2>Server Message: {serverMessage}</h2>
         </form>
       ) : (
         <>

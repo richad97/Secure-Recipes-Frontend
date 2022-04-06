@@ -187,7 +187,7 @@ function Register() {
                   ) : null}
                 </div>
 
-                <div className="link-wrap">
+                <div className="lr-xtr-links">
                   <Link to="/login">Already a User?</Link>
                 </div>
 

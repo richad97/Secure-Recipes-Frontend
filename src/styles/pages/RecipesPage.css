@@ -1,0 +1,13 @@
+#recipes-main {
+  display: flex;
+  height: 40rem;
+}
+#recipes-main section {
+  margin: 2rem;
+  border-radius: 0.2rem;
+}
+#recipes-main section h1,
+#recipes-main section h2,
+#recipes-main section p {
+  margin: 0;
+}

@@ -1,8 +1,8 @@
-import "../../styles/components/recipes/LeftSection.css";
-import { BiSearch } from "react-icons/bi";
 import RecipeComp from "./RecipeComp";
+import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "../../styles/components/recipes/LeftSection.css";
 
 function LeftSection(props) {
   const navigate = useNavigate();
@@ -24,17 +24,17 @@ function LeftSection(props) {
   };
 
   return (
-    <section id={displayLeft ? "section-1" : "display-none"}>
-      <label id="search-bar-container">
+    <section id="left-section">
+      <label id="ls-search-bar">
         <BiSearch />
         <input
-          id="search-bar"
           type="search"
           placeholder="Search for your recipes here..."
           onChange={handleInput}
         ></input>
       </label>
-      <div id="recipe-container">
+
+      <div className="recipe-comp-container">
         {isLoading ? (
           <p>Loading</p>
         ) : (
@@ -65,14 +65,15 @@ function LeftSection(props) {
       </div>
 
       {viewOnly ? (
-        <div className="ls-no-btn"></div>
+        <div></div>
       ) : (
         <button
+          id="add-recipe-btn"
           onClick={() => {
             navigate("/recipes/create");
           }}
         >
-          <p className="ls-add-btn">Add Recipe </p>
+          Add Recipe
         </button>
       )}
     </section>

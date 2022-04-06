@@ -1,5 +1,5 @@
-import "../../styles/components/recipes/RecipeComp.css";
 import { useEffect, useState } from "react";
+import "../../styles/components/recipes/RecipeComp.css";
 
 function RecipeComp(props) {
   const [convertedUTC, setConvertedUTC] = useState(null);
@@ -30,9 +30,9 @@ function RecipeComp(props) {
   }, []);
 
   return (
-    <div className="recipe-comp" onClick={handleClick}>
-      <h4>{recipe.title}</h4>
-      <p className="comm1">{recipe.description}</p>
+    <div id="recipe-comp" onClick={handleClick}>
+      <h2>{recipe.title}</h2>
+      <p>{recipe.description}</p>
       <hr></hr>
       <div>
         <p>{recipe.prep_time} Minutes</p>
