@@ -34,7 +34,7 @@ function RecipeComp(props) {
       <h2>{recipe.title}</h2>
       <p>{recipe.description}</p>
       <hr></hr>
-      <div>
+      <div className="min-date2">
         <p>{recipe.prep_time} Minutes</p>
         <p>Created: {convertedUTC}</p>
       </div>

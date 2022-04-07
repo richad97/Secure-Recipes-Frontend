@@ -1,0 +1,122 @@
+#create-recipe-main,
+#edit-recipe-main {
+  border-top: 1px solid black;
+}
+.ce-forms {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem 12rem;
+  display: flex;
+  flex-direction: column;
+}
+.ce-forms header {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+.ce-forms header span {
+  border-right: 1px solid black;
+}
+.ce-forms header span svg {
+  height: 4rem;
+  width: 4rem;
+}
+.ce-forms header h2 {
+  margin-left: 1rem;
+}
+.ce-forms .inputs-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+.ce-forms .inputs-container .first-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: 0 2rem;
+}
+.ce-forms .inputs-container .first-col .photo-cont {
+  height: 12rem;
+  width: 100%;
+  padding: 1rem 0;
+  border: 1px solid black;
+}
+.ce-forms .inputs-container .first-col .photo-cont p {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ce-forms .inputs-container .first-col .photo-cont img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.ce-forms .inputs-container .first-col .upload-btn-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.ce-forms .inputs-container .first-col .upload-btn-cont p {
+  margin: 0;
+}
+.ce-forms .inputs-container .first-col .upload-btn-cont button {
+  padding: 0;
+}
+.ce-forms .inputs-container .mid-col {
+  width: 30%;
+}
+.ce-forms .inputs-container .last-col {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.ce-forms .inputs-container .mid-col,
+.ce-forms .inputs-container .last-col {
+  margin: 0 2rem;
+}
+.ce-forms .inputs-container .mid-col label input,
+.ce-forms .inputs-container .last-col label input {
+  height: 7%;
+  width: 90%;
+}
+.ce-forms .inputs-container .mid-col label .title-err-cont p,
+.ce-forms .inputs-container .last-col label .title-err-cont p {
+  margin-bottom: 0.25rem;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-ing-cont {
+  display: flex;
+  justify-content: space-between;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-ing-cont input {
+  width: 88%;
+  height: 1.55rem;
+}
+.ce-forms .inputs-container .last-col .disable-btn-cont {
+  border: 1px solid black;
+  overflow-y: scroll;
+  height: 7.23rem;
+  padding: 0rem 0.5rem;
+  margin-top: 1rem;
+}
+.ce-forms .inputs-container .last-col .disable-btn-cont .del-ing-cont {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+.ce-forms .inputs-container .last-col .disable-btn-cont .del-ing-cont input {
+  width: 88%;
+}
+.ce-forms .inputs-container .last-col #inst-cont textarea {
+  width: 100%;
+  height: 7.23rem;
+  resize: none;
+}
+.ce-forms .btn-cont {
+  display: flex;
+  justify-content: end;
+  margin: 0 1.75rem;
+}

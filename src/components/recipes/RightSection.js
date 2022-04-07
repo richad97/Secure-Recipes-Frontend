@@ -59,6 +59,7 @@ function RightSection(props) {
                   <p>No Photo Available</p>
                 )}
               </div>
+
               <div className="rest-info">
                 <p>Category: {category}</p>
                 <p>Source: {source}</p>

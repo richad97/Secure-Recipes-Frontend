@@ -16,6 +16,10 @@
 #left-section .recipe-comp-container {
   height: 100%;
 }
+#left-section .recipe-comp-container #recipe-comp .min-date2 {
+  display: flex;
+  justify-content: space-between;
+}
 #left-section #add-recipe-btn {
   display: inline-block;
   height: 4rem;

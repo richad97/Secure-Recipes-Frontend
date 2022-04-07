@@ -15,7 +15,7 @@
   justify-content: space-between;
 }
 #right-section .cont-wrap {
-  height: 190%;
+  height: 90%;
   overflow-y: scroll;
 }
 #right-section .cont-wrap .top-row {
@@ -27,15 +27,33 @@
 #right-section .cont-wrap .top-row .img-cont {
   border: 1px solid black;
   height: 12rem;
-  width: 12rem;
+  width: 40%;
 }
 #right-section .cont-wrap .top-row .img-cont img {
   height: 100%;
   width: 100%;
   object-fit: contain;
 }
+#right-section .cont-wrap .top-row .rest-info {
+  width: 40%;
+}
+#right-section .cont-wrap .top-row .rest-info p {
+  border: 1px solid black;
+  margin-bottom: 1rem;
+}
 #right-section .cont-wrap .bottom-row {
   margin: 0 1rem;
+}
+#right-section .cont-wrap .bottom-row .ingredients {
+  margin-bottom: 1rem;
+}
+#right-section .cont-wrap .bottom-row .ingredients ol {
+  padding: 0;
+}
+#right-section .cont-wrap .bottom-row .ingredients,
+#right-section .cont-wrap .bottom-row .instructions {
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
 }
 
 #right-section .btn-wrap button {

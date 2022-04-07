@@ -1,10 +1,11 @@
 #recipes-main {
   display: flex;
   height: 40rem;
+  border-top: 1px solid black;
 }
 #recipes-main section {
-  margin: 2rem;
   border-radius: 0.2rem;
+  margin: 1rem 2rem;
 }
 #recipes-main section h1,
 #recipes-main section h2,
