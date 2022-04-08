@@ -64,18 +64,20 @@ function LeftSection(props) {
         )}
       </div>
 
-      {viewOnly ? (
-        <div></div>
-      ) : (
-        <button
-          id="add-recipe-btn"
-          onClick={() => {
-            navigate("/recipes/create");
-          }}
-        >
-          Add Recipe
-        </button>
-      )}
+      <div className="btn-wrap">
+        {viewOnly ? (
+          <div></div>
+        ) : (
+          <button
+            className="recipe-btn"
+            onClick={() => {
+              navigate("/recipes/create");
+            }}
+          >
+            Add Recipe
+          </button>
+        )}
+      </div>
     </section>
   );
 }

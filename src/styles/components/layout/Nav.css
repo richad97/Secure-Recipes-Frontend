@@ -1,22 +1,28 @@
 nav {
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.07); */
-  padding: 1rem 0;
   background-color: var(--main-nav-bg);
+  border-bottom: var(--main-nav-border-color);
+  padding: 1rem 0;
   width: 100%;
 }
 .nav-logo svg {
   height: 2rem;
+  fill: rgba(200, 186, 82, 0.5);
   width: 2rem;
 }
 nav ul {
   display: flex;
   justify-content: space-between;
-  margin: 0 15rem;
-  padding: 0;
   list-style-type: none;
+  margin: 0 13.5%;
+  padding: 0;
 }
 nav ul .auth-links-left,
 nav ul .auth-links-right {
+  display: flex;
+}
+nav ul .auth-links-left li,
+nav ul .auth-links-right li {
+  align-items: center;
   display: flex;
 }
 nav ul .auth-links-left li,

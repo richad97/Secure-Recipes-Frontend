@@ -90,6 +90,7 @@ function RightSection(props) {
           {props.viewOnly ? null : (
             <div className="btn-wrap">
               <button
+                className="recipe-btn"
                 onClick={() => {
                   navigate(`/recipes/edit/${recipe_id}`);
                 }}
@@ -97,6 +98,7 @@ function RightSection(props) {
                 Edit
               </button>
               <button
+                className="recipe-btn"
                 onClick={() => {
                   setDeleteMessage(true);
                 }}

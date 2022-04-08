@@ -1,17 +1,17 @@
 #right-section {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 50%;
 }
 #right-section header {
+  background-color: var(--recipe-main-color);
+  border-bottom: var(--recipe-section-border-color);
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid black;
 }
 #right-section header .min-date {
-  margin-top: 0.25rem;
   display: flex;
+  margin-top: 0.25rem;
   justify-content: space-between;
 }
 #right-section .cont-wrap {
@@ -25,7 +25,7 @@
   margin: 1rem 0;
 }
 #right-section .cont-wrap .top-row .img-cont {
-  border: 1px solid black;
+  border: var(--recipe-section-border-color);
   height: 12rem;
   width: 40%;
 }
@@ -38,28 +38,32 @@
   width: 40%;
 }
 #right-section .cont-wrap .top-row .rest-info p {
-  border: 1px solid black;
+  border: var(--recipe-section-border-color);
+  border-radius: 0.15rem;
   margin-bottom: 1rem;
+  padding: 0.25rem 0.5rem;
 }
 #right-section .cont-wrap .bottom-row {
   margin: 0 1rem;
-}
-#right-section .cont-wrap .bottom-row .ingredients {
-  margin-bottom: 1rem;
 }
 #right-section .cont-wrap .bottom-row .ingredients ol {
   padding: 0;
 }
 #right-section .cont-wrap .bottom-row .ingredients,
 #right-section .cont-wrap .bottom-row .instructions {
-  border: 1px solid black;
+  border: var(--recipe-in-border-color);
+  border-radius: 0.15rem;
   padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  min-height: 7rem;
 }
-
-#right-section .btn-wrap button {
-  margin: 1rem;
+#right-section .btn-wrap {
+  background-color: var(--recipe-main-color);
+  border-top: var(--recipe-section-border-color);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
 }
 #right-section .btn-wrap button {
-  height: 3.25rem;
-  width: 45%;
+  width: 40%;
 }

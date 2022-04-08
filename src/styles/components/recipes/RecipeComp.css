@@ -1,5 +1,12 @@
 #recipe-comp {
-  border: 1px solid black;
+  border: var(--recipe-in-border-color);
+  border-radius: 0.25rem;
   margin: 1rem;
   padding: 1rem;
+  transition: 0.2s ease-in-out;
+}
+#recipe-comp:hover {
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }

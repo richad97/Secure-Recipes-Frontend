@@ -1,6 +1,8 @@
 :root {
-  --main-nav-bg: rgb(255, 255, 255);
+  --main-nav-bg: rgb(235, 235, 235);
+  --main-nav-border-color: 1px solid rgba(0, 0, 0, 0.14);
   --main-body-bg: rgb(255, 255, 255);
+
   --home-card-border: 1px solid rgba(0, 0, 0, 0.145);
   --home-section-header-background-color: rgb(255, 255, 255);
   --home-section-sub-section-1-background-color: rgb(232, 237, 255);
@@ -8,12 +10,38 @@
   --home-section-footer-background-color: rgb(54, 54, 54);
   --home-section-border-radius: 0 0 4rem 4rem;
   --home-section-box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+
+  --recipe-main-color: rgb(235, 235, 235);
+  --recipe-main-font-color: rgba(0, 0, 0, 0.75);
+  --recipe-second-font-color: rgba(0, 0, 0, 0.5);
+  --recipe-section-border-color: 1px solid rgba(0, 0, 0, 0.15);
+  --recipe-in-border-color: 1px solid rgba(0, 0, 0, 0.15);
 }
 body {
-  margin: 0;
   background-color: var(--main-body-bg);
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Mukta", sans-serif;
+  margin: 0;
 }
 .label-error {
   color: red;
+}
+a {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+.recipe-btn {
+  background-color: rgb(46, 230, 113);
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5rem;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  height: 2.75rem;
+}
+.recipe-btn:hover {
+  cursor: pointer;
 }

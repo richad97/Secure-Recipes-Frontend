@@ -161,7 +161,9 @@ function EditRecipe(props) {
               <span>
                 <GiChefToque />
               </span>
+
               <h2>Edit Recipe</h2>
+
               {onPhone ? (
                 <button
                   onClick={() => {

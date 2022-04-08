@@ -1,10 +1,10 @@
-import "../styles/components/form.css";
-import "../styles/pages/FriendsPage.css";
+import axios from "axios";
 import { GiChefToque } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../RecipeContext";
-import axios from "axios";
+import "../styles/components/form.css";
+import "../styles/pages/FriendsPage.css";
 
 function FriendsPage(props) {
   const navigate = useNavigate();
@@ -36,27 +36,20 @@ function FriendsPage(props) {
   }, [change]);
 
   return (
-    <main id="crecipe-main">
+    <main id="friends-main">
       {serverMessage ? (
-        <form
-          style={{ width: "30%", height: "15%", marginTop: "5rem" }}
-          className="form"
-        >
-          <h2
-            className="form-h2 auth-forms-h2"
-            style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
-          >
-            Server Message: {serverMessage}
-          </h2>
+        <form>
+          <h2>Server Message: {serverMessage}</h2>
         </form>
       ) : (
-        <div className="form">
-          <header className="form-header ec-header">
-            <span className="ec-logo">
+        <div className="ce-forms">
+          <header>
+            <span>
               <GiChefToque />
             </span>
-            <h2 className="form-h2 ec-h2">Friends</h2>
+            <h2>Friends</h2>
           </header>
+
           <table>
             <thead>
               <tr>
@@ -74,7 +67,6 @@ function FriendsPage(props) {
                     <td>{friend.username}</td>
                     <td>
                       <button
-                        className="btn-sm"
                         onClick={() => {
                           navigate(`/recipes/${friend.username}`);
                         }}
@@ -88,7 +80,6 @@ function FriendsPage(props) {
                           props.setFriendDeleteMessage(true);
                           props.setFriendID(friend.id);
                         }}
-                        className="btn-sm"
                       >
                         Delete
                       </button>
@@ -98,15 +89,16 @@ function FriendsPage(props) {
               })}
             </tbody>
           </table>
-          <div className="friends-btn-cont">
+
+          <div>
             <p>
               Share Token: <span>{shareToken}</span>
             </p>
+
             <button
               onClick={() => {
                 navigate("/addfriend");
               }}
-              className="btn-global friends-btn-cont"
             >
               Add Friend
             </button>

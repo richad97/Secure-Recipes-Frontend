@@ -1,7 +1,7 @@
+import * as Yup from "yup";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
-import * as Yup from "yup";
 import "../styles/components/form.css";
 import "../styles/pages/ResetPasswordPage.css";
 
@@ -15,7 +15,7 @@ function ResetPassword() {
   const [serverError, setServerError] = useState("");
 
   return (
-    <main id="resetpassword-main" className="auth-forms">
+    <main id="resetpassword-main">
       <Formik
         initialValues={{ email: "" }}
         validationSchema={ResetPasswordSchema}
@@ -38,50 +38,45 @@ function ResetPassword() {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="form">
+          <Form className="single-forms">
             {submitted ? (
               <>
-                <h2 className="form-h2 auth-forms-h2">Reset Password</h2>
-                <hr className="auth-forms-hr" />
-                <p className="form-p">
-                  Please use link sent through e-mail to proceed.
-                </p>
+                <h2>Reset Password</h2>
+                <hr />
+                <p>Please use link sent through e-mail to proceed.</p>
               </>
             ) : (
-              <div>
-                <h2 className="form-h2 auth-forms-h2">Reset Password</h2>
-                <hr className="auth-forms-hr" />
-                <p className="form-p">
-                  Please enter e-mail used for the account.
-                </p>
-                <div className="auth-forms-middle-cont">
-                  <label className="form-label">
-                    <div>
-                      <p className="form-p">E-Mail:</p>
+              <>
+                <h2>Reset Password</h2>
+
+                <hr />
+
+                <p>Please enter e-mail used for the account.</p>
+
+                <div className="inputs-container">
+                  <label>
+                    <div className="title-err-cont">
+                      <p>E-Mail:</p>
+
                       {errors.email && touched.email ? (
-                        <p className="error-val">{errors.email}</p>
+                        <p>{errors.email}</p>
                       ) : null}
                     </div>
-                    <Field
-                      className="form-input auth-forms-inputs"
-                      name="email"
-                      placeholder="Enter email here..."
-                    />
+
+                    <Field name="email" placeholder="Enter email here..." />
                   </label>
                 </div>
-                {serverError ? (
-                  <p className="error-val">Server Error: {serverError}</p>
-                ) : null}
-                <div className="reset-pass-btn-cont">
+
+                {serverError ? <p>Server Error: {serverError}</p> : null}
+
+                <div className="btn-wrap">
                   {isLoading ? (
-                    <div className="loader"></div>
+                    <div></div>
                   ) : (
-                    <button className="btn-global" type="submit">
-                      Submit
-                    </button>
+                    <button type="submit">Submit</button>
                   )}
                 </div>
-              </div>
+              </>
             )}
           </Form>
         )}

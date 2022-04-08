@@ -3,11 +3,11 @@
   flex-direction: row;
 }
 #login-form .left-section {
-  width: 50%;
+  align-items: center;
   border-right: 1px solid black;
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 50%;
 }
 #login-form .right-section {
   width: 50%;

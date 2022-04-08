@@ -6,11 +6,11 @@
   width: 50%;
 }
 #register-form .right-section {
-  width: 50%;
+  align-items: center;
   border-left: 1px solid black;
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 50%;
 }
 #register-form .left-section .lr-wrap .lr-input-wrap {
   height: 23rem;
