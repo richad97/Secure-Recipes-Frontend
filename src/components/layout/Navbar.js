@@ -12,13 +12,11 @@ function Navbar(props) {
       <ul>
         <div className="auth-links-left">
           {isAuth ? null : (
-            <div>
-              <li>
-                <Link to="/" className="nav-logo">
-                  <img alt="svg" src={main} />
-                </Link>
-              </li>
-            </div>
+            <li>
+              <Link to="/" className="nav-logo">
+                <img alt="svg" src={main} />
+              </Link>
+            </li>
           )}
           {isAuth ? (
             <li className="links-not-logo">
@@ -36,11 +34,7 @@ function Navbar(props) {
           <div>
             <li>
               <Link to="/" className="nav-logo">
-                <img
-                  style={{ position: "relative", right: "4rem" }}
-                  alt="svg"
-                  src={main}
-                />
+                <img alt="svg" src={main} />
               </Link>
             </li>
           </div>

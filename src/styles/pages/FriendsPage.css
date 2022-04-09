@@ -1,2 +1,35 @@
-#friends-main {
+#friends-main .ce-forms .main-wrap {
+  margin: 1rem;
+}
+#friends-main .ce-forms table {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.121);
+}
+#friends-main .ce-forms table thead tr th {
+  color: rgb(62, 62, 62);
+  background-color: rgb(235, 235, 235);
+}
+#friends-main .ce-forms table tbody tr {
+  text-align: center;
+}
+#friends-main .ce-forms table tbody tr td button {
+  font-size: 0.85rem;
+  height: 1.75rem;
+  font-weight: 600;
+  margin: 0.75rem 0;
+}
+#friends-main .ce-forms .btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+  margin-top: 1rem;
+}
+#friends-main .ce-forms .btn-wrap p span {
+  font-weight: bold;
+  padding-left: 1rem;
+}
+#friends-main .ce-forms .btn-wrap button {
+  font-size: 0.75rem;
+  height: 2rem;
 }

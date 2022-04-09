@@ -1,4 +1,5 @@
 import axios from "axios";
+import main from "../assets/main.svg";
 import { GiChefToque } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -44,64 +45,68 @@ function FriendsPage(props) {
       ) : (
         <div className="ce-forms">
           <header>
-            <span>
-              <GiChefToque />
-            </span>
+            <img src={main} />
             <h2>Friends</h2>
           </header>
 
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>View Recipes</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {friends.map((friend) => {
-                return (
-                  <tr key={friend.id}>
-                    <td>{friend.id}</td>
-                    <td>{friend.username}</td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          navigate(`/recipes/${friend.username}`);
-                        }}
-                      >
-                        Recipes
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          props.setFriendDeleteMessage(true);
-                          props.setFriendID(friend.id);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="main-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>View Recipes</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {friends.map((friend) => {
+                  return (
+                    <tr key={friend.id}>
+                      <td>{friend.id}</td>
+                      <td>{friend.username}</td>
+                      <td>
+                        <button
+                          className="recipe-btn"
+                          onClick={() => {
+                            navigate(`/recipes/${friend.username}`);
+                          }}
+                        >
+                          Recipes
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          className="recipe-btn"
+                          style={{ backgroundColor: "rgb(239, 87, 87)" }}
+                          onClick={() => {
+                            props.setFriendDeleteMessage(true);
+                            props.setFriendID(friend.id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
 
-          <div>
-            <p>
-              Share Token: <span>{shareToken}</span>
-            </p>
+            <div className="btn-wrap">
+              <p>
+                Share Token: <span>{shareToken}</span>
+              </p>
 
-            <button
-              onClick={() => {
-                navigate("/addfriend");
-              }}
-            >
-              Add Friend
-            </button>
+              <button
+                className="recipe-btn"
+                onClick={() => {
+                  navigate("/addfriend");
+                }}
+              >
+                Add Friend
+              </button>
+            </div>
           </div>
         </div>
       )}
