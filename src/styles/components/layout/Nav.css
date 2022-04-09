@@ -4,9 +4,8 @@ nav {
   padding: 1rem 0;
   width: 100%;
 }
-.nav-logo svg {
+.nav-logo img {
   height: 2rem;
-  fill: rgba(200, 186, 82, 0.5);
   width: 2rem;
 }
 nav ul {

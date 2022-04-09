@@ -10,8 +10,7 @@
 }
 #recipes-main section {
   border: var(--recipe-section-border-color);
-  border-radius: 0.25rem;
-  box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: var(--recipe-box-shadow);
   margin: 1rem 2rem;
 }
 #recipes-main section h1,

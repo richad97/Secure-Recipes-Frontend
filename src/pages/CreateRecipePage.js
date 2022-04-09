@@ -1,9 +1,9 @@
 import * as Yup from "yup";
 import axios from "axios";
+import main from "../assets/main.svg";
 import { useState, useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
-import { GiChefToque } from "react-icons/gi";
 import "../styles/components/form.css";
 import "../styles/pages/CreateRecipePage.css";
 
@@ -141,9 +141,7 @@ function CreateRecipe(props) {
         {({ errors, touched }) => (
           <Form id="create-recipe-form" className="ce-forms">
             <header>
-              <span>
-                <GiChefToque />
-              </span>
+              <img alt="svg" src={main} />
               <h2>Create Recipe</h2>
               {onPhone ? (
                 <button
@@ -169,6 +167,7 @@ function CreateRecipe(props) {
                     <div className=""></div>
                   ) : (
                     <button
+                      className="recipe-btn"
                       type="button"
                       onClick={() => {
                         setWidgetLoading(true);
@@ -305,7 +304,9 @@ function CreateRecipe(props) {
             </div>
 
             <div className="btn-cont">
-              <button type="submit">Create Recipe</button>
+              <button className="recipe-btn" type="submit">
+                Create
+              </button>
             </div>
           </Form>
         )}

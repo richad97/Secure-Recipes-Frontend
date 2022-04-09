@@ -25,7 +25,7 @@
   margin: 1rem 0;
 }
 #right-section .cont-wrap .top-row .img-cont {
-  border: var(--recipe-section-border-color);
+  /* border: var(--recipe-section-border-color); */
   height: 12rem;
   width: 40%;
 }
@@ -65,5 +65,8 @@
   padding: 1rem;
 }
 #right-section .btn-wrap button {
-  width: 40%;
+  width: 30%;
+}
+#right-section .btn-wrap #delete-btn {
+  background-color: rgb(239, 87, 87);
 }

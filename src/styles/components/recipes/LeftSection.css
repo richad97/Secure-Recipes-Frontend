@@ -28,8 +28,9 @@
   padding: 1rem;
 }
 #left-section .btn-wrap button {
-  display: inline-block;
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 40%;
 }
 #left-section #ls-search-bar svg {
   width: 10%;

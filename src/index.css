@@ -12,10 +12,16 @@
   --home-section-box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
 
   --recipe-main-color: rgb(235, 235, 235);
-  --recipe-main-font-color: rgba(0, 0, 0, 0.75);
-  --recipe-second-font-color: rgba(0, 0, 0, 0.5);
+  --recipe-main-font-color: rgb(75, 75, 75);
+  --recipe-second-font-color: rgb(90, 90, 90);
   --recipe-section-border-color: 1px solid rgba(0, 0, 0, 0.15);
-  --recipe-in-border-color: 1px solid rgba(0, 0, 0, 0.15);
+  --recipe-in-border-color: 1px solid rgba(0, 0, 0, 0.25);
+  --recipe-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+
+  --ce-main-font-color: var(--recipe-main-font-color);
+  --ce-second-font-color: var(--recipe-second-font-color);
+  --ce-forms-border-color: var(--recipe-section-border-color);
+  --ce-forms-box-shadow: var(--recipe-box-shadow);
 }
 body {
   background-color: var(--main-body-bg);
@@ -34,14 +40,17 @@ a:visited {
   text-decoration: none;
 }
 .recipe-btn {
-  background-color: rgb(46, 230, 113);
-  border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 5rem;
+  background-color: rgb(46, 156, 230);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.2rem;
   color: white;
   font-weight: bold;
   font-size: large;
   height: 2.75rem;
+  transition: 0.25s ease-in-out;
 }
 .recipe-btn:hover {
+  color: white;
   cursor: pointer;
+  opacity: 0.75;
 }

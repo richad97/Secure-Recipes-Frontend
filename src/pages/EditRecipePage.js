@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 import axios from "axios";
+import main from "../assets/main.svg";
 import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { RecipeContext } from "../RecipeContext";
-import { GiChefToque } from "react-icons/gi";
 import "../styles/components/form.css";
 import "../styles/pages/EditRecipePage.css";
 
@@ -158,9 +158,7 @@ function EditRecipe(props) {
         {({ errors, touched }) => (
           <Form id="edit-recipe-form" className="ce-forms">
             <header>
-              <span>
-                <GiChefToque />
-              </span>
+              <img height="100" width="100" alt="svg" src={main} />
 
               <h2>Edit Recipe</h2>
 
@@ -189,6 +187,7 @@ function EditRecipe(props) {
                     <div className=""></div>
                   ) : (
                     <button
+                      className="recipe-btn"
                       type="button"
                       onClick={() => {
                         setWidgetLoading(true);
@@ -327,7 +326,9 @@ function EditRecipe(props) {
             </div>
 
             <div className="btn-cont">
-              <button type="submit">Edit Recipe</button>
+              <button className="recipe-btn" type="submit">
+                Edit
+              </button>
             </div>
           </Form>
         )}

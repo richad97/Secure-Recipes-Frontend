@@ -1,8 +1,7 @@
+import main from "../../assets/main.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/layout/Nav.css";
-import { GiChefToque } from "react-icons/gi";
-import { FaGripLines } from "react-icons/fa";
 
 function Navbar(props) {
   const { isAuth, setAuth, setDisplayLeft, setDisplayRight } = props;
@@ -12,11 +11,15 @@ function Navbar(props) {
     <nav>
       <ul>
         <div className="auth-links-left">
-          <li>
-            <Link to="/" className="nav-logo">
-              <GiChefToque />
-            </Link>
-          </li>
+          {isAuth ? null : (
+            <div>
+              <li>
+                <Link to="/" className="nav-logo">
+                  <img alt="svg" src={main} />
+                </Link>
+              </li>
+            </div>
+          )}
           {isAuth ? (
             <li className="links-not-logo">
               <Link to="/recipes">My Recipes</Link>
@@ -28,6 +31,21 @@ function Navbar(props) {
             </li>
           ) : null}
         </div>
+
+        {isAuth ? (
+          <div>
+            <li>
+              <Link to="/" className="nav-logo">
+                <img
+                  style={{ position: "relative", right: "4rem" }}
+                  alt="svg"
+                  src={main}
+                />
+              </Link>
+            </li>
+          </div>
+        ) : null}
+
         <div className="auth-links-right">
           {isAuth ? (
             <li>

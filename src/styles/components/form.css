@@ -1,42 +1,45 @@
 .ce-forms {
-  border: 1px solid black;
+  border: var(--ce-forms-border-color);
+  box-shadow: var(--ce-forms-box-shadow);
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding-bottom: 1rem;
   margin: 1rem 12rem;
 }
 .ce-forms header {
-  border-bottom: 1px solid black;
+  align-items: center;
+  border-bottom: var(--ce-forms-border-color);
   display: flex;
 }
-.ce-forms header span {
-  border-right: 1px solid black;
-}
-.ce-forms header span svg {
-  height: 4rem;
-  width: 4rem;
+.ce-forms header img {
+  height: 3rem;
+  width: 3rem;
+  padding: 1rem;
+  padding-left: 1.5rem;
 }
 .ce-forms header h2 {
-  margin-left: 1rem;
+  color: var(--ce-main-font-color);
+  margin: 0 1rem;
+  margin-top: 0.5rem;
 }
 .ce-forms .inputs-container {
   display: flex;
   justify-content: space-around;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 .ce-forms .inputs-container .first-col {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0 2rem;
   width: 20%;
 }
 .ce-forms .inputs-container .first-col .photo-cont {
-  border: 1px solid black;
-  height: 12rem;
+  border: 1px solid rgba(0, 0, 0, 0);
+  height: 9rem;
   padding: 1rem 0;
-  width: 100%;
+  width: 90%;
 }
 .ce-forms .inputs-container .first-col .photo-cont p {
   align-items: center;
@@ -53,14 +56,16 @@
 .ce-forms .inputs-container .first-col .upload-btn-cont {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
-  width: 100%;
+  width: 90%;
 }
 .ce-forms .inputs-container .first-col .upload-btn-cont p {
   margin: 0;
 }
 .ce-forms .inputs-container .first-col .upload-btn-cont button {
-  padding: 0;
+  height: 2rem;
+  font-size: 0.75rem;
 }
 .ce-forms .inputs-container .mid-col {
   width: 30%;
@@ -74,14 +79,18 @@
 .ce-forms .inputs-container .last-col {
   margin: 0 0;
 }
+.ce-forms .inputs-container .mid-col label .title-err-cont p,
+.ce-forms .inputs-container .last-col label .title-err-cont p {
+  color: var(--ce-second-font-color);
+}
 .ce-forms .inputs-container .mid-col label input,
 .ce-forms .inputs-container .last-col label input {
-  height: 7%;
+  height: 6%;
   width: 90%;
 }
 .ce-forms .inputs-container .mid-col label .title-err-cont p,
 .ce-forms .inputs-container .last-col label .title-err-cont p {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 .ce-forms .inputs-container .last-col #ing-cont .add-ing-cont {
   display: flex;
@@ -92,7 +101,6 @@
   width: 88%;
 }
 .ce-forms .inputs-container .last-col .disable-btn-cont {
-  border: 1px solid black;
   height: 7.23rem;
   margin-top: 1rem;
   padding: 0rem 0.5rem;
@@ -111,10 +119,22 @@
   width: 100%;
   resize: none;
 }
+.ce-forms .inputs-container .mid-col label input,
+.ce-forms .inputs-container .last-col label input,
+.ce-forms .inputs-container .last-col .disable-btn-cont,
+.ce-forms .inputs-container .last-col #inst-cont textarea {
+  border: 1px solid rgba(159, 159, 159, 0.75);
+  color: rgba(0, 0, 0, 0.8);
+}
 .ce-forms .btn-cont {
   display: flex;
   justify-content: end;
   margin: 0 1.75rem;
+}
+.ce-forms .btn-cont button {
+  height: 2rem;
+  font-size: 0.85rem;
+  padding: 0 1rem;
 }
 
 .single-forms {
