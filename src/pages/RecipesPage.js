@@ -40,7 +40,6 @@ function Recipes(props) {
         setUserRecipes(recievedData);
       })
       .catch((err) => {
-        console.dir(err);
         let recievedErr = err.response.data.error;
         setServerMessage(recievedErr);
         setSelectedRecipe({});
@@ -51,8 +50,9 @@ function Recipes(props) {
   return (
     <main id="recipes-main">
       {serverMessage ? (
-        <form>
-          <h2>Server Message: {serverMessage}</h2>
+        <form className="single-forms">
+          <h2>Message</h2>
+          <p>{serverMessage}</p>
         </form>
       ) : (
         <>

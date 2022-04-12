@@ -1,16 +1,16 @@
 #recipes-main {
   display: flex;
   height: 40rem;
-  color: var(--recipe-second-font-color);
+  color: var(--main-second-font-color);
 }
 #recipes-main h1,
 #recipes-main h2 {
   font-weight: 600;
-  color: var(--recipe-main-font-color);
+  color: var(--main-font-color);
 }
 #recipes-main section {
-  border: var(--recipe-section-border-color);
-  box-shadow: var(--recipe-box-shadow);
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
   margin: 1rem 2rem;
 }
 #recipes-main section h1,

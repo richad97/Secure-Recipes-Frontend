@@ -6,14 +6,14 @@
 }
 #left-section #ls-search-bar {
   align-items: center;
-  background-color: var(--recipe-main-color);
-  border-bottom: var(--recipe-section-border-color);
+  background-color: var(--main-color);
+  border-bottom: var(--main-border-color);
   display: flex;
   height: 4rem;
   width: 100%;
 }
 #left-section #ls-search-bar input {
-  border: var(--recipe-section-border-color);
+  border: var(--main-border-color);
 }
 #left-section .recipe-comp-container {
   height: 100%;
@@ -23,8 +23,8 @@
   justify-content: space-between;
 }
 #left-section .btn-wrap {
-  background-color: var(--recipe-main-color);
-  border-top: var(--recipe-section-border-color);
+  background-color: var(--main-color);
+  border-top: var(--main-border-color);
   padding: 1rem;
 }
 #left-section .btn-wrap button {

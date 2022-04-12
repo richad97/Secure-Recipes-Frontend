@@ -1,7 +1,7 @@
-import "../styles/pages/HomePage.css";
 import svg1 from "../assets/2.svg";
 import svg2 from "../assets/1.svg";
 import { FaLock, FaUserFriends, FaFileAlt } from "react-icons/fa";
+import "../styles/pages/HomePage.css";
 
 function Home() {
   return (
@@ -12,10 +12,10 @@ function Home() {
         <div className="header-text">
           <h1>Secure Recipes</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Securely store your recipes before you forget! Secure Recipes is an
+            web application that allows you to store recipes within a secure
+            account and share those recipes with your friends. Sign up and try
+            today!
           </p>
           <button>Sign Up</button>
         </div>
@@ -27,18 +27,18 @@ function Home() {
             <FaLock className="svg1" />
           </div>
           <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            Secure Recipes persists data using PostgreSQL and stores sensitive
+            data like your passwords using BCrypt. The authorization is done
+            using JSON Web Tokens (JWT) which gives each user safe and private
+            access to their data.
           </p>
         </div>
         <div className="card even">
           <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            Connect with friends! Each new user comes with an automatically
+            generated token which is meant to share amongst friends. Once that
+            token is shared, recipes between the user and the friend can be seen
+            at any time.
           </p>
           <div className="icon-wrapper">
             <FaUserFriends className="svg2" />
@@ -49,23 +49,19 @@ function Home() {
             <FaFileAlt className="svg3" />
           </div>
           <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            Back up your recipes and keep them all in one spot using Secure
+            Recipes. Having a physical copy of your recipes is nice and all, but
+            having a back up of them online is even better. Store an unlimited
+            amount of recipes using Secure Recipes today!
           </p>
         </div>
       </section>
       <section className="sub-section-2">
         <div className="section-text">
-          <h1>Secure Recipes</h1>
+          <h1>The Point...</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            Secure Recipes was created to show what the amount of functionality
+            I can implement within an application by myself.
           </p>
         </div>
         <img height="300" width="300" alt="svg" src={svg2} />

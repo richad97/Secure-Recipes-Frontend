@@ -1,6 +1,6 @@
 .ce-forms {
-  border: var(--ce-forms-border-color);
-  box-shadow: var(--ce-forms-box-shadow);
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
@@ -8,7 +8,7 @@
 }
 .ce-forms header {
   align-items: center;
-  border-bottom: var(--ce-forms-border-color);
+  border-bottom: var(--main-border-color);
   display: flex;
   background-color: rgba(235, 235, 235);
 }
@@ -19,7 +19,7 @@
   padding-left: 1.5rem;
 }
 .ce-forms header h2 {
-  color: var(--ce-main-font-color);
+  color: var(--main-font-color);
   margin: 0 1rem;
   margin-top: 0.5rem;
 }
@@ -44,6 +44,7 @@
 }
 .ce-forms .inputs-container .first-col .photo-cont p {
   align-items: center;
+  border: 1px solid rgb(231, 231, 231);
   display: flex;
   height: 100%;
   justify-content: center;
@@ -82,7 +83,7 @@
 }
 .ce-forms .inputs-container .mid-col label .title-err-cont p,
 .ce-forms .inputs-container .last-col label .title-err-cont p {
-  color: var(--ce-second-font-color);
+  color: var(--main-second-font-color);
 }
 .ce-forms .inputs-container .mid-col label input,
 .ce-forms .inputs-container .last-col label input {
@@ -92,6 +93,15 @@
 .ce-forms .inputs-container .mid-col label .title-err-cont p,
 .ce-forms .inputs-container .last-col label .title-err-cont p {
   margin-bottom: 0.1rem;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-min-btn {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgb(84, 84, 84);
+  width: 7%;
+  transition: 0.2s ease-in-out;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-min-btn:hover {
+  cursor: pointer;
 }
 .ce-forms .inputs-container .last-col #ing-cont .add-ing-cont {
   display: flex;
@@ -139,11 +149,27 @@
 }
 
 .single-forms {
-  border: 1px solid black;
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
   height: 35rem;
   margin: 1rem auto;
-  padding: 0 1rem;
+  padding: 0 0rem;
   width: 25%;
+}
+.single-forms h2 {
+  background-color: var(--main-color);
+  border-bottom: var(--main-border-color);
+  color: var(--main-font-color);
+  margin: 0;
+  padding: 1rem 1rem;
+}
+.single-forms > * {
+  margin: 1rem 1rem;
+}
+.single-forms > p {
+  color: var(--main-second-font-color);
+  margin: 1rem 1rem;
+  margin-bottom: 0rem;
 }
 .single-forms h2,
 .single-forms p {
@@ -151,13 +177,20 @@
 }
 .single-forms .inputs-container {
   height: 22rem;
+  margin-top: 0;
 }
 .single-forms .inputs-container input {
   height: 1.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .single-forms .inputs-container label .title-err-cont {
   display: flex;
   justify-content: space-between;
+}
+.single-forms .inputs-container label .title-err-cont p {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  margin-bottom: 0;
 }
 .single-forms .inputs-container label input {
   width: 98%;

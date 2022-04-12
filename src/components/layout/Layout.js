@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
 
 export default function Layout(props) {
   const { isAuth, setAuth, setDisplayLeft, setDisplayRight } = props;

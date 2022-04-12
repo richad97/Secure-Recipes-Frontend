@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
 import "../styles/pages/RegisterPage.css";
-import "../styles/components/authForms.css";
+import "../styles/authForms.css";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -92,8 +92,6 @@ function Register() {
           <Form id="register-form" className="lr-forms">
             <section className="left-section">
               <h2>Register</h2>
-
-              <hr />
 
               <div className="lr-wrap">
                 <div className="lr-input-wrap">
@@ -195,7 +193,9 @@ function Register() {
                   {isLoading ? (
                     <div className="loader"></div>
                   ) : (
-                    <button type="submit">Register</button>
+                    <button className="recipe-btn" type="submit">
+                      Register
+                    </button>
                   )}
                 </div>
               </div>

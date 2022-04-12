@@ -2,8 +2,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import "../styles/components/authForms.css";
-import "../styles/components/form.css";
+import "../styles/authForms.css";
+import "../styles/form.css";
 import "../styles/pages/AddFriendPage.css";
 
 const AddFriendSchema = Yup.object().shape({
@@ -52,8 +52,6 @@ function AddFriendPage(props) {
           <Form className="single-forms">
             <h2>Add Friend</h2>
 
-            <hr />
-
             <p>Please enter token used to add friend.</p>
 
             <div className="inputs-container">
@@ -71,7 +69,9 @@ function AddFriendPage(props) {
             {serverSuccess ? <p>{serverSuccess}</p> : null}
 
             <div className="btn-wrap">
-              <button type="submit">Add Friend</button>
+              <button className="recipe-btn" type="submit">
+                Add Friend
+              </button>
             </div>
           </Form>
         )}

@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
-import "../styles/components/form.css";
+import "../styles/form.css";
 import "../styles/pages/ResetPasswordPage.css";
 
 const ResetPasswordSchema = Yup.object().shape({
@@ -42,14 +42,11 @@ function ResetPassword() {
             {submitted ? (
               <>
                 <h2>Reset Password</h2>
-                <hr />
                 <p>Please use link sent through e-mail to proceed.</p>
               </>
             ) : (
               <>
                 <h2>Reset Password</h2>
-
-                <hr />
 
                 <p>Please enter e-mail used for the account.</p>
 
@@ -73,7 +70,9 @@ function ResetPassword() {
                   {isLoading ? (
                     <div></div>
                   ) : (
-                    <button type="submit">Submit</button>
+                    <button className="recipe-btn" type="submit">
+                      Submit
+                    </button>
                   )}
                 </div>
               </>

@@ -1,10 +1,9 @@
 import axios from "axios";
 import main from "../assets/main.svg";
-import { GiChefToque } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../RecipeContext";
-import "../styles/components/form.css";
+import "../styles/form.css";
 import "../styles/pages/FriendsPage.css";
 
 function FriendsPage(props) {
@@ -31,7 +30,6 @@ function FriendsPage(props) {
       })
       .catch((err) => {
         const recievedData = err.response.data.error;
-        console.log(recievedData);
         setServerMessage(recievedData);
       });
   }, [change]);
@@ -39,8 +37,9 @@ function FriendsPage(props) {
   return (
     <main id="friends-main">
       {serverMessage ? (
-        <form>
-          <h2>Server Message: {serverMessage}</h2>
+        <form className="single-forms">
+          <h2>Message</h2>
+          <p>{serverMessage}</p>
         </form>
       ) : (
         <div className="ce-forms">

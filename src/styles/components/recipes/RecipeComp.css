@@ -1,5 +1,5 @@
 #recipe-comp {
-  border: var(--recipe-in-border-color);
+  border: var(--main-border-color);
   border-radius: 0.25rem;
   margin: 1rem;
   padding: 1rem;
@@ -9,4 +9,10 @@
   cursor: pointer;
   background-color: rgb(245, 245, 245);
   border: 1px solid rgba(0, 0, 0, 0.05);
+}
+#recipe-comp hr {
+  border: var(--main-border-color);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 }

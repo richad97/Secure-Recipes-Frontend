@@ -7,24 +7,28 @@
 }
 #register-form .right-section {
   align-items: center;
-  border-left: 1px solid black;
+  background-color: rgba(68, 209, 113, 0.05);
+  border-left: var(--main-border-color);
   display: flex;
   justify-content: center;
   width: 50%;
 }
+#register-form .left-section .lr-wrap {
+  margin: 0 1rem;
+}
 #register-form .left-section .lr-wrap .lr-input-wrap {
-  height: 23rem;
-  overflow-x: hidden;
+  height: 22rem;
 }
 #register-form .left-section .lr-wrap .lr-input-wrap .r-flname-wrap {
   display: flex;
-  width: 100%;
+  justify-content: space-between;
+  width: 95%;
 }
 #register-form .left-section .lr-wrap .lr-input-wrap .r-flname-wrap label {
   width: 100%;
 }
 #register-form .left-section .lr-wrap .lr-xtr-links {
-  top: 2rem;
+  /* margin: 0; */
 }
 #register-form .left-section .lr-wrap .lr-btn-wrap {
   position: relative;

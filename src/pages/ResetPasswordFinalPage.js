@@ -3,7 +3,7 @@ import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import "../styles/components/form.css";
+import "../styles/form.css";
 import "../styles/pages/ResetPasswordPage.css";
 
 const ResetPasswordFinalSchema = Yup.object().shape({
@@ -50,14 +50,11 @@ function ResetPasswordFinal() {
             {success ? (
               <>
                 <h2>Success</h2>
-                <hr></hr>
                 <p>Please login to continue.</p>
               </>
             ) : (
               <>
                 <h2>New Password</h2>
-
-                <hr />
 
                 <p>Please enter new password for account.</p>
 
@@ -98,7 +95,9 @@ function ResetPasswordFinal() {
                 </div>
 
                 <div className="btn-wrap">
-                  <button type="submit">Submit</button>
+                  <button className="recipe-btn" type="submit">
+                    Submit
+                  </button>
                 </div>
               </>
             )}

@@ -5,7 +5,7 @@ import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { RecipeContext } from "../RecipeContext";
-import "../styles/components/form.css";
+import "../styles/form.css";
 import "../styles/pages/EditRecipePage.css";
 
 const EditRecipeSchema = Yup.object().shape({
@@ -260,6 +260,7 @@ function EditRecipe(props) {
 
                   <div className="add-ing-cont">
                     <button
+                      className="add-min-btn"
                       type="button"
                       onClick={() => {
                         let check = ingredients.indexOf(ingredient.trim());
@@ -286,6 +287,7 @@ function EditRecipe(props) {
                       return (
                         <div className="del-ing-cont" key={i}>
                           <button
+                            className="add-min-btn"
                             type="button"
                             onClick={() => {
                               let copy = [...ingredients];

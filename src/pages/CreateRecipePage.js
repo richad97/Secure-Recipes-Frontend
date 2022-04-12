@@ -4,7 +4,7 @@ import main from "../assets/main.svg";
 import { useState, useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
-import "../styles/components/form.css";
+import "../styles/form.css";
 import "../styles/pages/CreateRecipePage.css";
 
 const CreateRecipeSchema = Yup.object().shape({
@@ -240,6 +240,7 @@ function CreateRecipe(props) {
 
                   <div className="add-ing-cont">
                     <button
+                      className="add-min-btn"
                       type="button"
                       onClick={() => {
                         let check = ingredients.indexOf(ingredient.trim());
@@ -266,6 +267,7 @@ function CreateRecipe(props) {
                     return (
                       <div className="del-ing-cont" key={i}>
                         <button
+                          className="add-min-btn"
                           type="button"
                           onClick={() => {
                             let copy = [...ingredients];

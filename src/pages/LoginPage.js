@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
 import "../styles/pages/LoginPage.css";
-import "../styles/components/authForms.css";
-import "../styles/components/form.css";
+import "../styles/authForms.css";
+import "../styles/form.css";
 
 const LoginPageSchema = Yup.object().shape({
   username: Yup.string().required("Required"),
@@ -63,8 +63,6 @@ function Login(props) {
             <section className="right-section">
               <h2>Login</h2>
 
-              <hr />
-
               <div className="lr-wrap">
                 <div className="lr-input-wrap">
                   <label>
@@ -113,7 +111,7 @@ function Login(props) {
                   {isLoading ? (
                     <div className="loader"></div>
                   ) : (
-                    <button id="log-btn" className="" type="submit">
+                    <button className="recipe-btn" type="submit">
                       Login
                     </button>
                   )}

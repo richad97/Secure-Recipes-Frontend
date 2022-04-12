@@ -1,10 +1,10 @@
-import "../styles/pages/RecipesPage.css";
+import axios from "axios";
 import LeftSection from "../components/recipes/LeftSection";
 import RightSection from "../components/recipes/RightSection";
 import LoadingComp from "../components/LoadingComp";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import "../styles/pages/RecipesPage.css";
 
 function FriendsRecipes(props) {
   const [viewOnly] = useState(true);
