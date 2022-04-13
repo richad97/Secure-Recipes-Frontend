@@ -10,24 +10,11 @@ function FriendsRecipes(props) {
   const [viewOnly] = useState(true);
   const [userRecipes, setUserRecipes] = useState([]);
   const [serverMessage, setServerMessage] = useState("");
-  const {
-    onPhone,
-    setOnPhone,
-    displayLeft,
-    setDisplayLeft,
-    displayRight,
-    setDisplayRight,
-  } = props;
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const { friendUsername } = useParams();
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth <= 790) {
-      setOnPhone(true);
-      setDisplayRight(false);
-    }
-
     const token = localStorage.getItem("token");
 
     setLoading(true);
@@ -77,25 +64,11 @@ function FriendsRecipes(props) {
             userRecipes={userRecipes}
             setSelectedRecipe={setSelectedRecipe}
             viewOnly={viewOnly}
-            onPhone={onPhone}
-            setOnPhone={setOnPhone}
-            setDisplayRight={setDisplayRight}
-            displayLeft={displayLeft}
-            setDisplayLeft={setDisplayLeft}
           />
           {!selectedRecipe ? (
             <LoadingComp />
           ) : (
-            <RightSection
-              displayLeft={displayLeft}
-              setDisplayLeft={setDisplayLeft}
-              displayRight={displayRight}
-              setDisplayRight={setDisplayRight}
-              onPhone={onPhone}
-              setOnPhone={setOnPhone}
-              selectedRecipe={selectedRecipe}
-              viewOnly={viewOnly}
-            />
+            <RightSection selectedRecipe={selectedRecipe} viewOnly={viewOnly} />
           )}
         </>
       )}

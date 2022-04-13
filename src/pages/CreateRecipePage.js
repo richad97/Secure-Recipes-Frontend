@@ -42,7 +42,6 @@ function CreateRecipe(props) {
   const [ingredients, setIngredients] = useState([]);
   const [widgetLoading, setWidgetLoading] = useState(false);
   const [url, setUrl] = useState("");
-  const { onPhone, setOnPhone } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -143,15 +142,6 @@ function CreateRecipe(props) {
             <header>
               <img alt="svg" src={main} />
               <h2>Create Recipe</h2>
-              {onPhone ? (
-                <button
-                  onClick={() => {
-                    navigate("/recipes");
-                  }}
-                >
-                  Back
-                </button>
-              ) : null}
             </header>
 
             <div className="inputs-container">

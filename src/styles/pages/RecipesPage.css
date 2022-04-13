@@ -1,6 +1,7 @@
 #recipes-main {
   display: flex;
-  height: 40rem;
+  /* height: 40rem; */
+  height: 90%;
   color: var(--main-second-font-color);
 }
 #recipes-main h1,
@@ -17,4 +18,13 @@
 #recipes-main section h2,
 #recipes-main section p {
   margin: 0;
+}
+
+@media (max-width: 720px) {
+  #recipes-main #right-section {
+    display: none;
+  }
+  #recipes-main #left-section {
+    width: 100%;
+  }
 }

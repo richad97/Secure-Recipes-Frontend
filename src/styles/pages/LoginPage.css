@@ -17,3 +17,19 @@
   position: relative;
   top: 12rem;
 }
+
+@media (max-width: 992px) {
+  #login-form .left-section img {
+    height: 220px;
+    width: 220px;
+  }
+}
+
+@media (max-width: 720px) {
+  #login-form .left-section {
+    display: none;
+  }
+  #login-form .right-section {
+    width: 100%;
+  }
+}

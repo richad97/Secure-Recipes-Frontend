@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import "../../styles/components/layout/Nav.css";
 
 function Navbar(props) {
-  const { isAuth, setAuth, setDisplayLeft, setDisplayRight } = props;
+  const { isAuth, setAuth } = props;
   const [hamClicked, setHamClicked] = useState(false);
 
   return (

@@ -25,17 +25,10 @@ function App() {
   const [showDeleteMessage, setDeleteMessage] = useState();
   const [friendDeleteMessage, setFriendDeleteMessage] = useState();
   const [isDeleted, setDeleted] = useState(false);
-  const [onPhone, setOnPhone] = useState(false);
-  const [displayLeft, setDisplayLeft] = useState(true);
-  const [displayRight, setDisplayRight] = useState(true);
   const [friendID, setFriendID] = useState(null);
   const [change, setChange] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth <= 790) {
-      setOnPhone(true);
-    }
-
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -55,10 +48,6 @@ function App() {
             isDeleted={isDeleted}
             setDeleted={setDeleted}
             setDeleteMessage={setDeleteMessage}
-            displayLeft={displayLeft}
-            setDisplayLeft={setDisplayLeft}
-            displayRight={displayRight}
-            setDisplayRight={setDisplayRight}
           />
         ) : null}
         {friendDeleteMessage ? (
@@ -70,14 +59,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
-              <Layout
-                isAuth={isAuth}
-                setAuth={setAuth}
-                setDisplayLeft={setDisplayLeft}
-                setDisplayRight={setDisplayRight}
-              />
-            }
+            element={<Layout isAuth={isAuth} setAuth={setAuth} />}
           >
             <Route index element={<HomePage isAuth={isAuth} />} />
             <Route
@@ -87,12 +69,6 @@ function App() {
                   <RecipesPage
                     isDeleted={isDeleted}
                     setDeleteMessage={setDeleteMessage}
-                    onPhone={onPhone}
-                    setOnPhone={setOnPhone}
-                    displayLeft={displayLeft}
-                    setDisplayLeft={setDisplayLeft}
-                    displayRight={displayRight}
-                    setDisplayRight={setDisplayRight}
                   />
                 </RequireAuth>
               }
@@ -101,7 +77,7 @@ function App() {
               path="/recipes/create"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <CreateRecipePage onPhone={onPhone} setOnPhone={setOnPhone} />
+                  <CreateRecipePage />
                 </RequireAuth>
               }
             />
@@ -109,14 +85,7 @@ function App() {
               path="/recipes/edit/:id"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <EditRecipePage
-                    displayLeft={displayLeft}
-                    setDisplayLeft={setDisplayLeft}
-                    displayRight={displayRight}
-                    setDisplayRight={setDisplayRight}
-                    onPhone={onPhone}
-                    setOnPhone={setOnPhone}
-                  />
+                  <EditRecipePage />
                 </RequireAuth>
               }
             />
@@ -143,14 +112,7 @@ function App() {
               path="/recipes/:friendUsername"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <FriendsRecipes
-                    onPhone={onPhone}
-                    setOnPhone={setOnPhone}
-                    displayLeft={displayLeft}
-                    setDisplayLeft={setDisplayLeft}
-                    displayRight={displayRight}
-                    setDisplayRight={setDisplayRight}
-                  />
+                  <FriendsRecipes />
                 </RequireAuth>
               }
             />

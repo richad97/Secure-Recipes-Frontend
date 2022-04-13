@@ -4,15 +4,7 @@ import { useContext } from "react";
 
 function DeleteMessage(props) {
   const Context = useContext(RecipeContext);
-  const {
-    setDeleted,
-    setDeleteMessage,
-    isDeleted,
-    displayLeft,
-    setDisplayLeft,
-    displayRight,
-    setDisplayRight,
-  } = props;
+  const { setDeleted, setDeleteMessage, isDeleted } = props;
 
   return (
     <div className="overlay">
@@ -43,8 +35,6 @@ function DeleteMessage(props) {
                   .then((resp) => {
                     setDeleteMessage(false);
                     setDeleted(!isDeleted);
-                    setDisplayLeft(true);
-                    setDisplayRight(false);
                   })
                   .catch((err) => {
                     console.log(err);

@@ -21,6 +21,10 @@ body {
   font-family: "Mukta", sans-serif;
   margin: 0;
   min-width: 350px;
+  height: 100vh;
+}
+#root {
+  height: 100%;
 }
 a {
   color: rgba(0, 0, 0, 0.6);
@@ -85,4 +89,7 @@ a:visited {
   height: 2.25rem;
   position: relative;
   top: 0.5rem;
+}
+.display-none {
+  display: none;
 }

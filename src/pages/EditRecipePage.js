@@ -25,7 +25,7 @@ const EditRecipeSchema = Yup.object().shape({
   pic_url: Yup.string(),
 });
 
-function EditRecipe(props) {
+function EditRecipe() {
   const formRef = useRef();
   const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
@@ -35,14 +35,6 @@ function EditRecipe(props) {
   const { id } = useParams();
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
   const [serverError, setServerError] = useState("");
-  const {
-    displayLeft,
-    setDisplayLeft,
-    displayRight,
-    setDisplayRight,
-    onPhone,
-    setOnPhone,
-  } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -144,8 +136,6 @@ function EditRecipe(props) {
               )
               .then((resp) => {
                 navigate("/recipes");
-                setDisplayLeft(true);
-                setDisplayRight(false);
               })
               .catch((err) => {
                 const errFromServer = err.response.data.message;
@@ -161,18 +151,6 @@ function EditRecipe(props) {
               <img height="100" width="100" alt="svg" src={main} />
 
               <h2>Edit Recipe</h2>
-
-              {onPhone ? (
-                <button
-                  onClick={() => {
-                    navigate("/recipes");
-                    setDisplayLeft(true);
-                    setDisplayRight(false);
-                  }}
-                >
-                  Back
-                </button>
-              ) : null}
             </header>
 
             <div className="inputs-container">

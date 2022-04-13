@@ -32,7 +32,7 @@ function RightSection(props) {
   } = props;
 
   useEffect(() => {
-    var dt = new Date(created_at);
+    let dt = new Date(created_at);
     setConvertedUTC(dt.toLocaleDateString());
   }, []);
 

@@ -34,3 +34,19 @@
   position: relative;
   top: 0rem;
 }
+
+@media (max-width: 992px) {
+  #register-form .right-section img {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media (max-width: 720px) {
+  #register-form .right-section {
+    display: none;
+  }
+  #register-form .left-section {
+    width: 100%;
+  }
+}
