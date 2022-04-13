@@ -1,6 +1,6 @@
 :root {
   --main-nav-bg: rgb(235, 235, 235);
-  --main-nav-border-color: 1px solid rgba(0, 0, 0, 0.14);
+  --main-nav-border-color: 1px solid rgba(0, 0, 0, 0.15);
   --main-body-bg: rgb(255, 255, 255);
   --main-color: rgb(240, 240, 240);
   --main-font-color: rgb(75, 75, 75);
@@ -20,9 +20,7 @@ body {
   background-color: var(--main-body-bg);
   font-family: "Mukta", sans-serif;
   margin: 0;
-}
-.label-error {
-  color: red;
+  min-width: 350px;
 }
 a {
   color: rgba(0, 0, 0, 0.6);
@@ -31,6 +29,9 @@ a {
 }
 a:visited {
   text-decoration: none;
+}
+.label-error {
+  color: red;
 }
 .recipe-btn {
   background-color: rgb(46, 156, 230);

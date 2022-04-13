@@ -1,6 +1,7 @@
 import main from "../../assets/main.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 import "../../styles/components/layout/Nav.css";
 
 function Navbar(props) {
@@ -9,7 +10,7 @@ function Navbar(props) {
 
   return (
     <nav>
-      <ul>
+      <ul className="irresponsive">
         <div className="auth-links-left">
           {isAuth ? null : (
             <li>
@@ -64,6 +65,44 @@ function Navbar(props) {
             </>
           )}
         </div>
+      </ul>
+
+      <ul className="responsive">
+        <GiHamburgerMenu />
+
+        {isAuth ? (
+          <li className="links-not-logo">
+            <Link to="/recipes">My Recipes</Link>
+          </li>
+        ) : null}
+        {isAuth ? (
+          <li className="links-not-logo">
+            <Link to="/friends">My Friends</Link>
+          </li>
+        ) : null}
+
+        {isAuth ? (
+          <li>
+            <Link
+              onClick={() => {
+                localStorage.removeItem("token");
+                setAuth(false);
+              }}
+              to="/"
+            >
+              Logout
+            </Link>
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

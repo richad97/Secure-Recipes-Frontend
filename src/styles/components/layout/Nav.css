@@ -8,23 +8,54 @@ nav {
   height: 2rem;
   width: 2rem;
 }
-nav ul {
+nav .responsive {
+  display: none;
+}
+nav .irresponsive {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
   margin: 0 13.5%;
   padding: 0;
 }
-nav ul .auth-links-left,
-nav ul .auth-links-right {
+nav .irresponsive .auth-links-left,
+nav .irresponsive .auth-links-right {
   display: flex;
 }
-nav ul .auth-links-left li,
-nav ul .auth-links-right li {
+nav .irresponsive .auth-links-left li,
+nav .irresponsive .auth-links-right li {
   align-items: center;
   display: flex;
 }
-nav ul .auth-links-left li,
-nav ul .auth-links-right li {
+nav .irresponsive .auth-links-left li,
+nav .irresponsive .auth-links-right li {
   padding: 0 1rem;
+}
+
+@media (max-width: 720px) {
+  nav {
+    padding-bottom: 0;
+  }
+  nav .irresponsive {
+    display: none;
+  }
+  nav .responsive {
+    display: block;
+    margin: 0.2rem 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  nav .responsive svg {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  nav .responsive li {
+    background-color: rgb(220, 220, 220);
+    padding: 0.5rem 0;
+    display: none;
+  }
+  nav .responsive li a {
+    color: rgb(68, 68, 68);
+  }
 }
