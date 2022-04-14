@@ -1,32 +1,18 @@
-.recipe-comp {
-  /* border: 1px solid rgba(0, 0, 0, 0.048); */
+#recipe-comp {
+  border: var(--main-border-color);
+  border-radius: 0.25rem;
   margin: 1rem;
-  padding: 2rem;
+  padding: 1rem;
+  transition: 0.2s ease-in-out;
+}
+#recipe-comp:hover {
   cursor: pointer;
-  color: whitesmoke;
-  border-radius: var(--mainSubSecBR);
-  background-color: var(--recipe2ContBg);
-  transition: 0.1s ease-in;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.recipe-comp:hover {
-  background-color: rgba(36, 36, 39, 0.632);
-}
-.recipe-comp h4 {
-  font-size: var(--h4Custom);
-  font-weight: bold;
-}
-.recipe-comp hr {
-  margin: 1rem 0;
-  border: none;
-  border-top: 1px solid rgb(154, 154, 176);
-}
-.recipe-comp > p {
-  padding-top: 1rem;
-}
-.recipe-comp > div {
-  display: flex;
-  justify-content: space-between;
-}
-.recipe-comp > div {
-  font-size: var(--pCustom);
+#recipe-comp hr {
+  border: var(--main-border-color);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 }

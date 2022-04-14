@@ -1,26 +1,22 @@
-import "../../styles/components/recipes/RecipeComp.css";
 import { useEffect, useState } from "react";
+import "../../styles/components/recipes/RecipeComp.css";
 
 function RecipeComp(props) {
   const [convertedUTC, setConvertedUTC] = useState(null);
-
   const {
     recipe,
     setSelectedRecipe,
-    onPhone,
-    setOnPhone,
-    setDisplayLeft,
-    setDisplayRight,
+    setLeftSection,
+    setRightSection,
+    usingPhone,
   } = props;
 
   const handleClick = () => {
-    // console.log(recipe);
     setSelectedRecipe(recipe);
-    if (onPhone) {
-      //make sec1 display none
-      //make sec2 display
-      setDisplayLeft(false);
-      setDisplayRight(true);
+
+    if (usingPhone) {
+      setLeftSection(false);
+      setRightSection(true);
     }
   };
 
@@ -30,11 +26,11 @@ function RecipeComp(props) {
   }, []);
 
   return (
-    <div className="recipe-comp" onClick={handleClick}>
-      <h4>{recipe.title}</h4>
-      <p className="comm1">{recipe.description}</p>
+    <div id="recipe-comp" onClick={handleClick}>
+      <h2>{recipe.title}</h2>
+      <p>{recipe.description}</p>
       <hr></hr>
-      <div>
+      <div className="min-date2">
         <p>{recipe.prep_time} Minutes</p>
         <p>Created: {convertedUTC}</p>
       </div>

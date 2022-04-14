@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/components/recipes/RightSection.css";
 
 function RightSection(props) {
+  const navigate = useNavigate();
   const [convertedUTC, setConvertedUTC] = useState(null);
 
-  const navigate = useNavigate();
   const {
     category,
     created_at,
@@ -23,130 +23,105 @@ function RightSection(props) {
   const {
     setDeleteMessage,
     selectedRecipe,
-    onPhone,
-    setOnPhone,
-    displayRight,
-    setDisplayRight,
-    displayLeft,
-    setDisplayLeft,
+    setLeftSection,
+    setRightSection,
+    usingPhone,
   } = props;
 
   useEffect(() => {
-    var dt = new Date(created_at);
+    let dt = new Date(created_at);
     setConvertedUTC(dt.toLocaleDateString());
   }, []);
 
   return (
-    <section
-      id={(() => {
-        if (onPhone) {
-          if (displayRight) {
-            return "section-2";
-          } else {
-            return "display-none";
-          }
-        } else {
-          return "section-2";
-        }
-      })()}
-    >
+    <section id="right-section">
       {title ? (
         <>
-          <header style={{ width: "100%", margin: "0 auto" }}>
-            <div style={{ padding: "1.5rem 2rem ", paddingBottom: "0.5rem" }}>
+          <header>
+            <div className="main-title">
               <h1>{title}</h1>
-              {onPhone ? (
+
+              {usingPhone ? (
                 <button
                   onClick={() => {
-                    setDisplayLeft(true);
-                    setDisplayRight(false);
+                    setLeftSection(true);
+                    setRightSection(false);
                   }}
+                  className="recipe-btn"
                 >
                   Back
                 </button>
               ) : null}
             </div>
-            <div style={{ padding: "0 2rem" }}>
-              <p>{prep_time} Minutes</p>
-              <p>{convertedUTC}</p>
+            <div className="min-date">
+              <span>{prep_time} Minutes</span>
+              <span>{convertedUTC}</span>
             </div>
           </header>
-          <div id="sec2-body">
-            <div id="image-info-wrap">
-              <div id="image-container">
+
+          <div className="cont-wrap">
+            <div className="top-row">
+              <div className="img-cont">
                 {pic_url ? (
-                  <img src={pic_url} />
+                  <img height="50" width="50" src={pic_url} />
                 ) : (
-                  <p className="sec2-nophoto">No Photo Available</p>
+                  <p>No Photo Available</p>
                 )}
               </div>
-              <div id="recipe-info">
+
+              <div className="rest-info">
                 <p>Category: {category}</p>
                 <p>Source: {source}</p>
               </div>
             </div>
 
-            <div className="ii-container">
-              <h3>Ingredients</h3>
-              <hr />
-              <ol>
-                {ingredients
-                  ? ingredients.map((ingredient, i) => {
-                      return (
-                        <p className="comm1" key={i}>
-                          {ingredient}
-                        </p>
-                      );
-                    })
-                  : null}
-              </ol>
-            </div>
-            <div className="ii-container">
-              <h3>Instructions</h3>
-              <hr />
-              <p className="comm1">{instructions}</p>
-            </div>
-            {props.viewOnly ? null : (
-              <div id="button-wrapper">
-                <button
-                  className="btn-global"
-                  onClick={() => {
-                    navigate(`/recipes/edit/${recipe_id}`);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn-global"
-                  onClick={() => {
-                    props.setDeleteMessage(true);
-                  }}
-                >
-                  Delete
-                </button>
+            <div className="bottom-row">
+              <div className="ingredients">
+                <h2>Ingredients</h2>
+                <hr />
+                <ol>
+                  {ingredients
+                    ? ingredients.map((ingredient, i) => {
+                        return <p key={i}>{ingredient}</p>;
+                      })
+                    : null}
+                </ol>
               </div>
-            )}
+
+              <div className="instructions">
+                <h2>Instructions</h2>
+                <hr />
+                <p>{instructions}</p>
+              </div>
+            </div>
           </div>
+
+          {props.viewOnly ? null : (
+            <div className="btn-wrap">
+              <button
+                id="edit-btn"
+                className="recipe-btn"
+                onClick={() => {
+                  navigate(`/recipes/edit/${recipe_id}`);
+                }}
+              >
+                Edit
+              </button>
+              <button
+                id="delete-btn"
+                className="recipe-btn"
+                onClick={() => {
+                  setDeleteMessage(true);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              color: "whitesmoke",
-            }}
-          >
-            No Recipes
-          </p>
+        <div className="no-recipes-wrap">
+          <p>Make some!</p>
         </div>
       )}
     </section>

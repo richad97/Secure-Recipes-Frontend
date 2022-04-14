@@ -1,12 +1,13 @@
-import "../styles/components/form.css";
-import "../styles/pages/EditRecipePage.css";
 import * as Yup from "yup";
 import axios from "axios";
+import main from "../assets/main.svg";
 import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { RecipeContext } from "../RecipeContext";
-import { GiChefToque } from "react-icons/gi";
+import { BiLoaderCircle } from "react-icons/bi";
+import "../styles/form.css";
+import "../styles/pages/EditRecipePage.css";
 
 const EditRecipeSchema = Yup.object().shape({
   title: Yup.string()
@@ -36,19 +37,19 @@ function EditRecipe(props) {
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
   const [serverError, setServerError] = useState("");
   const {
-    displayLeft,
-    setDisplayLeft,
-    displayRight,
-    setDisplayRight,
-    onPhone,
-    setOnPhone,
+    usingPhone,
+    setUsingPhone,
+    showLeftSection,
+    setLeftSection,
+    showRightSection,
+    setRightSection,
   } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
       {
-        cloudName: "diampwv1v",
-        uploadPreset: "huj0ozoe",
+        cloudName: process.env.REACT_APP_CLOUDNAME,
+        uploadPreset: process.env.REACT_APP_UPLOADPRESET,
         sources: [
           "url",
           "camera",
@@ -66,15 +67,15 @@ function EditRecipe(props) {
         defaultSource: "local",
         styles: {
           palette: {
-            window: "#232325",
-            sourceBg: "#2F2F31",
-            windowBorder: "#56606B",
-            tabIcon: "#FFFFFF",
-            inactiveTabIcon: "#8A8A92",
-            menuIcons: "#655A5A",
-            link: "#808DC1",
+            window: "#ffffff",
+            sourceBg: "#f4f4f5",
+            windowBorder: "#90a0b3",
+            tabIcon: "#000000",
+            inactiveTabIcon: "#555a5f",
+            menuIcons: "#555a5f",
+            link: "#4A88F9",
             action: "#339933",
-            inProgress: "#0433ff",
+            inProgress: "#4A88F9",
             complete: "#339933",
             error: "#cc0000",
             textDark: "#000000",
@@ -104,13 +105,15 @@ function EditRecipe(props) {
   }
 
   useEffect(() => {
-    // setIngredients(selectedRecipe.ingredients.split(","));
+    if (window.innerWidth < 720) {
+      setUsingPhone(true);
+    }
     setUrl(selectedRecipe.pic_url);
     setIngredients(selectedRecipe.ingredients);
   }, []);
 
   return (
-    <main id="erecipe-main">
+    <main id="edit-recipe-main">
       <Formik
         initialValues={{
           title: selectedRecipe.title,
@@ -144,8 +147,6 @@ function EditRecipe(props) {
               )
               .then((resp) => {
                 navigate("/recipes");
-                setDisplayLeft(true);
-                setDisplayRight(false);
               })
               .catch((err) => {
                 const errFromServer = err.response.data.message;
@@ -156,50 +157,37 @@ function EditRecipe(props) {
         innerRef={formRef}
       >
         {({ errors, touched }) => (
-          <Form className="form">
-            <header className="form-header ec-header">
-              <span className="ec-logo">
-                <GiChefToque />
-              </span>
-              <h2 className="form-h2 ec-h2">Edit Recipe</h2>
-              {onPhone ? (
+          <Form id="edit-recipe-form" className="ce-forms">
+            <header>
+              <img height="100" width="100" alt="svg" src={main} />
+
+              <h2>Edit Recipe</h2>
+              {usingPhone ? (
                 <button
-                  style={{ padding: "0 1rem", margin: "1rem 0" }}
                   onClick={() => {
                     navigate("/recipes");
-                    setDisplayLeft(true);
-                    setDisplayRight(false);
                   }}
+                  className="recipe-btn"
                 >
                   Back
                 </button>
               ) : null}
             </header>
 
-            <div className="ec-main-cont">
-              <div className="ec-main-col ec-main-col1">
-                {url ? (
-                  <img src={url} className="recipe-image" />
-                ) : (
-                  <div className="recipe-image-replacement">
-                    <p>Photo Unavailable</p>
-                  </div>
-                )}
-                <div className="ec-upload-cont">
-                  <p className="form-p">Upload Photo:</p>
+            <div className="inputs-container">
+              <div className="first-col">
+                <div className="photo-cont">
+                  {url ? <img src={url} /> : <p>Photo Unavailable</p>}
+                </div>
+
+                <div className="upload-btn-cont">
+                  <p>Upload Photo:</p>
                   {widgetLoading ? (
-                    <div
-                      className="loader"
-                      style={{
-                        width: "15px",
-                        height: "15px",
-                        marginRight: "1.5rem",
-                      }}
-                    ></div>
+                    <BiLoaderCircle className="spinner" />
                   ) : (
                     <button
+                      className="recipe-btn"
                       type="button"
-                      className="ec-up-btn"
                       onClick={() => {
                         setWidgetLoading(true);
                         showUploadWidget();
@@ -211,118 +199,95 @@ function EditRecipe(props) {
                 </div>
               </div>
 
-              <div className="ec-main-col ec-main-col2">
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Title:</p>
+              <div className="mid-col">
+                <label>
+                  <div className="title-err-cont">
+                    <p>Title:</p>
                     {errors.title && touched.title ? (
-                      <p className="error-val">{errors.title}</p>
+                      <p className="label-error">{errors.title}</p>
                     ) : null}
                   </div>
-                  <Field
-                    className="form-input ec-form-input"
-                    name="title"
-                    placeholder="Milkshake"
-                  />
+                  <Field name="title" placeholder="Milkshake" />
                 </label>
 
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Description:</p>
+                <label>
+                  <div className="title-err-cont">
+                    <p>Description:</p>
                     {errors.description && touched.description ? (
-                      <div className="error-val">{errors.description}</div>
+                      <div className="">{errors.description}</div>
                     ) : null}
                   </div>
-                  <Field
-                    className="form-input ec-form-input"
-                    name="description"
-                    placeholder="Blended milkshake"
-                  />
+                  <Field name="description" placeholder="Blended milkshake" />
                 </label>
 
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Prep Time:</p>
+                <label>
+                  <div className="title-err-cont">
+                    <p>Prep Time:</p>
                     {errors.prep_time && touched.prep_time ? (
-                      <div className="error-val">{errors.prep_time}</div>
+                      <p className="label-error">{errors.prep_time}</p>
                     ) : null}
                   </div>
-                  <Field
-                    className="form-input ec-form-input"
-                    name="prep_time"
-                    type="number"
-                    min="1"
-                  />
+                  <Field name="prep_time" type="number" min="1" />
                 </label>
 
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Category:</p>
+                <label>
+                  <div className="title-err-cont">
+                    <p>Category:</p>
                     {errors.category && touched.category ? (
-                      <div className="error-val">{errors.category}</div>
+                      <div className="">{errors.category}</div>
                     ) : null}
                   </div>
-                  <Field
-                    className="form-input ec-form-input"
-                    name="category"
-                    placeholder="Snack"
-                  />
+                  <Field name="category" placeholder="Snack" />
                 </label>
 
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Source:</p>
+                <label>
+                  <div className="title-err-cont">
+                    <p>Source:</p>
                     {errors.source && touched.source ? (
-                      <div className="error-val">{errors.source}</div>
+                      <div className="">{errors.source}</div>
                     ) : null}
                   </div>
-                  <Field
-                    className="form-input ec-form-input"
-                    name="source"
-                    placeholder="Family Recipe"
-                  />
+                  <Field name="source" placeholder="Family Recipe" />
                 </label>
               </div>
 
-              <div className="ec-main-col ec-main-col3">
-                <div className="ec-whole-ing-cont">
-                  <label className="form-label">
-                    <div className="ec-form-label-cont">
-                      <p className="form-p">Ingredients:</p>
-                    </div>
-                    <div className="ec-ing-label-cont">
-                      <button
-                        type="button"
-                        className="ec-ing-btn1"
-                        onClick={() => {
-                          let check = ingredients.indexOf(ingredient.trim());
-                          if (ingredient && check === -1) {
-                            setIngredients([...ingredients, ingredient.trim()]);
-                          }
-                        }}
-                      >
-                        +
-                      </button>
-                      <Field
-                        id="ec-ing-input"
-                        className="form-input ec-form-input"
-                        name="ingredients"
-                        placeholder="Banana, Milk, etc..."
-                        onKeyUp={(e) => {
-                          let value = e.target.value;
-                          setIngredient(value.trim());
-                        }}
-                      />
-                    </div>
-                  </label>
+              <div className="last-col">
+                <label id="ing-cont">
+                  <div className="title-err-cont">
+                    <p>Ingredients:</p>
+                  </div>
 
-                  <div className="ing-each-cont ">
+                  <div className="add-ing-cont">
+                    <button
+                      className="add-min-btn"
+                      type="button"
+                      onClick={() => {
+                        let check = ingredients.indexOf(ingredient.trim());
+                        if (ingredient && check === -1) {
+                          setIngredients([...ingredients, ingredient.trim()]);
+                        }
+                      }}
+                    >
+                      +
+                    </button>
+
+                    <Field
+                      name="ingredients"
+                      placeholder="Banana, Milk, etc..."
+                      onKeyUp={(e) => {
+                        let value = e.target.value;
+                        setIngredient(value.trim());
+                      }}
+                    />
+                  </div>
+
+                  <div className="disable-btn-cont">
                     {ingredients.map((ing, i) => {
                       return (
-                        <div key={i}>
+                        <div className="del-ing-cont" key={i}>
                           <button
+                            className="add-min-btn"
                             type="button"
-                            className="ec-ing-btn2"
                             onClick={() => {
                               let copy = [...ingredients];
                               copy.splice(i, 1);
@@ -333,7 +298,6 @@ function EditRecipe(props) {
                             -
                           </button>
                           <Field
-                            className="form-input ec-form-input ec-ing-each-input"
                             name={`ingredients-disabled`}
                             placeholder={ing}
                             disabled
@@ -342,18 +306,18 @@ function EditRecipe(props) {
                       );
                     })}
                   </div>
-                </div>
+                </label>
 
-                <label className="form-label">
-                  <div className="ec-form-label-cont">
-                    <p className="form-p">Instructions:</p>
+                <label id="inst-cont">
+                  <div className="title-err-cont">
+                    <p>Instructions:</p>
+
                     {errors.instructions && touched.instructions ? (
-                      <div className="error-val">{errors.instructions}</div>
+                      <p className="label-error">{errors.instructions}</p>
                     ) : null}
                   </div>
+
                   <Field
-                    id="ec-instructions-textarea"
-                    className="form-input ec-form-input"
                     name="instructions"
                     placeholder="Prep, Blend, etc..."
                     as="textarea"
@@ -362,13 +326,9 @@ function EditRecipe(props) {
               </div>
             </div>
 
-            <div className="ec-submit-btn-cont">
-              <button
-                id="cr-btn"
-                className="form-button btn-global ec-submit-btn"
-                type="submit"
-              >
-                Edit Recipe
+            <div className="btn-cont">
+              <button className="recipe-btn" type="submit">
+                Edit
               </button>
             </div>
           </Form>

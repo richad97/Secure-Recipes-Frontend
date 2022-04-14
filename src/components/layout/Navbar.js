@@ -1,34 +1,49 @@
+import main from "../../assets/main.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 import "../../styles/components/layout/Nav.css";
-import { GiChefToque } from "react-icons/gi";
-import { FaGripLines } from "react-icons/fa";
 
 function Navbar(props) {
-  const { isAuth, setAuth, setDisplayLeft, setDisplayRight } = props;
+  const { isAuth, setAuth } = props;
   const [hamClicked, setHamClicked] = useState(false);
 
   return (
-    <>
-      <nav className="nav-unresponsive">
-        <ul>
-          <div className="auth-links-left">
+    <nav>
+      <ul className="irresponsive">
+        <div className="auth-links-left">
+          {isAuth ? null : (
             <li>
-              <Link to="/">
-                <span className="nav-logo">
-                  <GiChefToque />
-                </span>
+              <Link to="/" className="nav-logo">
+                <img alt="svg" src={main} />
               </Link>
             </li>
+          )}
+          {isAuth ? (
             <li className="links-not-logo">
-              {isAuth ? <Link to="/recipes">My Recipes</Link> : null}
+              <Link to="/recipes">My Recipes</Link>
             </li>
+          ) : null}
+          {isAuth ? (
             <li className="links-not-logo">
-              {isAuth ? <Link to="/friends">My Friends</Link> : null}
+              <Link to="/friends">My Friends</Link>
+            </li>
+          ) : null}
+        </div>
+
+        {isAuth ? (
+          <div className="auth-links-middle">
+            <li>
+              <Link to="/" className="nav-logo">
+                <img alt="svg" src={main} />
+              </Link>
             </li>
           </div>
-          <li className="auth-links-right">
-            {isAuth ? (
+        ) : null}
+
+        <div className="auth-links-right">
+          {isAuth ? (
+            <li>
               <Link
                 onClick={() => {
                   localStorage.removeItem("token");
@@ -38,111 +53,86 @@ function Navbar(props) {
               >
                 Logout
               </Link>
-            ) : (
-              <>
+            </li>
+          ) : (
+            <>
+              <li>
                 <Link to="/login">Login</Link>
+              </li>
+              <li>
                 <Link to="/register">Register</Link>
-              </>
-            )}
-          </li>
-        </ul>
-      </nav>
-      <nav className="nav-responsive">
-        <ul>
-          <div className="nav-responsive-mainr">
-            <li className="ham-cont">
-              <FaGripLines
-                className="nav-resp-i"
+              </li>
+            </>
+          )}
+        </div>
+      </ul>
+
+      <ul className="responsive">
+        <GiHamburgerMenu
+          onClick={() => {
+            setHamClicked(!hamClicked);
+          }}
+        />
+
+        <div className={hamClicked ? "" : "display-none"}>
+          {isAuth ? (
+            <li
+              onClick={() => {
+                setHamClicked(!hamClicked);
+              }}
+              className="links-not-logo"
+            >
+              <Link to="/recipes">My Recipes</Link>
+            </li>
+          ) : null}
+          {isAuth ? (
+            <li
+              onClick={() => {
+                setHamClicked(!hamClicked);
+              }}
+              className="links-not-logo"
+            >
+              <Link to="/friends">My Friends</Link>
+            </li>
+          ) : null}
+
+          {isAuth ? (
+            <li
+              onClick={() => {
+                setHamClicked(!hamClicked);
+              }}
+            >
+              <Link
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setAuth(false);
+                }}
+                to="/"
+              >
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li
                 onClick={() => {
                   setHamClicked(!hamClicked);
                 }}
-              />
-            </li>
-            <li>
-              <Link to="/">
-                <span className="nav-logo">
-                  <GiChefToque />
-                </span>
-              </Link>
-            </li>
-          </div>
-          {hamClicked ? (
-            <div className="nav-responsive-subr">
-              {isAuth ? (
-                <>
-                  <li>
-                    {isAuth ? (
-                      <Link
-                        to="/recipes"
-                        onClick={() => {
-                          setHamClicked(!hamClicked);
-                          setDisplayLeft(true);
-                          setDisplayRight(false);
-                        }}
-                      >
-                        My Recipes
-                      </Link>
-                    ) : null}
-                  </li>
-                  <li>
-                    {isAuth ? (
-                      <Link
-                        onClick={() => {
-                          setHamClicked(!hamClicked);
-                          setDisplayLeft(true);
-                          setDisplayRight(false);
-                        }}
-                        to="/friends"
-                      >
-                        My Friends
-                      </Link>
-                    ) : null}
-                  </li>
-                  <li>
-                    <Link
-                      onClick={() => {
-                        localStorage.removeItem("token");
-                        setAuth(false);
-                        setHamClicked(!hamClicked);
-                        setDisplayLeft(true);
-                        setDisplayRight(false);
-                      }}
-                      to="/"
-                    >
-                      Logout
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <Link
-                      to="/login"
-                      onClick={() => {
-                        setHamClicked(!hamClicked);
-                      }}
-                    >
-                      Login
-                    </Link>
-                    <></>
-                  </li>
-                  <li>
-                    <Link
-                      to="/register"
-                      onClick={() => {
-                        setHamClicked(!hamClicked);
-                      }}
-                    >
-                      Register
-                    </Link>
-                  </li>
-                </>
-              )}
-            </div>
-          ) : null}
-        </ul>
-      </nav>
-    </>
+              >
+                <Link to="/login">Login</Link>
+              </li>
+              <li
+                onClick={() => {
+                  setHamClicked(!hamClicked);
+                }}
+              >
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
+        </div>
+      </ul>
+    </nav>
   );
 }
 

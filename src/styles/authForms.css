@@ -1,0 +1,53 @@
+.lr-forms {
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
+  height: 35rem;
+  margin: 1.5rem auto;
+  width: 80%;
+}
+.lr-forms h2 {
+  padding: 0.8rem 2rem;
+  margin: 0;
+  border-bottom: var(--main-border-color);
+  background-color: var(--main-color);
+}
+.lr-forms .lr-wrap {
+  padding: 0 2rem;
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.lr-forms .lr-wrap .lr-input-wrap label .lr-label-wrap {
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: space-between;
+  margin: 0.8rem 0;
+  margin-bottom: 0;
+}
+.lr-forms .lr-wrap .lr-input-wrap label .lr-label-wrap p {
+  margin: 0;
+}
+.lr-forms .lr-wrap .lr-input-wrap label input {
+  height: 1.5rem;
+  margin: 0 auto;
+  width: 99%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.lr-forms .lr-wrap .lr-xtr-links {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.lr-forms .lr-wrap .lr-btn-wrap {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.lr-forms .lr-wrap .lr-btn-wrap button {
+  height: 3rem;
+  width: 100%;
+  position: relative;
+}

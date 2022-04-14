@@ -1,0 +1,34 @@
+#login-form {
+  display: flex;
+  flex-direction: row;
+}
+#login-form .left-section {
+  align-items: center;
+  background-color: rgba(68, 134, 209, 0.05);
+  border-right: var(--main-border-color);
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+#login-form .right-section {
+  width: 50%;
+}
+#login-form .lr-wrap .lr-btn-wrap {
+  position: relative;
+}
+
+@media (max-width: 992px) {
+  #login-form .left-section img {
+    height: 220px;
+    width: 220px;
+  }
+}
+
+@media (max-width: 720px) {
+  #login-form .left-section {
+    display: none;
+  }
+  #login-form .right-section {
+    width: 100%;
+  }
+}

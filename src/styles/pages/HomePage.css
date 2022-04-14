@@ -1,77 +1,193 @@
-@keyframes float {
-  0% {
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
-    transform: translatey(0px);
-  }
-  50% {
-    filter: drop-shadow(0 25px 15px rgba(0, 0, 0, 0.1));
-    transform: translatey(-20px);
-  }
-  100% {
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
-    transform: translatey(0px);
-  }
+.home-main {
+  height: 0;
 }
-.home-section {
-  width: 100%;
-  height: 90%;
-  box-shadow: none;
+.home-main header {
+  background-color: var(--home-section-header-background-color);
+  border-radius: var(--home-section-border-radius);
+  box-shadow: var(--home-section-box-shadow);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 5rem 15rem;
   position: relative;
-  bottom: 5%;
-  z-index: 0;
+  z-index: 10;
 }
-.home-section img {
-  height: 50%;
+.home-main header .header-text {
+  width: 40%;
+}
+.home-main header .header-text h1 {
+  color: var(--main-font-color);
+}
+.home-main header .header-text p {
+  color: var(--main-second-font-color);
+}
+.home-main header .header-text button {
+  border: 2px solid white;
+  border-radius: 2rem;
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  width: 100%;
+}
+.home-main .sub-section-1 {
+  background-color: var(--home-section-sub-section-1-background-color);
+  border-radius: var(--home-section-border-radius);
+  bottom: 5rem;
+  box-shadow: var(--home-section-box-shadow);
+  margin: 0rem auto;
+  padding-bottom: 2.5rem;
+  padding-top: 7rem;
+  position: relative;
+  z-index: 9;
+}
+.home-main .sub-section-1 h2 {
+  color: var(--main-font-color);
+}
+.home-main .sub-section-1 .card p {
+  color: var(--main-second-font-color);
+}
+.home-main .sub-section-1 h2 {
+  margin: 2rem auto;
+  text-align: start;
   width: 50%;
-  margin: 0 auto;
-  filter: drop-shadow(1rem 1rem 1rem rgba(0, 0, 0, 0.35));
-  transform: translatey(0px);
-  animation: float 6s ease-in-out infinite;
 }
-.home-section h1 {
-  font-size: 2.8rem;
-  color: white;
-  text-align: center;
-  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3);
-}
-.home-section div {
-  margin: 0 auto;
-  padding-top: 2rem;
+.home-main .sub-section-1 .card-wrapper .card {
+  background-color: white;
+  border: var(--home-card-border);
+  border-radius: 0.25rem;
   display: flex;
-  justify-content: center;
+  height: 10rem;
+  margin: 2rem auto;
+  width: 50%;
 }
-.home-section div > button {
+.home-main .sub-section-1 .card-wrapper .card p {
+  align-items: center;
+  display: flex;
+  font-size: 0.9rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+.home-main .sub-section-1 .card-wrapper .card svg {
+  height: 3rem;
+  padding: 2rem 2rem;
   margin: 0 1rem;
-  padding: 0.7rem 3rem;
-  font-size: 1rem;
-  font-weight: bold;
-  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.2rem;
-  color: rgb(255, 255, 255);
-  border: none;
-  background-color: rgba(142, 142, 142, 0.49);
-  cursor: pointer;
-  transition: 0.25s ease-in-out;
+  width: 3rem;
 }
-.home-section div > button:hover {
-  background-color: rgba(101, 101, 108, 0.456);
-  color: rgb(223, 223, 223);
+.home-main .sub-section-1 .icon-wrapper .svg1 {
+  fill: rgba(255, 109, 109, 0.4);
 }
-@media only screen and (max-width: 830px) {
-  .home-section h1 {
-    font-size: 5vw;
+.home-main .sub-section-1 .icon-wrapper .svg2 {
+  fill: rgba(109, 121, 255, 0.4);
+}
+.home-main .sub-section-1 .icon-wrapper .svg3 {
+  fill: rgba(209, 109, 255, 0.4);
+}
+.home-main .sub-section-1 .card-wrapper .card .icon-wrapper {
+  align-items: center;
+  display: flex;
+}
+.home-main .sub-section-1 .odd .icon-wrapper {
+  border-right: var(--home-card-border);
+}
+.home-main .sub-section-1 .even .icon-wrapper {
+  border-left: var(--home-card-border);
+}
+.home-main .sub-section-2 {
+  background-color: var(--home-section-sub-section-2-background-color);
+  border-radius: var(--home-section-border-radius);
+  bottom: 10rem;
+  box-shadow: var(--home-section-box-shadow);
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  padding: 5rem 15rem;
+  padding-top: 12rem;
+  z-index: 8;
+}
+.home-main .section-text h2 {
+  color: var(--main-font-color);
+}
+.home-main .section-text p {
+  color: var(--main-second-font-color);
+}
+.home-main .sub-section-2 .section-text {
+  width: 30%;
+}
+.home-main footer {
+  background-color: var(--home-section-footer-background-color);
+  bottom: 15rem;
+  color: white;
+  padding: 1rem 0;
+  padding-top: 6rem;
+  position: relative;
+  text-align: center;
+  z-index: 7;
+}
+
+@media (max-width: 992px) {
+  .home-main header {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+  }
+  .home-main header .header-text {
+    width: 100%;
+    text-align: center;
+  }
+  .home-main .sub-section-1 h2 {
+    margin: 2rem auto;
+    text-align: start;
+    width: 60%;
+  }
+  .home-main .sub-section-1 .card-wrapper .card {
+    width: 60%;
+  }
+  .home-main .sub-section-2 {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+  .home-main .sub-section-2 .section-text {
+    width: 100%;
   }
 }
 
-@media only screen and (max-width: 550px) {
-  .home-section h1 {
-    font-size: 7vw;
+@media (max-width: 720px) {
+  .home-main header {
+    padding: 4rem 2rem;
+    padding-top: 2rem;
   }
-  .home-section img {
-    height: 65%;
-    width: 65%;
+  .home-main header .header-text {
+    width: 100%;
+  }
+  .home-main .sub-section-1 h2 {
+    width: 90%;
+  }
+  .home-main .sub-section-1 .card-wrapper .card {
+    width: 90%;
+  }
+  .home-main .sub-section-2 {
+    padding: 0;
+    padding-top: 8rem;
+  }
+  .home-main .sub-section-2 .section-text {
+    width: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .home-main .sub-section-1 .card-wrapper .card {
+    height: auto;
+    flex-direction: column;
+  }
+  .home-main .sub-section-1 .card-wrapper .card .icon-wrapper {
+    justify-content: center;
+  }
+  .home-main .sub-section-1 .odd .icon-wrapper {
+    border: none;
+    border-bottom: var(--home-card-border);
+  }
+  .home-main .sub-section-1 .even .icon-wrapper {
+    border: none;
+    border-top: var(--home-card-border);
   }
 }

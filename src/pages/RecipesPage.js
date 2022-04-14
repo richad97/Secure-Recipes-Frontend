@@ -1,10 +1,10 @@
-import "../styles/pages/RecipesPage.css";
+import axios from "axios";
 import LeftSection from "../components/recipes/LeftSection";
 import RightSection from "../components/recipes/RightSection";
 import LoadingComp from "../components/LoadingComp";
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { RecipeContext } from "../RecipeContext";
+import "../styles/pages/RecipesPage.css";
 
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
@@ -12,19 +12,20 @@ function Recipes(props) {
   const {
     setDeleteMessage,
     isDeleted,
-    onPhone,
-    setOnPhone,
-    displayLeft,
-    setDisplayLeft,
-    displayRight,
-    setDisplayRight,
+    usingPhone,
+    setUsingPhone,
+    showLeftSection,
+    setLeftSection,
+    showRightSection,
+    setRightSection,
   } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
   useEffect(() => {
-    if (window.innerWidth <= 790) {
-      setOnPhone(true);
-      setDisplayRight(false);
+    if (window.innerWidth <= 720) {
+      setUsingPhone(true);
+      setLeftSection(true);
+      setRightSection(false);
     }
 
     const token = localStorage.getItem("token");
@@ -40,7 +41,6 @@ function Recipes(props) {
         setUserRecipes(recievedData);
       })
       .catch((err) => {
-        console.dir(err);
         let recievedErr = err.response.data.error;
         setServerMessage(recievedErr);
         setSelectedRecipe({});
@@ -51,42 +51,37 @@ function Recipes(props) {
   return (
     <main id="recipes-main">
       {serverMessage ? (
-        <form
-          style={{ width: "30%", height: "15%", marginTop: "5rem" }}
-          className="form"
-        >
-          <h2
-            className="form-h2 auth-forms-h2"
-            style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
-          >
-            Server Message: {serverMessage}
-          </h2>
+        <form className="single-forms">
+          <h2>Message</h2>
+          <p>{serverMessage}</p>
         </form>
       ) : (
         <>
-          <LeftSection
-            userRecipes={userRecipes}
-            setSelectedRecipe={setSelectedRecipe}
-            onPhone={onPhone}
-            setOnPhone={setOnPhone}
-            setDisplayRight={setDisplayRight}
-            displayLeft={displayLeft}
-            setDisplayLeft={setDisplayLeft}
-          />
-          {!selectedRecipe ? (
-            <LoadingComp />
-          ) : (
-            <RightSection
-              displayLeft={displayLeft}
-              setDisplayLeft={setDisplayLeft}
-              displayRight={displayRight}
-              setDisplayRight={setDisplayRight}
-              setDeleteMessage={setDeleteMessage}
-              onPhone={onPhone}
-              setOnPhone={setOnPhone}
-              selectedRecipe={selectedRecipe}
+          {showLeftSection ? (
+            <LeftSection
+              userRecipes={userRecipes}
+              setSelectedRecipe={setSelectedRecipe}
+              setLeftSection={setLeftSection}
+              setRightSection={setRightSection}
+              usingPhone={usingPhone}
             />
-          )}
+          ) : null}
+
+          {showRightSection ? (
+            <>
+              {!selectedRecipe ? (
+                <LoadingComp />
+              ) : (
+                <RightSection
+                  setDeleteMessage={setDeleteMessage}
+                  selectedRecipe={selectedRecipe}
+                  setLeftSection={setLeftSection}
+                  setRightSection={setRightSection}
+                  usingPhone={usingPhone}
+                />
+              )}
+            </>
+          ) : null}
         </>
       )}
     </main>

@@ -1,0 +1,266 @@
+.ce-forms {
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  margin: 1rem 12rem;
+}
+.ce-forms header {
+  align-items: center;
+  border-bottom: var(--main-border-color);
+  display: flex;
+  background-color: rgba(235, 235, 235);
+}
+.ce-forms header img {
+  height: 3rem;
+  width: 3rem;
+  padding: 1rem;
+  padding-left: 1.5rem;
+}
+.ce-forms header h2 {
+  color: var(--main-font-color);
+  margin: 0 1rem;
+  margin-top: 0.5rem;
+}
+.ce-forms .inputs-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+.ce-forms .inputs-container .first-col {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 2rem;
+  width: 20%;
+}
+.ce-forms .inputs-container .first-col .photo-cont {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 9rem;
+  padding: 0 0;
+  width: 90%;
+}
+.ce-forms .inputs-container .first-col .photo-cont p {
+  align-items: center;
+  border: 1px solid rgb(231, 231, 231);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+}
+.ce-forms .inputs-container .first-col .photo-cont img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.ce-forms .inputs-container .first-col .upload-btn-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  width: 90%;
+}
+.ce-forms .inputs-container .first-col .upload-btn-cont p {
+  margin: 0;
+}
+.ce-forms .inputs-container .first-col .upload-btn-cont button {
+  height: 2rem;
+  font-size: 0.75rem;
+}
+.ce-forms .inputs-container .mid-col {
+  width: 30%;
+}
+.ce-forms .inputs-container .last-col {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.ce-forms .inputs-container .mid-col,
+.ce-forms .inputs-container .last-col {
+  margin: 0 0;
+}
+.ce-forms .inputs-container .mid-col label .title-err-cont,
+.ce-forms .inputs-container .last-col label .title-err-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ce-forms .inputs-container .mid-col label .title-err-cont p,
+.ce-forms .inputs-container .last-col label .title-err-cont p {
+  /* color: var(--main-second-font-color); */
+  margin: 1rem 0;
+  display: block;
+}
+.ce-forms .inputs-container .mid-col label input,
+.ce-forms .inputs-container .last-col label input {
+  height: 6%;
+  width: 100%;
+}
+.ce-forms .inputs-container .mid-col label .title-err-cont p,
+.ce-forms .inputs-container .last-col label .title-err-cont p {
+  margin-bottom: 0.1rem;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-min-btn {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgb(84, 84, 84);
+  width: 7%;
+  transition: 0.2s ease-in-out;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-min-btn:hover {
+  cursor: pointer;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-ing-cont {
+  display: flex;
+  justify-content: space-between;
+}
+.ce-forms .inputs-container .last-col #ing-cont .add-ing-cont input {
+  height: 1.55rem;
+  width: 88%;
+}
+.ce-forms .inputs-container .last-col .disable-btn-cont {
+  height: 7.23rem;
+  margin-top: 1rem;
+  padding: 0rem 0.5rem;
+  overflow-y: scroll;
+}
+.ce-forms .inputs-container .last-col .disable-btn-cont .del-ing-cont {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+.ce-forms .inputs-container .last-col .disable-btn-cont .del-ing-cont input {
+  width: 88%;
+}
+.ce-forms .inputs-container .last-col #inst-cont textarea {
+  height: 7.23rem;
+  width: 100%;
+  resize: none;
+}
+.ce-forms .inputs-container .mid-col label input,
+.ce-forms .inputs-container .last-col label input,
+.ce-forms .inputs-container .last-col .disable-btn-cont,
+.ce-forms .inputs-container .last-col #inst-cont textarea {
+  border: 1px solid rgba(159, 159, 159, 0.75);
+  color: rgba(0, 0, 0, 0.8);
+}
+.ce-forms .btn-cont {
+  display: flex;
+  justify-content: end;
+  margin: 0 1.75rem;
+}
+.ce-forms .btn-cont button {
+  height: 2rem;
+  font-size: 0.85rem;
+  padding: 0 1rem;
+}
+
+@media (max-width: 992px) {
+  .ce-forms {
+    width: 75%;
+    margin: 1rem auto;
+  }
+  .ce-forms .inputs-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ce-forms .inputs-container .first-col,
+  .ce-forms .inputs-container .mid-col,
+  .ce-forms .inputs-container .last-col {
+    width: 90%;
+  }
+  .ce-forms .inputs-container .first-col {
+    margin-top: 2rem;
+  }
+  .ce-forms .inputs-container .mid-col label input {
+    width: 99%;
+    height: 1.7rem;
+  }
+}
+@media (max-width: 720px) {
+  .ce-forms {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .ce-forms header {
+    padding: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ce-forms header button {
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 0.7rem;
+    margin-right: 1rem;
+  }
+  .ce-forms header img {
+    display: none;
+  }
+}
+
+.single-forms {
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
+  height: 35rem;
+  margin: 1rem auto;
+  padding: 0 0rem;
+  width: 35%;
+}
+.single-forms h2 {
+  background-color: var(--main-color);
+  border-bottom: var(--main-border-color);
+  color: var(--main-font-color);
+  margin: 0;
+  padding: 1rem 1rem;
+}
+.single-forms > * {
+  margin: 1rem 1rem;
+}
+.single-forms > p {
+  color: var(--main-second-font-color);
+  margin: 1rem 1rem;
+  margin-bottom: 0rem;
+}
+.single-forms h2,
+.single-forms p {
+  white-space: nowrap;
+}
+.single-forms .inputs-container {
+  height: 22rem;
+  margin-top: 0;
+}
+.single-forms .inputs-container input {
+  height: 1.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.single-forms .inputs-container label .title-err-cont {
+  display: flex;
+  justify-content: space-between;
+}
+.single-forms .inputs-container label .title-err-cont p {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  margin-bottom: 0;
+}
+.single-forms .inputs-container label input {
+  width: 98%;
+}
+.single-forms .btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .single-forms {
+    width: 50%;
+  }
+}
+@media (max-width: 550px) {
+  .single-forms {
+    width: 85%;
+  }
+}

@@ -1,15 +1,11 @@
+import "../styles/authForms.css";
+import "../styles/form.css";
+
 function ConfirmEmail() {
   return (
-    <form
-      style={{ width: "30%", height: "10%", marginTop: "5rem" }}
-      className="form"
-    >
-      <h2
-        className="form-h2 auth-forms-h2"
-        style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
-      >
-        Please confirm email to proceed.
-      </h2>
+    <form className="single-forms">
+      <h2>Confirmation</h2>
+      <p>Please confirm email to proceed.</p>
     </form>
   );
 }

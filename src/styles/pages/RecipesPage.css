@@ -1,12 +1,30 @@
 #recipes-main {
   display: flex;
-  height: 88%;
+  /* height: 40rem; */
+  height: 90%;
+  color: var(--main-second-font-color);
+}
+#recipes-main h1,
+#recipes-main h2 {
+  font-weight: 600;
+  color: var(--main-font-color);
+}
+#recipes-main section {
+  border: var(--main-border-color);
+  box-shadow: var(--main-box-shadow);
+  margin: 1rem 2rem;
+}
+#recipes-main section h1,
+#recipes-main section h2,
+#recipes-main section p {
+  margin: 0;
 }
 
-@media only screen and (max-width: 790px) {
-  #recipes-main {
-    flex-direction: column;
-    height: auto;
-    height: 90%;
+@media (max-width: 720px) {
+  #recipes-main #left-section {
+    width: 100%;
+  }
+  #recipes-main #right-section {
+    width: 100%;
   }
 }

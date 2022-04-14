@@ -1,95 +1,70 @@
-.nav-unresponsive {
-  background-color: var(--navBg);
+nav {
+  background-color: var(--main-nav-bg);
+  border-bottom: var(--main-nav-border-color);
+  padding: 1rem 0;
   width: 100%;
-  height: 10%;
-  position: relative;
-  z-index: 99999;
 }
-.nav-unresponsive ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  gap: 25rem;
-}
-.nav-unresponsive ul a {
-  text-decoration: none;
-  font-size: var(--navFontSize);
-  color: white;
-}
-a:visited {
-  text-decoration: none;
-  color: white;
-}
-.nav-logo > svg {
+.nav-logo img {
   height: 2rem;
   width: 2rem;
-  fill: var(--navLogoColor);
 }
-.auth-links-left {
-  width: 16rem;
-  display: flex;
-  text-align: center;
-  justify-content: space-between;
+nav .responsive {
+  display: none;
 }
-.auth-links-left > .links-not-logo {
-  padding-top: 0.6rem;
-}
-.auth-links-right > a {
-  padding: 1rem;
-}
-
-.nav-responsive {
-  background-color: var(--navBg);
-  width: 100%;
-  position: relative;
-  z-index: 99999;
-}
-.ham-cont {
-  padding-top: 1rem !important;
-}
-.nav-unresponsive ul,
-li,
-a {
-  text-decoration: none;
-}
-.nav-responsive-mainr {
+nav .irresponsive {
   display: flex;
   justify-content: space-between;
-}
-.nav-responsive-mainr {
-  /* padding: 0.5rem 0; */
-}
-.nav-responsive-subr {
-  background-color: rgb(30, 31, 34);
-}
-.nav-responsive ul {
   list-style-type: none;
+  margin: 0 13.5%;
+  padding: 0;
 }
-.nav-responsive ul li {
-  padding: 1rem 0;
-  text-decoration: none;
-  margin: 0 10%;
+nav .irresponsive .auth-links-middle {
+  padding-right: 7.75rem;
 }
-.nav-resp-i {
-  fill: white;
-  cursor: pointer;
-  height: 1.25rem;
-  width: 1.25rem;
-  padding-top: 0.5rem;
+nav .irresponsive .auth-links-left,
+nav .irresponsive .auth-links-right {
+  display: flex;
+}
+nav .irresponsive .auth-links-left li,
+nav .irresponsive .auth-links-right li {
+  align-items: center;
+  display: flex;
+}
+nav .irresponsive .auth-links-left li,
+nav .irresponsive .auth-links-right li {
+  padding: 0 1rem;
 }
 
-@media only screen and (min-width: 790px) {
-  .nav-responsive {
+@media (max-width: 720px) {
+  nav {
+    padding-bottom: 0;
+  }
+  nav .irresponsive {
     display: none;
   }
-}
-@media only screen and (max-width: 790px) {
-  .nav-unresponsive {
-    display: none;
-  }
-  .nav-resp-i {
+  nav .responsive {
     display: block;
+    margin: 0.2rem 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  nav .responsive svg {
+    height: 1.8rem;
+    width: 1.8rem;
+    fill: rgb(60, 60, 60);
+    padding-left: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+  }
+  nav .responsive li {
+    background-color: rgb(220, 220, 220);
+    padding: 0.5rem 0;
+  }
+  nav .responsive li a {
+    display: inline-block;
+    color: rgb(68, 68, 68);
+    padding-left: 2rem;
+    width: 100%;
   }
 }

@@ -1,27 +1,35 @@
-.friends-btn-cont {
+#friends-main .ce-forms .main-wrap {
+  margin: 1rem;
+}
+#friends-main .ce-forms table {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.121);
+}
+#friends-main .ce-forms table thead tr th {
+  color: rgb(62, 62, 62);
+  background-color: rgb(235, 235, 235);
+}
+#friends-main .ce-forms table tbody tr {
+  text-align: center;
+}
+#friends-main .ce-forms table tbody tr td button {
+  font-size: 0.85rem;
+  height: 1.75rem;
+  font-weight: 600;
+  margin: 0.75rem 0;
+}
+#friends-main .ce-forms .btn-wrap {
   display: flex;
   justify-content: space-between;
-  padding: 0.3rem 1rem;
-}
-.friends-btn-cont p {
-  color: white;
-  display: flex;
   align-items: center;
-  font-size: 0.8rem;
+  margin: 0 1rem;
+  margin-top: 1rem;
 }
-.friends-btn-cont p span {
+#friends-main .ce-forms .btn-wrap p span {
+  font-weight: bold;
   padding-left: 1rem;
 }
-table {
-  margin: 0 auto;
-  color: white;
-  width: 80%;
-  font-size: 0.8rem;
-}
-th {
-  padding: 2rem 0;
-  text-align: center;
-}
-td {
-  text-align: center;
+#friends-main .ce-forms .btn-wrap button {
+  font-size: 0.75rem;
+  height: 2rem;
 }

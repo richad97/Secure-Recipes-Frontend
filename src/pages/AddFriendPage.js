@@ -1,9 +1,10 @@
-import "../styles/components/authForms.css";
-import "../styles/components/form.css";
-import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useState } from "react";
+import { Formik, Form, Field } from "formik";
+import "../styles/authForms.css";
+import "../styles/form.css";
+import "../styles/pages/AddFriendPage.css";
 
 const AddFriendSchema = Yup.object().shape({
   token: Yup.string().required("Required"),
@@ -14,7 +15,7 @@ function AddFriendPage(props) {
   const [serverSuccess, setServerSuccess] = useState("");
 
   return (
-    <main id="addfriend-main" className="auth-forms">
+    <main id="addfriend-main">
       <Formik
         initialValues={{
           token: "",
@@ -48,41 +49,30 @@ function AddFriendPage(props) {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="form">
-            <h2 className="form-h2 auth-forms-h2">Add Friend</h2>
+          <Form className="single-forms">
+            <h2>Add Friend</h2>
 
-            <hr className="auth-forms-hr" />
+            <p>Please enter token used to add friend.</p>
 
-            <div className="auth-forms-middle-cont">
-              <label className="form-label">
-                <div>
-                  <p className="form-p">Token:</p>
-                  {errors.token && touched.token ? (
-                    <p className="error-val">{errors.token}</p>
-                  ) : null}
+            <div className="inputs-container">
+              <label>
+                <div className="title-err-cont">
+                  <p>Token:</p>
+                  {errors.token && touched.token ? <p>{errors.token}</p> : null}
                 </div>
-                <Field
-                  className="form-input auth-forms-inputs"
-                  name="token"
-                  placeholder="Enter token here..."
-                />
+                <Field name="token" placeholder="Enter token here..." />
               </label>
             </div>
-            {serverError ? (
-              <p className="error-val">Server Error: {serverError}</p>
-            ) : null}
-            {serverSuccess ? (
-              <p className="error-val" style={{ color: "green" }}>
-                {serverSuccess}
-              </p>
-            ) : null}
-            <button
-              id="log-btn"
-              className="form-button btn-global auth-forms-btn"
-              type="submit"
-            >
-              Add Friend
-            </button>
+
+            {serverError ? <p>Server Error: {serverError}</p> : null}
+
+            {serverSuccess ? <p>{serverSuccess}</p> : null}
+
+            <div className="btn-wrap">
+              <button className="recipe-btn" type="submit">
+                Add Friend
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
