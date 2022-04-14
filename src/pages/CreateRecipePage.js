@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import axios from "axios";
 import main from "../assets/main.svg";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 import "../styles/form.css";
@@ -42,6 +42,14 @@ function CreateRecipe(props) {
   const [ingredients, setIngredients] = useState([]);
   const [widgetLoading, setWidgetLoading] = useState(false);
   const [url, setUrl] = useState("");
+  const {
+    usingPhone,
+    setUsingPhone,
+    showLeftSection,
+    setLeftSection,
+    showRightSection,
+    setRightSection,
+  } = props;
 
   function showUploadWidget() {
     window.cloudinary.openUploadWidget(
@@ -103,6 +111,12 @@ function CreateRecipe(props) {
     );
   }
 
+  useEffect(() => {
+    if (window.innerWidth < 720) {
+      setUsingPhone(true);
+    }
+  }, []);
+
   return (
     <main id="create-recipe-main">
       <Formik
@@ -142,6 +156,16 @@ function CreateRecipe(props) {
             <header>
               <img alt="svg" src={main} />
               <h2>Create Recipe</h2>
+              {usingPhone ? (
+                <button
+                  onClick={() => {
+                    navigate("/recipes");
+                  }}
+                  className="recipe-btn"
+                >
+                  Back
+                </button>
+              ) : null}
             </header>
 
             <div className="inputs-container">

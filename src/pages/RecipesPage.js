@@ -9,10 +9,25 @@ import "../styles/pages/RecipesPage.css";
 function Recipes(props) {
   const [userRecipes, setUserRecipes] = useState([]);
   const [serverMessage, setServerMessage] = useState("");
-  const { setDeleteMessage, isDeleted } = props;
+  const {
+    setDeleteMessage,
+    isDeleted,
+    usingPhone,
+    setUsingPhone,
+    showLeftSection,
+    setLeftSection,
+    showRightSection,
+    setRightSection,
+  } = props;
   const { selectedRecipe, setSelectedRecipe } = useContext(RecipeContext);
 
   useEffect(() => {
+    if (window.innerWidth <= 720) {
+      setUsingPhone(true);
+      setLeftSection(true);
+      setRightSection(false);
+    }
+
     const token = localStorage.getItem("token");
 
     axios
@@ -42,18 +57,31 @@ function Recipes(props) {
         </form>
       ) : (
         <>
-          <LeftSection
-            userRecipes={userRecipes}
-            setSelectedRecipe={setSelectedRecipe}
-          />
-          {!selectedRecipe ? (
-            <LoadingComp />
-          ) : (
-            <RightSection
-              setDeleteMessage={setDeleteMessage}
-              selectedRecipe={selectedRecipe}
+          {showLeftSection ? (
+            <LeftSection
+              userRecipes={userRecipes}
+              setSelectedRecipe={setSelectedRecipe}
+              setLeftSection={setLeftSection}
+              setRightSection={setRightSection}
+              usingPhone={usingPhone}
             />
-          )}
+          ) : null}
+
+          {showRightSection ? (
+            <>
+              {!selectedRecipe ? (
+                <LoadingComp />
+              ) : (
+                <RightSection
+                  setDeleteMessage={setDeleteMessage}
+                  selectedRecipe={selectedRecipe}
+                  setLeftSection={setLeftSection}
+                  setRightSection={setRightSection}
+                  usingPhone={usingPhone}
+                />
+              )}
+            </>
+          ) : null}
         </>
       )}
     </main>

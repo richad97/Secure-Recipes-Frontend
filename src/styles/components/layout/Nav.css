@@ -49,13 +49,17 @@ nav .irresponsive .auth-links-right li {
   nav .responsive svg {
     height: 1.8rem;
     width: 1.8rem;
+    fill: rgb(60, 60, 60);
+    padding-left: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
   }
   nav .responsive li {
     background-color: rgb(220, 220, 220);
     padding: 0.5rem 0;
-    display: none;
   }
   nav .responsive li a {
     color: rgb(68, 68, 68);
+    padding-left: 2rem;
   }
 }

@@ -21,10 +21,10 @@
 }
 
 @media (max-width: 720px) {
-  #recipes-main #right-section {
-    display: none;
-  }
   #recipes-main #left-section {
+    width: 100%;
+  }
+  #recipes-main #right-section {
     width: 100%;
   }
 }

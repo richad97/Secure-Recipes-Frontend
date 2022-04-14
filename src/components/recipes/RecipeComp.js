@@ -3,12 +3,21 @@ import "../../styles/components/recipes/RecipeComp.css";
 
 function RecipeComp(props) {
   const [convertedUTC, setConvertedUTC] = useState(null);
-
-  const { recipe, setSelectedRecipe } = props;
+  const {
+    recipe,
+    setSelectedRecipe,
+    setLeftSection,
+    setRightSection,
+    usingPhone,
+  } = props;
 
   const handleClick = () => {
-    // console.log(recipe);
     setSelectedRecipe(recipe);
+
+    if (usingPhone) {
+      setLeftSection(false);
+      setRightSection(true);
+    }
   };
 
   useEffect(() => {

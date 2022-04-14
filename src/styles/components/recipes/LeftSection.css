@@ -16,7 +16,8 @@
   border: var(--main-border-color);
 }
 #left-section .recipe-comp-container {
-  height: 100%;
+  height: 78%;
+  overflow-y: scroll;
 }
 #left-section .recipe-comp-container #recipe-comp .min-date2 {
   display: flex;
@@ -30,7 +31,7 @@
 #left-section .btn-wrap button {
   display: block;
   margin: 0 auto;
-  width: 40%;
+  width: 100%;
 }
 #left-section #ls-search-bar svg {
   width: 10%;
@@ -38,4 +39,10 @@
 #left-section #ls-search-bar input {
   width: 88%;
   height: 2rem;
+}
+
+@media (max-width: 720px) {
+  #left-section .btn-wrap button {
+    width: 100%;
+  }
 }

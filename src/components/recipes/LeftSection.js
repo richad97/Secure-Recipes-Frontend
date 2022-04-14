@@ -8,7 +8,14 @@ function LeftSection(props) {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const { viewOnly, userRecipes, setSelectedRecipe } = props;
+  const {
+    viewOnly,
+    userRecipes,
+    setSelectedRecipe,
+    setLeftSection,
+    setRightSection,
+    usingPhone,
+  } = props;
 
   const handleInput = (e) => {
     setQuery(e.target.value);
@@ -42,6 +49,9 @@ function LeftSection(props) {
             .map((recipe, i) => {
               return (
                 <RecipeComp
+                  setLeftSection={setLeftSection}
+                  setRightSection={setRightSection}
+                  usingPhone={usingPhone}
                   setSelectedRecipe={setSelectedRecipe}
                   recipe={recipe}
                   key={i}

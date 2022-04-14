@@ -68,41 +68,47 @@ function Navbar(props) {
       </ul>
 
       <ul className="responsive">
-        <GiHamburgerMenu />
+        <GiHamburgerMenu
+          onClick={() => {
+            setHamClicked(!hamClicked);
+          }}
+        />
 
-        {isAuth ? (
-          <li className="links-not-logo">
-            <Link to="/recipes">My Recipes</Link>
-          </li>
-        ) : null}
-        {isAuth ? (
-          <li className="links-not-logo">
-            <Link to="/friends">My Friends</Link>
-          </li>
-        ) : null}
+        <div className={hamClicked ? "display-none" : ""}>
+          {isAuth ? (
+            <li className="links-not-logo">
+              <Link to="/recipes">My Recipes</Link>
+            </li>
+          ) : null}
+          {isAuth ? (
+            <li className="links-not-logo">
+              <Link to="/friends">My Friends</Link>
+            </li>
+          ) : null}
 
-        {isAuth ? (
-          <li>
-            <Link
-              onClick={() => {
-                localStorage.removeItem("token");
-                setAuth(false);
-              }}
-              to="/"
-            >
-              Logout
-            </Link>
-          </li>
-        ) : (
-          <>
+          {isAuth ? (
             <li>
-              <Link to="/login">Login</Link>
+              <Link
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setAuth(false);
+                }}
+                to="/"
+              >
+                Logout
+              </Link>
             </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </>
-        )}
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
+        </div>
       </ul>
     </nav>
   );

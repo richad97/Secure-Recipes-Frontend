@@ -23,12 +23,9 @@ function RightSection(props) {
   const {
     setDeleteMessage,
     selectedRecipe,
-    onPhone,
-    setOnPhone,
-    displayRight,
-    setDisplayRight,
-    displayLeft,
-    setDisplayLeft,
+    setLeftSection,
+    setRightSection,
+    usingPhone,
   } = props;
 
   useEffect(() => {
@@ -43,6 +40,18 @@ function RightSection(props) {
           <header>
             <div className="main-title">
               <h1>{title}</h1>
+
+              {usingPhone ? (
+                <button
+                  onClick={() => {
+                    setLeftSection(true);
+                    setRightSection(false);
+                  }}
+                  className="recipe-btn"
+                >
+                  Back
+                </button>
+              ) : null}
             </div>
             <div className="min-date">
               <span>{prep_time} Minutes</span>
