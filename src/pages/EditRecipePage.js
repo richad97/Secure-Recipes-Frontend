@@ -5,6 +5,7 @@ import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { RecipeContext } from "../RecipeContext";
+import { BiLoaderCircle } from "react-icons/bi";
 import "../styles/form.css";
 import "../styles/pages/EditRecipePage.css";
 
@@ -66,15 +67,15 @@ function EditRecipe(props) {
         defaultSource: "local",
         styles: {
           palette: {
-            window: "#232325",
-            sourceBg: "#2F2F31",
-            windowBorder: "#56606B",
-            tabIcon: "#FFFFFF",
-            inactiveTabIcon: "#8A8A92",
-            menuIcons: "#655A5A",
-            link: "#808DC1",
+            window: "#ffffff",
+            sourceBg: "#f4f4f5",
+            windowBorder: "#90a0b3",
+            tabIcon: "#000000",
+            inactiveTabIcon: "#555a5f",
+            menuIcons: "#555a5f",
+            link: "#4A88F9",
             action: "#339933",
-            inProgress: "#0433ff",
+            inProgress: "#4A88F9",
             complete: "#339933",
             error: "#cc0000",
             textDark: "#000000",
@@ -182,7 +183,7 @@ function EditRecipe(props) {
                 <div className="upload-btn-cont">
                   <p>Upload Photo:</p>
                   {widgetLoading ? (
-                    <div className=""></div>
+                    <BiLoaderCircle className="spinner" />
                   ) : (
                     <button
                       className="recipe-btn"
@@ -203,7 +204,7 @@ function EditRecipe(props) {
                   <div className="title-err-cont">
                     <p>Title:</p>
                     {errors.title && touched.title ? (
-                      <p>{errors.title}</p>
+                      <p className="label-error">{errors.title}</p>
                     ) : null}
                   </div>
                   <Field name="title" placeholder="Milkshake" />
@@ -223,7 +224,7 @@ function EditRecipe(props) {
                   <div className="title-err-cont">
                     <p>Prep Time:</p>
                     {errors.prep_time && touched.prep_time ? (
-                      <div className="">{errors.prep_time}</div>
+                      <p className="label-error">{errors.prep_time}</p>
                     ) : null}
                   </div>
                   <Field name="prep_time" type="number" min="1" />
@@ -312,7 +313,7 @@ function EditRecipe(props) {
                     <p>Instructions:</p>
 
                     {errors.instructions && touched.instructions ? (
-                      <div>{errors.instructions}</div>
+                      <p className="label-error">{errors.instructions}</p>
                     ) : null}
                   </div>
 

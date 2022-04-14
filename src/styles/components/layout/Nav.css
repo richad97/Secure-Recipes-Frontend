@@ -18,6 +18,9 @@ nav .irresponsive {
   margin: 0 13.5%;
   padding: 0;
 }
+nav .irresponsive .auth-links-middle {
+  padding-right: 7.75rem;
+}
 nav .irresponsive .auth-links-left,
 nav .irresponsive .auth-links-right {
   display: flex;
@@ -59,7 +62,9 @@ nav .irresponsive .auth-links-right li {
     padding: 0.5rem 0;
   }
   nav .responsive li a {
+    display: inline-block;
     color: rgb(68, 68, 68);
     padding-left: 2rem;
+    width: 100%;
   }
 }

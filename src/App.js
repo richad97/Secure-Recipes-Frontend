@@ -135,7 +135,14 @@ function App() {
               path="/recipes/:friendUsername"
               element={
                 <RequireAuth redirectTo={"/login"}>
-                  <FriendsRecipes />
+                  <FriendsRecipes
+                    usingPhone={usingPhone}
+                    setUsingPhone={setUsingPhone}
+                    showLeftSection={showLeftSection}
+                    setLeftSection={setLeftSection}
+                    showRightSection={showRightSection}
+                    setRightSection={setRightSection}
+                  />
                 </RequireAuth>
               }
             />

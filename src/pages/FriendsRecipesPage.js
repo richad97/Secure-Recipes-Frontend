@@ -13,8 +13,22 @@ function FriendsRecipes(props) {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const { friendUsername } = useParams();
   const [isLoading, setLoading] = useState(false);
+  const {
+    usingPhone,
+    setUsingPhone,
+    showLeftSection,
+    setLeftSection,
+    showRightSection,
+    setRightSection,
+  } = props;
 
   useEffect(() => {
+    if (window.innerWidth <= 720) {
+      setUsingPhone(true);
+      setLeftSection(true);
+      setRightSection(false);
+    }
+
     const token = localStorage.getItem("token");
 
     setLoading(true);
@@ -47,29 +61,39 @@ function FriendsRecipes(props) {
   return (
     <main id="recipes-main">
       {serverMessage ? (
-        <form
-          style={{ width: "30%", height: "15%", marginTop: "5rem" }}
-          className="form"
-        >
-          <h2
-            className="form-h2 auth-forms-h2"
-            style={{ fontSize: "1.2rem", margin: "0.5rem auto" }}
-          >
-            Server Message: {serverMessage}
+        <form className="single-forms">
+          <h2>
+            <p>Server Message: {serverMessage}</p>
           </h2>
         </form>
       ) : (
         <>
-          <LeftSection
-            userRecipes={userRecipes}
-            setSelectedRecipe={setSelectedRecipe}
-            viewOnly={viewOnly}
-          />
-          {!selectedRecipe ? (
-            <LoadingComp />
-          ) : (
-            <RightSection selectedRecipe={selectedRecipe} viewOnly={viewOnly} />
-          )}
+          {showLeftSection ? (
+            <LeftSection
+              userRecipes={userRecipes}
+              setSelectedRecipe={setSelectedRecipe}
+              viewOnly={viewOnly}
+              setLeftSection={setLeftSection}
+              setRightSection={setRightSection}
+              usingPhone={usingPhone}
+            />
+          ) : null}
+
+          {showRightSection ? (
+            <>
+              {!selectedRecipe ? (
+                <LoadingComp />
+              ) : (
+                <RightSection
+                  selectedRecipe={selectedRecipe}
+                  viewOnly={viewOnly}
+                  setLeftSection={setLeftSection}
+                  setRightSection={setRightSection}
+                  usingPhone={usingPhone}
+                />
+              )}
+            </>
+          ) : null}
         </>
       )}
     </main>

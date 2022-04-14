@@ -2,6 +2,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
+import { BiLoaderCircle } from "react-icons/bi";
 import "../styles/form.css";
 import "../styles/pages/ResetPasswordPage.css";
 
@@ -53,22 +54,23 @@ function ResetPassword() {
                 <div className="inputs-container">
                   <label>
                     <div className="title-err-cont">
-                      <p>E-Mail:</p>
+                      <p className="label-title">E-Mail:</p>
 
                       {errors.email && touched.email ? (
-                        <p>{errors.email}</p>
+                        <p className="label-error">{errors.email}</p>
                       ) : null}
                     </div>
 
                     <Field name="email" placeholder="Enter email here..." />
                   </label>
+                  {serverError ? (
+                    <p className="server-error">Server Error: {serverError}</p>
+                  ) : null}
                 </div>
-
-                {serverError ? <p>Server Error: {serverError}</p> : null}
 
                 <div className="btn-wrap">
                   {isLoading ? (
-                    <div></div>
+                    <BiLoaderCircle className="spinner" />
                   ) : (
                     <button className="recipe-btn" type="submit">
                       Submit

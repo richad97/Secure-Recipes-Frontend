@@ -32,7 +32,7 @@ function Navbar(props) {
         </div>
 
         {isAuth ? (
-          <div>
+          <div className="auth-links-middle">
             <li>
               <Link to="/" className="nav-logo">
                 <img alt="svg" src={main} />
@@ -74,20 +74,34 @@ function Navbar(props) {
           }}
         />
 
-        <div className={hamClicked ? "display-none" : ""}>
+        <div className={hamClicked ? "" : "display-none"}>
           {isAuth ? (
-            <li className="links-not-logo">
+            <li
+              onClick={() => {
+                setHamClicked(!hamClicked);
+              }}
+              className="links-not-logo"
+            >
               <Link to="/recipes">My Recipes</Link>
             </li>
           ) : null}
           {isAuth ? (
-            <li className="links-not-logo">
+            <li
+              onClick={() => {
+                setHamClicked(!hamClicked);
+              }}
+              className="links-not-logo"
+            >
               <Link to="/friends">My Friends</Link>
             </li>
           ) : null}
 
           {isAuth ? (
-            <li>
+            <li
+              onClick={() => {
+                setHamClicked(!hamClicked);
+              }}
+            >
               <Link
                 onClick={() => {
                   localStorage.removeItem("token");
@@ -100,10 +114,18 @@ function Navbar(props) {
             </li>
           ) : (
             <>
-              <li>
+              <li
+                onClick={() => {
+                  setHamClicked(!hamClicked);
+                }}
+              >
                 <Link to="/login">Login</Link>
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  setHamClicked(!hamClicked);
+                }}
+              >
                 <Link to="/register">Register</Link>
               </li>
             </>

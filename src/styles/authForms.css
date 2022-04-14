@@ -13,7 +13,10 @@
 }
 .lr-forms .lr-wrap {
   padding: 0 2rem;
-  height: auto;
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .lr-forms .lr-wrap .lr-input-wrap label .lr-label-wrap {
   display: flex;
@@ -35,8 +38,13 @@
   display: flex;
   flex-direction: column;
   font-size: 0.8rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   text-align: center;
+}
+.lr-forms .lr-wrap .lr-btn-wrap {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .lr-forms .lr-wrap .lr-btn-wrap button {
   height: 3rem;

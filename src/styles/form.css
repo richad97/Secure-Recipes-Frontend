@@ -81,14 +81,22 @@
 .ce-forms .inputs-container .last-col {
   margin: 0 0;
 }
+.ce-forms .inputs-container .mid-col label .title-err-cont,
+.ce-forms .inputs-container .last-col label .title-err-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .ce-forms .inputs-container .mid-col label .title-err-cont p,
 .ce-forms .inputs-container .last-col label .title-err-cont p {
-  color: var(--main-second-font-color);
+  /* color: var(--main-second-font-color); */
+  margin: 1rem 0;
+  display: block;
 }
 .ce-forms .inputs-container .mid-col label input,
 .ce-forms .inputs-container .last-col label input {
   height: 6%;
-  width: 90%;
+  width: 100%;
 }
 .ce-forms .inputs-container .mid-col label .title-err-cont p,
 .ce-forms .inputs-container .last-col label .title-err-cont p {

@@ -8,12 +8,12 @@ import "../styles/pages/ResetPasswordPage.css";
 
 const ResetPasswordFinalSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, "Must be minimum of 6 characters.")
+    .min(6, "Minimum is 6 characters.")
     .max(50, "Password is too long")
     .required("Password is required"),
   confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), null],
-    "Passwords must match"
+    "Passwords must match."
   ),
 });
 
@@ -61,10 +61,10 @@ function ResetPasswordFinal() {
                 <div className="inputs-container">
                   <label>
                     <div className="title-err-cont">
-                      <p>New Password:</p>
+                      <p className="label-title">New Password:</p>
 
                       {errors.password && touched.password ? (
-                        <p>{errors.password}</p>
+                        <p className="label-error">{errors.password}</p>
                       ) : null}
                     </div>
 
@@ -77,10 +77,10 @@ function ResetPasswordFinal() {
 
                   <label>
                     <div className="title-err-cont">
-                      <p>Confirm New Password:</p>
+                      <p className="label-title">Confirm New Password:</p>
 
                       {errors.confirmPassword && touched.confirmPassword ? (
-                        <p>{errors.confirmPassword}</p>
+                        <p className="label-error">{errors.confirmPassword}</p>
                       ) : null}
                     </div>
 

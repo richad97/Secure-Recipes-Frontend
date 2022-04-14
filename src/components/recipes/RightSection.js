@@ -121,7 +121,7 @@ function RightSection(props) {
         </>
       ) : (
         <div className="no-recipes-wrap">
-          <p>No Recipes</p>
+          <p>Make some!</p>
         </div>
       )}
     </section>

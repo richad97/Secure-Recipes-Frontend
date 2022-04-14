@@ -4,6 +4,7 @@ import svg1 from "../assets/3.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
+import { BiLoaderCircle } from "react-icons/bi";
 import "../styles/pages/LoginPage.css";
 import "../styles/authForms.css";
 import "../styles/form.css";
@@ -64,52 +65,56 @@ function Login(props) {
               <h2>Login</h2>
 
               <div className="lr-wrap">
-                <div className="lr-input-wrap">
-                  <label>
-                    <div className="lr-label-wrap">
-                      <p className="label-title">Username:</p>
-                      {errors.username && touched.username ? (
-                        <p className="label-error">{errors.username}</p>
-                      ) : null}
-                    </div>
-                    <Field
-                      name="username"
-                      type="text"
-                      placeholder="Enter username here..."
-                    />
-                  </label>
+                <div>
+                  <div className="lr-input-wrap">
+                    <label>
+                      <div className="lr-label-wrap">
+                        <p className="label-title">Username:</p>
+                        {errors.username && touched.username ? (
+                          <p className="label-error">{errors.username}</p>
+                        ) : null}
+                      </div>
+                      <Field
+                        name="username"
+                        type="text"
+                        placeholder="Enter username here..."
+                      />
+                    </label>
 
-                  <label>
-                    <div className="lr-label-wrap">
-                      <p className="label-title">Password:</p>
-                      {errors.password && touched.password ? (
-                        <p className="label-error">{errors.password}</p>
-                      ) : null}
-                    </div>
-                    <Field
-                      name="password"
-                      type="password"
-                      placeholder="Enter password here..."
-                    />
-                  </label>
+                    <label>
+                      <div className="lr-label-wrap">
+                        <p className="label-title">Password:</p>
+                        {errors.password && touched.password ? (
+                          <p className="label-error">{errors.password}</p>
+                        ) : null}
+                      </div>
+                      <Field
+                        name="password"
+                        type="password"
+                        placeholder="Enter password here..."
+                      />
+                    </label>
 
-                  {serverError ? (
-                    <p className="">Server Error: {serverError}</p>
-                  ) : null}
-                </div>
+                    {serverError ? (
+                      <p className="server-error">
+                        Server Error: {serverError}
+                      </p>
+                    ) : null}
+                  </div>
 
-                <div className="lr-xtr-links">
-                  <Link className="" to="/resetpassword">
-                    Forgot Password?
-                  </Link>
-                  <Link className="" to="/register">
-                    Not a User?
-                  </Link>
+                  <div className="lr-xtr-links">
+                    <Link className="" to="/resetpassword">
+                      Forgot Password?
+                    </Link>
+                    <Link className="" to="/register">
+                      Not a User?
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="lr-btn-wrap">
                   {isLoading ? (
-                    <div className="loader"></div>
+                    <BiLoaderCircle className="spinner" />
                   ) : (
                     <button className="recipe-btn" type="submit">
                       Login

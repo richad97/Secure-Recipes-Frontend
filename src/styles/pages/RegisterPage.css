@@ -22,10 +22,19 @@
 #register-form .left-section .lr-wrap .lr-input-wrap .r-flname-wrap {
   display: flex;
   justify-content: space-between;
-  width: 95%;
+  /* width: 95%; */
 }
 #register-form .left-section .lr-wrap .lr-input-wrap .r-flname-wrap label {
-  width: 100%;
+  width: 48%;
+}
+#register-form
+  .left-section
+  .lr-wrap
+  .lr-input-wrap
+  .r-flname-wrap
+  label
+  input {
+  width: 97%;
 }
 #register-form .left-section .lr-wrap .lr-xtr-links {
   /* margin: 0; */

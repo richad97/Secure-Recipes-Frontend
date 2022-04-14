@@ -2,8 +2,12 @@ import svg1 from "../assets/2.svg";
 import svg2 from "../assets/1.svg";
 import { FaLock, FaUserFriends, FaFileAlt } from "react-icons/fa";
 import "../styles/pages/HomePage.css";
+import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Home(props) {
+  const navigate = useNavigate();
+  const { isAuth } = props;
+
   return (
     <main className="home-main">
       <header>
@@ -17,12 +21,30 @@ function Home() {
             account and share those recipes with your friends. Sign up and try
             today!
           </p>
-          <button>Sign Up</button>
+          {isAuth ? (
+            <button
+              className="recipe-btn"
+              onClick={() => {
+                navigate("/recipes");
+              }}
+            >
+              View Recipes
+            </button>
+          ) : (
+            <button
+              className="recipe-btn"
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Sign Up
+            </button>
+          )}
         </div>
       </header>
 
       <section className="sub-section-1">
-        <h2>Secure Dem Thangs...</h2>
+        <h2>Secure Dem Recipes...</h2>
 
         <div className="card-wrapper">
           <div className="card odd">
@@ -68,7 +90,7 @@ function Home() {
 
       <section className="sub-section-2">
         <div className="section-text">
-          <h1>The Point...</h1>
+          <h2>The Point...</h2>
           <p>
             Secure Recipes was created to show what the amount of functionality
             I can implement within an application by myself. After this project

@@ -7,12 +7,18 @@
   box-shadow: var(--home-section-box-shadow);
   display: flex;
   justify-content: space-around;
-  padding: 5rem 10rem;
+  padding: 5rem 15rem;
   position: relative;
   z-index: 10;
 }
 .home-main header .header-text {
-  width: 30%;
+  width: 40%;
+}
+.home-main header .header-text h1 {
+  color: var(--main-font-color);
+}
+.home-main header .header-text p {
+  color: var(--main-second-font-color);
 }
 .home-main header .header-text button {
   border: 2px solid white;
@@ -31,6 +37,12 @@
   padding-top: 7rem;
   position: relative;
   z-index: 9;
+}
+.home-main .sub-section-1 h2 {
+  color: var(--main-font-color);
+}
+.home-main .sub-section-1 .card p {
+  color: var(--main-second-font-color);
 }
 .home-main .sub-section-1 h2 {
   margin: 2rem auto;
@@ -86,9 +98,15 @@
   display: flex;
   justify-content: space-around;
   position: relative;
-  padding: 6rem 10rem;
+  padding: 5rem 15rem;
   padding-top: 12rem;
   z-index: 8;
+}
+.home-main .section-text h2 {
+  color: var(--main-font-color);
+}
+.home-main .section-text p {
+  color: var(--main-second-font-color);
 }
 .home-main .sub-section-2 .section-text {
   width: 30%;
@@ -108,10 +126,10 @@
   .home-main header {
     flex-direction: column;
     align-items: center;
-    padding-top: 3rem;
+    padding-top: 2rem;
   }
   .home-main header .header-text {
-    width: 90%;
+    width: 100%;
     text-align: center;
   }
   .home-main .sub-section-1 h2 {
@@ -136,6 +154,7 @@
 @media (max-width: 720px) {
   .home-main header {
     padding: 4rem 2rem;
+    padding-top: 2rem;
   }
   .home-main header .header-text {
     width: 100%;

@@ -98,9 +98,9 @@ function Register() {
                   <div className="r-flname-wrap">
                     <label>
                       <div className="lr-label-wrap">
-                        <p className="">First Name:</p>
+                        <p className="label-title">First Name:</p>
                         {errors.first_name && touched.first_name ? (
-                          <p className="error-val">{errors.first_name}</p>
+                          <p className="label-error">{errors.first_name}</p>
                         ) : null}
                       </div>
 
@@ -109,9 +109,9 @@ function Register() {
 
                     <label>
                       <div className="lr-label-wrap">
-                        <p>Last Name:</p>
+                        <p className="label-title">Last Name:</p>
                         {errors.last_name && touched.last_name ? (
-                          <p>{errors.last_name}</p>
+                          <p className="label-error">{errors.last_name}</p>
                         ) : null}
                       </div>
 
@@ -121,9 +121,9 @@ function Register() {
 
                   <label>
                     <div className="lr-label-wrap">
-                      <p>Username:</p>
+                      <p className="label-title">Username:</p>
                       {errors.username && touched.username ? (
-                        <p>{errors.username}</p>
+                        <p className="label-error">{errors.username}</p>
                       ) : null}
                     </div>
 
@@ -136,9 +136,9 @@ function Register() {
 
                   <label>
                     <div className="lr-label-wrap">
-                      <p>E-Mail:</p>
+                      <p className="label-title">E-Mail:</p>
                       {errors.email && touched.email ? (
-                        <p>{errors.email}</p>
+                        <p className="label-error">{errors.email}</p>
                       ) : null}
                     </div>
 
@@ -151,9 +151,9 @@ function Register() {
 
                   <label className="form-label">
                     <div className="lr-label-wrap">
-                      <p>Password:</p>
+                      <p className="label-title">Password:</p>
                       {errors.password && touched.password ? (
-                        <p>{errors.password}</p>
+                        <p className="label-error">{errors.password}</p>
                       ) : null}
                     </div>
 
@@ -166,10 +166,12 @@ function Register() {
 
                   <label>
                     <div className="lr-label-wrap">
-                      <p>Confirm Password:</p>
+                      <p className="label-title">Confirm Password:</p>
                       {errors.passwordConfirmation &&
                       touched.passwordConfirmation ? (
-                        <p>{errors.passwordConfirmation}</p>
+                        <p className="label-error">
+                          {errors.passwordConfirmation}
+                        </p>
                       ) : null}
                     </div>
 
@@ -181,7 +183,7 @@ function Register() {
                   </label>
 
                   {serverError ? (
-                    <p className="error-val">Server Error: {serverError}</p>
+                    <p className="server-error">Server Error: {serverError}</p>
                   ) : null}
                 </div>
 

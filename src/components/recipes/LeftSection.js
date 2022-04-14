@@ -2,11 +2,12 @@ import RecipeComp from "./RecipeComp";
 import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { BiLoaderCircle } from "react-icons/bi";
 import "../../styles/components/recipes/LeftSection.css";
 
 function LeftSection(props) {
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const {
     viewOnly,
@@ -21,6 +22,10 @@ function LeftSection(props) {
     setQuery(e.target.value);
   };
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <section id="left-section">
       <label id="ls-search-bar">
@@ -33,8 +38,11 @@ function LeftSection(props) {
       </label>
 
       <div className="recipe-comp-container">
-        {isLoading ? (
-          <p>Loading</p>
+        {userRecipes.length === 0 ? (
+          <div className="spinner-wrap">
+            <p>No recipes...</p>
+            {/* <BiLoaderCircle className="spinner" /> */}
+          </div>
         ) : (
           userRecipes
             .filter((recipe) => {
