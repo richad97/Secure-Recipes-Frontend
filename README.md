@@ -1,6 +1,6 @@
 # Secure Recipes Client
 ## Host - https://meek-klepon-9ced87.netlify.app/
-Client for Secure Recipes Web Application
+Client for Secure Recipes web application.
 ## Description
 CRUD application that allows users to securely store and share their recipes within an account. 
 ## Summary
