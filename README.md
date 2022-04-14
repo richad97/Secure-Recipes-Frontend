@@ -4,6 +4,6 @@ Client for Secure Recipes Web Application
 ## Description
 CRUD application that allows users to securely store and share their recipes within an account. 
 ## Summary
-
+&nbsp; &nbsp; Responsive client for my Secure Recipes web application. Common CSS conventions are used to keep it organized. 
 ## draw.io
 https://drive.google.com/file/d/1I7lMpWwacuu-WuODwfHw5YLjx9lLMeDD/view?usp=sharing
