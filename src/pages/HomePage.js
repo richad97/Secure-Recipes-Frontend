@@ -16,7 +16,7 @@ function Home(props) {
         <div className="header-text">
           <h1>Secure Recipes</h1>
           <p>
-            Securely store your recipes before you forget! Secure Recipes is an
+            Securely store your recipes before you forget! Secure Recipes is a
             web application that allows you to store recipes within a secure
             account and share those recipes with your friends. Sign up and try
             today!
